@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Application-OSX' target in the 'Application-OSX' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

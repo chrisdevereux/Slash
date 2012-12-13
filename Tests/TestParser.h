@@ -1,13 +1,13 @@
 //
-//  Slash.m
+//  TestParser.h
 //  Slash
 //
 //  Created by Chris Devereux on 13/12/2012.
 //  Copyright (c) 2012 ChrisDevereux. All rights reserved.
 //
 
-#import "Slash.h"
+#import <SenTestingKit/SenTestingKit.h>
 
-@implementation Slash
+@interface TestParser : SenTestCase
 
 @end
