@@ -18,6 +18,7 @@
 @end
 
 OBJC_EXTERN NSString * const SLSErrorDomain;
-enum {
-    kSLSSyntaxError
-};
+typedef enum {
+    kSLSSyntaxError = 1,
+    kSLSUnknownTagError
+} SLSErrorCode;

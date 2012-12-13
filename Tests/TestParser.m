@@ -41,4 +41,20 @@
     STAssertEqualObjects(actual, expected, @"Parsed markup does not have expected attributes.");
 }
 
+- (void)testUnknownTagProducesError
+{
+    NSError *error;
+    STAssertNil([SLSMarkupParser stringByParsingTaggedString:@"<undefined>xyz</undefined>" error:&error], @"Expected error");
+    STAssertNotNil(error, @"Expected error");
+    STAssertEquals((SLSErrorCode)[error code], kSLSUnknownTagError, @"Incorrect error code");
+}
+
+- (void)testSyntaxErrorProducesError
+{
+    NSError *error;
+    STAssertNil([SLSMarkupParser stringByParsingTaggedString:@"<h1>xyz" error:&error], @"Expected error");
+    STAssertNotNil(error, @"Expected error");
+    STAssertEquals((SLSErrorCode)[error code], kSLSSyntaxError, @"Incorrect error code");
+}
+
 @end

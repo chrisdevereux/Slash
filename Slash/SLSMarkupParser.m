@@ -38,8 +38,15 @@ extern int slashdebug;
 + (NSDictionary *)defaultTagDefinitions
 {
     return @{
-        @"$default" : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue" size:12]},
-        @"strong"   : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue-Bold" size:12]}
+        @"$default" : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue" size:14]},
+        @"strong"   : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue-Bold" size:14]},
+        @"emph"     : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue-Italic" size:14]},
+        @"h1"       : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue-Medium" size:48]},
+        @"h2"       : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue-Medium" size:36]},
+        @"h3"       : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue-Medium" size:32]},
+        @"h4"       : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue-Medium" size:24]},
+        @"h5"       : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue-Medium" size:18]},
+        @"h6"       : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue-Medium" size:16]}
     };
 }
 
@@ -62,6 +69,14 @@ extern int slashdebug;
     } else {
         [parser applyAttributes];
         attributedString = [[parser.outAttStr copy] autorelease];
+        
+        if (parser.error) {
+            if (error) {
+                *error = [[parser.error retain] autorelease];
+            }
+            
+            attributedString = nil;
+        }
     }
     
     [parser release];
@@ -121,6 +136,11 @@ extern int slashdebug;
         NSString *tag = [taggedRange objectAtIndex:0];
         NSRange range = [[taggedRange objectAtIndex:1] rangeValue];
         
+        NSDictionary *attributes = [_attributeDict objectForKey:tag];
+        if (!attributes) {
+            self.error = [NSError errorWithDomain:SLSErrorDomain code:kSLSUnknownTagError userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Unknown tag" , nil), tag]}];
+        }
+        
         [_outAttStr setAttributes:[_attributeDict objectForKey:tag] range:range];
     }
 }
@@ -139,7 +159,7 @@ extern int slashdebug;
 
 void slasherror(yyscan_t scanner, SLSMarkupParser *ctx, const char *msg)
 {
-    ctx.error = [NSError errorWithDomain:SLSErrorDomain code:kSLSSyntaxError userInfo:nil];
+    ctx.error = [NSError errorWithDomain:SLSErrorDomain code:kSLSSyntaxError userInfo:@{NSLocalizedDescriptionKey : NSLocalizedString(@"Syntax error", nil)}];
 }
 
 NSString * const SLSErrorDomain = @"SLSErrorDomain";
