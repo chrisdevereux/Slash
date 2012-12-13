@@ -349,7 +349,7 @@ union yyalloc
 #endif
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  8
+#define YYFINAL  9
 /* YYLAST -- Last index in YYTABLE.  */
 #define YYLAST   11
 
@@ -358,9 +358,9 @@ union yyalloc
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  4
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  7
+#define YYNRULES  8
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  12
+#define YYNSTATES  13
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
@@ -406,20 +406,21 @@ static const yytype_uint8 yytranslate[] =
    YYRHS.  */
 static const yytype_uint8 yyprhs[] =
 {
-       0,     0,     3,     5,     7,    11,    14,    18
+       0,     0,     3,     5,     7,    11,    14,    18,    20
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
        7,     0,    -1,     8,    -1,     9,    -1,     4,     8,     5,
-      -1,     8,     8,    -1,     4,     3,     5,    -1,     3,    -1
+      -1,     8,     8,    -1,     4,     3,     5,    -1,     3,    -1,
+       4,     5,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    35,    35,    38,    39,    43,    50,    60
+       0,    35,    35,    38,    39,    43,    50,    60,    69
 };
 #endif
 
@@ -445,13 +446,13 @@ static const yytype_uint16 yytoknum[] =
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,     6,     7,     8,     8,     8,     9,     9
+       0,     6,     7,     8,     8,     8,     9,     9,     9
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     1,     1,     3,     2,     3,     1
+       0,     2,     1,     1,     3,     2,     3,     1,     2
 };
 
 /* YYDEFACT[STATE-NAME] -- Default rule to reduce with in state
@@ -459,14 +460,14 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       0,     7,     0,     0,     2,     3,     7,     0,     1,     5,
-       6,     4
+       0,     7,     0,     0,     2,     3,     7,     8,     0,     1,
+       5,     6,     4
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     3,     9,     5
+      -1,     3,    10,     5
 };
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
@@ -474,14 +475,14 @@ static const yytype_int8 yydefgoto[] =
 #define YYPACT_NINF -4
 static const yytype_int8 yypact[] =
 {
-       4,    -4,     6,    11,     4,    -4,    -1,    -3,    -4,     4,
-      -4,    -4
+       7,    -4,    -3,     9,     7,    -4,     2,    -4,     0,    -4,
+       7,    -4,    -4
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -4,    -4,     3,    -4
+      -4,    -4,     6,    -4
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -491,22 +492,22 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
-       1,     2,    11,     4,    10,     7,     0,     1,     2,     6,
-       2,     8
+       6,     2,     7,     1,     2,    12,     4,    11,     8,     9,
+       1,     2
 };
 
-static const yytype_int8 yycheck[] =
+static const yytype_uint8 yycheck[] =
 {
-       3,     4,     5,     0,     5,     2,    -1,     3,     4,     3,
-       4,     0
+       3,     4,     5,     3,     4,     5,     0,     5,     2,     0,
+       3,     4
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     3,     4,     7,     8,     9,     3,     8,     0,     8,
-       5,     5
+       0,     3,     4,     7,     8,     9,     3,     5,     8,     0,
+       8,     5,     5
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1370,6 +1371,17 @@ yyreduce:
     tagRange.length = [(yyvsp[(1) - (1)].text) length];
     
     [[ctx.outAttStr mutableString] appendString:(yyvsp[(1) - (1)].text)];
+
+    (yyval.attribute_range) = tagRange;
+;}
+    break;
+
+  case 8:
+
+    {
+    NSRange tagRange;
+    tagRange.location = [ctx.outAttStr length];
+    tagRange.length = 0;
 
     (yyval.attribute_range) = tagRange;
 ;}

@@ -66,3 +66,10 @@ inner_attributed_string
 
     $$ = tagRange;
 }
+| OPEN CLOSE {
+    NSRange tagRange;
+    tagRange.location = [ctx.outAttStr length];
+    tagRange.length = 0;
+
+    $$ = tagRange;
+}
