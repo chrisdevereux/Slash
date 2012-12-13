@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Slash' target in the 'Slash' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
