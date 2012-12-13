@@ -76,13 +76,15 @@
    enum yytokentype {
      TEXT = 258,
      OPEN = 259,
-     CLOSE = 260
+     CLOSE = 260,
+     ERR = 261
    };
 #endif
 /* Tokens.  */
 #define TEXT 258
 #define OPEN 259
 #define CLOSE 260
+#define ERR 261
 
 
 
@@ -93,8 +95,6 @@
     #import <Foundation/Foundation.h>
     #import "SLSMarkupParser+BisonContext.h"
     #import "SLSMarkupLexer.gen.h"
-    
-    #define YYDEBUG 1
 
 
 /* Enabling traces.  */
@@ -121,6 +121,7 @@ typedef union YYSTYPE
 {
     NSString    *text;
     NSRange     attribute_range;
+    struct{}    noval;
 }
 /* Line 193 of yacc.c.  */
 
@@ -349,22 +350,22 @@ union yyalloc
 #endif
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  9
+#define YYFINAL  11
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   11
+#define YYLAST   15
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  6
+#define YYNTOKENS  7
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  4
+#define YYNNTS  5
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  8
+#define YYNRULES  10
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  13
+#define YYNSTATES  15
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   260
+#define YYMAXUTOK   261
 
 #define YYTRANSLATE(YYX)						\
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -398,7 +399,7 @@ static const yytype_uint8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5
+       5,     6
 };
 
 #if YYDEBUG
@@ -406,21 +407,23 @@ static const yytype_uint8 yytranslate[] =
    YYRHS.  */
 static const yytype_uint8 yyprhs[] =
 {
-       0,     0,     3,     5,     7,    11,    14,    18,    20
+       0,     0,     3,     5,     7,     9,    13,    16,    20,    22,
+      25
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
-       7,     0,    -1,     8,    -1,     9,    -1,     4,     8,     5,
-      -1,     8,     8,    -1,     4,     3,     5,    -1,     3,    -1,
-       4,     5,    -1
+       8,     0,    -1,     9,    -1,    11,    -1,    10,    -1,     4,
+       9,     5,    -1,     9,     9,    -1,     4,     3,     5,    -1,
+       3,    -1,     4,     5,    -1,     6,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    35,    35,    38,    39,    43,    50,    60,    69
+       0,    36,    36,    37,    40,    41,    45,    52,    66,    75,
+      84
 };
 #endif
 
@@ -429,8 +432,9 @@ static const yytype_uint8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "TEXT", "OPEN", "CLOSE", "$accept",
-  "start", "attributed_string", "inner_attributed_string", 0
+  "$end", "error", "$undefined", "TEXT", "OPEN", "CLOSE", "ERR",
+  "$accept", "start", "attributed_string", "inner_attributed_string",
+  "abort_parse", 0
 };
 #endif
 
@@ -439,20 +443,22 @@ static const char *const yytname[] =
    token YYLEX-NUM.  */
 static const yytype_uint16 yytoknum[] =
 {
-       0,   256,   257,   258,   259,   260
+       0,   256,   257,   258,   259,   260,   261
 };
 # endif
 
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,     6,     7,     8,     8,     8,     9,     9,     9
+       0,     7,     8,     8,     9,     9,     9,    10,    10,    10,
+      11
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     1,     1,     3,     2,     3,     1,     2
+       0,     2,     1,     1,     1,     3,     2,     3,     1,     2,
+       1
 };
 
 /* YYDEFACT[STATE-NAME] -- Default rule to reduce with in state
@@ -460,14 +466,14 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       0,     7,     0,     0,     2,     3,     7,     8,     0,     1,
-       5,     6,     4
+       0,     8,     0,    10,     0,     2,     4,     3,     8,     9,
+       0,     1,     6,     7,     5
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     3,    10,     5
+      -1,     4,    12,     6,     7
 };
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
@@ -475,14 +481,14 @@ static const yytype_int8 yydefgoto[] =
 #define YYPACT_NINF -4
 static const yytype_int8 yypact[] =
 {
-       7,    -4,    -3,     9,     7,    -4,     2,    -4,     0,    -4,
-       7,    -4,    -4
+      -3,    -4,     1,    -4,     2,    11,    -4,    -4,     6,    -4,
+       4,    -4,    11,    -4,    -4
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -4,    -4,     6,    -4
+      -4,    -4,    10,    -4,    -4
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -492,22 +498,22 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
-       6,     2,     7,     1,     2,    12,     4,    11,     8,     9,
-       1,     2
+       1,     2,    11,     3,     8,     2,     9,     1,     2,    14,
+       5,    13,    10,     0,     1,     2
 };
 
-static const yytype_uint8 yycheck[] =
+static const yytype_int8 yycheck[] =
 {
-       3,     4,     5,     3,     4,     5,     0,     5,     2,     0,
-       3,     4
+       3,     4,     0,     6,     3,     4,     5,     3,     4,     5,
+       0,     5,     2,    -1,     3,     4
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     3,     4,     7,     8,     9,     3,     5,     8,     0,
-       8,     5,     5
+       0,     3,     4,     6,     8,     9,    10,    11,     3,     5,
+       9,     0,     9,     5,     5
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1334,7 +1340,7 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-        case 4:
+        case 5:
 
     {
     [ctx addAttributesForTag:(yyvsp[(1) - (3)].text) inRange:(yyvsp[(2) - (3)].attribute_range)];
@@ -1342,14 +1348,14 @@ yyreduce:
 ;}
     break;
 
-  case 5:
+  case 6:
 
     {
     (yyval.attribute_range) = NSMakeRange((yyvsp[(1) - (2)].attribute_range).location, (yyvsp[(1) - (2)].attribute_range).length + (yyvsp[(2) - (2)].attribute_range).length);
 ;}
     break;
 
-  case 6:
+  case 7:
 
     {
     NSRange tagRange;
@@ -1358,12 +1364,16 @@ yyreduce:
     
     [[ctx.outAttStr mutableString] appendString:(yyvsp[(2) - (3)].text)];
     [ctx addAttributesForTag:(yyvsp[(1) - (3)].text) inRange:tagRange];
+    
+    if (![(yyvsp[(1) - (3)].text) isEqualToString:(yyvsp[(3) - (3)].text)]) {
+        ctx.error = [NSError errorWithDomain:SLSErrorDomain code:kSLSSyntaxError userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Unterminated attributed", nil)}];
+    }
 
     (yyval.attribute_range) = tagRange;
 ;}
     break;
 
-  case 7:
+  case 8:
 
     {
     NSRange tagRange;
@@ -1376,7 +1386,7 @@ yyreduce:
 ;}
     break;
 
-  case 8:
+  case 9:
 
     {
     NSRange tagRange;
@@ -1384,6 +1394,13 @@ yyreduce:
     tagRange.length = 0;
 
     (yyval.attribute_range) = tagRange;
+;}
+    break;
+
+  case 10:
+
+    {
+    ctx.error = [NSError errorWithDomain:SLSErrorDomain code:kSLSSyntaxError userInfo:@{NSLocalizedDescriptionKey: (yyvsp[(1) - (1)].text)}];
 ;}
     break;
 

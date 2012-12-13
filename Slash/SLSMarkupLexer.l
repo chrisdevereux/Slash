@@ -35,3 +35,8 @@ nontag      [[:print:]]{-}[\<\>\/]
     yylval->text = [ [ [NSString alloc] initWithBytes:yytext+2 length:strlen(yytext)-3 encoding:NSUTF8StringEncoding] autorelease];
     return CLOSE;
 }
+
+"<"{nontag}* {
+    yylval->text = NSLocalizedString(@"Unterminated tag", nil);
+    return ERR;
+}

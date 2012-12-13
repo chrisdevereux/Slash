@@ -356,8 +356,8 @@ static void yy_fatal_error (yyconst char msg[] ,yyscan_t yyscanner );
 	*yy_cp = '\0'; \
 	yyg->yy_c_buf_p = yy_cp;
 
-#define YY_NUM_RULES 4
-#define YY_END_OF_BUFFER 5
+#define YY_NUM_RULES 5
+#define YY_END_OF_BUFFER 6
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -367,7 +367,7 @@ struct yy_trans_info
 	};
 static yyconst flex_int16_t yy_accept[14] =
     {   0,
-        0,    0,    5,    4,    1,    4,    1,    0,    0,    2,
+        0,    0,    6,    5,    1,    4,    1,    4,    0,    2,
         0,    3,    0
     } ;
 
@@ -796,10 +796,18 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 38 "SLSMarkupLexer.l"
+#line 39 "SLSMarkupLexer.l"
+{
+    yylval->text = NSLocalizedString(@"Unterminated tag", nil);
+    return ERR;
+}
+	YY_BREAK
+case 5:
+YY_RULE_SETUP
+#line 43 "SLSMarkupLexer.l"
 ECHO;
 	YY_BREAK
-#line 803 "SLSMarkupLexer.gen.m"
+#line 811 "SLSMarkupLexer.gen.m"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2005,4 +2013,4 @@ void slashfree (void * ptr , yyscan_t yyscanner)
 
 #define YYTABLES_NAME "yytables"
 
-#line 38 "SLSMarkupLexer.l"
+#line 43 "SLSMarkupLexer.l"

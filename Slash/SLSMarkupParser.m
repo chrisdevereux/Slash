@@ -25,7 +25,6 @@ int slashparse (yyscan_t scanner, SLSMarkupParser *ctx);
 
 @interface SLSMarkupParser ()
 @property (strong, readonly, nonatomic) NSMutableArray *taggedRangeStack;
-@property (strong, nonatomic) NSError *error;
 @end
 
 extern int slashdebug;
@@ -33,6 +32,7 @@ extern int slashdebug;
 @implementation SLSMarkupParser {
     NSDictionary *_attributeDict;
     NSMutableAttributedString *_outAttStr;
+    NSError *_error;
 }
 
 + (NSDictionary *)defaultTagDefinitions
@@ -54,6 +54,10 @@ extern int slashdebug;
 {
     if (!string) {
         return nil;
+    }
+    
+    if ([string length] == 0) {
+        return [[[NSAttributedString alloc] init] autorelease];
     }
     
     defs = defs ?: [self defaultTagDefinitions];
@@ -112,7 +116,6 @@ extern int slashdebug;
 
 - (void)parseString:(NSString *)string
 {
-    slashdebug = 1;
     yyscan_t scanner;
     
     slashlex_init(&scanner);
@@ -147,12 +150,24 @@ extern int slashdebug;
 
 - (NSMutableAttributedString *)outAttStr
 {
-    return _outAttStr;
+    return [[_outAttStr retain] autorelease];
 }
 
 - (void)addAttributesForTag:(NSString *)tag inRange:(NSRange)range
 {
     [_taggedRangeStack insertObject:@[tag, [NSValue valueWithRange:range]] atIndex:0];
+}
+
+- (void)setError:(NSError *)error
+{
+    [error retain];
+    [_error release];
+    _error = error;
+}
+
+- (NSError *)error
+{
+    return [[_error retain] autorelease];
 }
 
 @end

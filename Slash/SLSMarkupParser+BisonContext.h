@@ -13,6 +13,7 @@
 @interface SLSMarkupParser (SLSBisonContext)
 
 @property (strong, readonly, nonatomic) NSMutableAttributedString *outAttStr;
+@property (strong, nonatomic) NSError *error;
 
 - (id)initWithTagDictionary:(NSDictionary *)tagDict;
 - (NSAttributedString *)parseString:(NSString *)string;

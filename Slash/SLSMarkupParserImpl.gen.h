@@ -41,13 +41,15 @@
    enum yytokentype {
      TEXT = 258,
      OPEN = 259,
-     CLOSE = 260
+     CLOSE = 260,
+     ERR = 261
    };
 #endif
 /* Tokens.  */
 #define TEXT 258
 #define OPEN 259
 #define CLOSE 260
+#define ERR 261
 
 
 
@@ -58,6 +60,7 @@ typedef union YYSTYPE
 {
     NSString    *text;
     NSRange     attribute_range;
+    struct{}    noval;
 }
 /* Line 1529 of yacc.c.  */
 

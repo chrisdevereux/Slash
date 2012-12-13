@@ -2,8 +2,6 @@
     #import <Foundation/Foundation.h>
     #import "SLSMarkupParser+BisonContext.h"
     #import "SLSMarkupLexer.gen.h"
-    
-    #define YYDEBUG 1
 %}
 
 %pure-parser
@@ -18,14 +16,17 @@
 %union {
     NSString    *text;
     NSRange     attribute_range;
+    struct{}    noval;
 }
 
 %token <text> TEXT
 %token <text> OPEN
 %token <text> CLOSE
+%token <text> ERR
 
 %type <attribute_range> attributed_string
 %type <attribute_range> inner_attributed_string
+%type <noval> abort_parse
 
 %start start
 
@@ -33,6 +34,7 @@
 
 start
 : attributed_string
+| abort_parse
     
 attributed_string
 : inner_attributed_string
@@ -54,6 +56,10 @@ inner_attributed_string
     
     [[ctx.outAttStr mutableString] appendString:$2];
     [ctx addAttributesForTag:$1 inRange:tagRange];
+    
+    if (![$1 isEqualToString:$3]) {
+        ctx.error = [NSError errorWithDomain:SLSErrorDomain code:kSLSSyntaxError userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Unterminated attributed", nil)}];
+    }
 
     $$ = tagRange;
 }
@@ -72,4 +78,9 @@ inner_attributed_string
     tagRange.length = 0;
 
     $$ = tagRange;
+}
+
+abort_parse
+: ERR {
+    ctx.error = [NSError errorWithDomain:SLSErrorDomain code:kSLSSyntaxError userInfo:@{NSLocalizedDescriptionKey: $1}];
 }

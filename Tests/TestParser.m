@@ -37,7 +37,8 @@
     [expected setAttributes:[[SLSMarkupParser defaultTagDefinitions] valueForKey:@"h2"] range:NSMakeRange(107, 10)];
     [expected setAttributes:[[SLSMarkupParser defaultTagDefinitions] valueForKey:@"h2"] range:NSMakeRange(117, 26)];
     
-    NSAttributedString *actual = [SLSMarkupParser stringByParsingTaggedString:str error:NULL];
+    NSError *error;
+    NSAttributedString *actual = [SLSMarkupParser stringByParsingTaggedString:str error:&error];
     STAssertEqualObjects(actual, expected, @"Parsed markup does not have expected attributes.");
 }
 
@@ -50,7 +51,7 @@
 {
     NSError *error;
     STAssertNil([SLSMarkupParser stringByParsingTaggedString:str error:&error], @"%@ should raise error", str);
-    STAssertEquals((SLSErrorCode)[error code], kSLSUnknownTagError, @"Expected syntax error code");
+    STAssertEquals((SLSErrorCode)[error code], kSLSSyntaxError, @"Expected syntax error code");
 }
 
 - (void)testIncompleteTagsThrowError
@@ -65,6 +66,11 @@
     for (NSString *str in @[@"<x>y"]) {
         [self assertStringProducesSyntaxError:str];
     }
+}
+
+- (void)testCrossedSectionsThrowsError
+{
+    [self assertStringProducesSyntaxError:@"<h1>12 <h3>34</h1></h2>"];
 }
 
 - (void)testUnexpectedTagProducesError
