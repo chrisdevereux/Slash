@@ -31,7 +31,7 @@
         [self.displayView.textStorage setAttributedString:str];
     }
     
-    [self.errorMarker setHidden:str == nil];
+    [self.errorMarker setHidden:str != nil];
 }
 
 @end
