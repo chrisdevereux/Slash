@@ -11,7 +11,7 @@
 
 @implementation TestParser
 
-- (void)testSimpleString
+- (void)testCanParseSimpleString
 {
     NSString *str = @"this is <strong>awesome</strong>";
     
@@ -23,7 +23,7 @@
     STAssertEqualObjects(actual, expected, @"Parsed markup does not have expected attributes.");
 }
 
-- (void)testComplexString
+- (void)testCanParseComplexString
 {
     NSString *str = @"<h1>No blind <strong>spots</strong><strong></strong> in the leopard's eyes can <strong>only</strong> help to</h1> jeopardize the lives of lambs, the shepherd cries. An<h2> afterlife</h2><h2> for a silverfish. Eternal</h2> dust less ticklish.";
     
@@ -41,20 +41,43 @@
     STAssertEqualObjects(actual, expected, @"Parsed markup does not have expected attributes.");
 }
 
+- (void)testCanParseEmptyString
+{
+    STAssertNotNil([SLSMarkupParser stringByParsingTaggedString:@"" error:NULL], @"Should accept empty string");
+}
+
+- (void)assertStringProducesSyntaxError:(NSString *)str
+{
+    NSError *error;
+    STAssertNil([SLSMarkupParser stringByParsingTaggedString:str error:&error], @"%@ should raise error", str);
+    STAssertEquals((SLSErrorCode)[error code], kSLSUnknownTagError, @"Expected syntax error code");
+}
+
+- (void)testIncompleteTagsThrowError
+{
+    for (NSString *str in @[@"<", @"<x", @"<xx", @"<x>abc<", @"<x>abc</", @"<x>abc</x"]) {
+        [self assertStringProducesSyntaxError:str];
+    }
+}
+
+- (void)testUnterminatedSectionThrowsError
+{
+    for (NSString *str in @[@"<x>y"]) {
+        [self assertStringProducesSyntaxError:str];
+    }
+}
+
+- (void)testUnexpectedTagProducesError
+{
+    [self assertStringProducesSyntaxError:@"</h1>"];
+}
+
 - (void)testUnknownTagProducesError
 {
     NSError *error;
     STAssertNil([SLSMarkupParser stringByParsingTaggedString:@"<undefined>xyz</undefined>" error:&error], @"Expected error");
     STAssertNotNil(error, @"Expected error");
     STAssertEquals((SLSErrorCode)[error code], kSLSUnknownTagError, @"Incorrect error code");
-}
-
-- (void)testSyntaxErrorProducesError
-{
-    NSError *error;
-    STAssertNil([SLSMarkupParser stringByParsingTaggedString:@"<h1>xyz" error:&error], @"Expected error");
-    STAssertNotNil(error, @"Expected error");
-    STAssertEquals((SLSErrorCode)[error code], kSLSSyntaxError, @"Incorrect error code");
 }
 
 @end
