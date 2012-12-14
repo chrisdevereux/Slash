@@ -12,7 +12,9 @@ The first paragraph of this readme might be expressed in Slash using the markup:
 
 ````html
 <h1>Slash</h1>
-Slash is a <strong>simple</strong>, <strong>extensible</strong> markup language that simplifies the creation of NSAttributedStrings. The language is similar in appearance to HTML, however the meaning of each tag is user-defined.
+Slash is a <strong>simple</strong>, <strong>extensible</strong> markup language 
+that simplifies the creation of NSAttributedStrings. The language is similar in 
+appearance to HTML, however the meaning of each tag is user-defined.
 ````
 
 We can create a new NSAttributedString from this markup with:
@@ -49,7 +51,7 @@ NSDictionary *style = @{
     @"h6"       : @{NSFontAttributeName  : [UILabel fontWithName:@"HelveticaNeue-Medium" size:16]}
 };
 
-NSAttributedString* myAttributedString = [SLSMarkupParser   attributedStringWithMarkup:markup style:tagDefinitions error:NULL];
+NSAttributedString* myAttributedString = [SLSMarkupParser   attributedStringWithMarkup:markup style:style error:NULL];
 ````
 
 When a piece of text belongs to multiple elements, the attributes applied will be the union of each tag's dictionary, with the innermost elements' attributes taking priority. For a list of attributes supported by the Cocoa/Cocoa Touch text rendering system, see the documentation for [iOS][1] or [OSX][2].
@@ -63,7 +65,7 @@ Note that the linked attributes are only supported on iOS from 6.0 onwards.
 Installation
 ------------
 
-    git checkout https://github.com/chrisdevereux/Slash.git
+    git clone https://github.com/chrisdevereux/Slash.git
 
 * Add Slash.xcodeproj as a child project
 * Add Slash-iOS or Slash-OSX as a project dependency
@@ -73,7 +75,7 @@ Installation
 Requirements
 ------------
 
-iOS 4.3 or OS X 10.5 upwards.
+iOS 4.3 or OS X 10.5 (64 bit) upwards.
 
 Attributed string handling is limited prior to iOS 6, and certain features of Slash require iOS 6. Be sure to check the header documentation if you are targeting earlier. You will also need to use a custom view (such as [NIAttributedLabel][3]) to display the strings, and the format required of the attribute dictionaries in your style will be defined by that view.
 
