@@ -126,6 +126,11 @@
 
 - (void)testUnknownTagProducesError
 {
+    if (![SLSMarkupParser defaultStyle]) {
+        // Test only works for targets that support -defaultStyle
+        return;
+    }
+    
     NSError *error;
     STAssertNil([SLSMarkupParser attributedStringWithMarkup:@"<undefined>xyz</undefined>" error:&error], @"Expected error");
     STAssertNotNil(error, @"Expected error");

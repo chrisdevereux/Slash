@@ -28,8 +28,9 @@
      NSAttributedString *attributedString = [SLSMarkupParser attributedStringWithMarkup:markup style:style error:NULL];
  
  
- If a region of text has multiple styles applied to it, the attributes of each
- will be applied, with the attributes of the innermost markup elements taking priority.
+ When a piece of text belongs to multiple elements, the attributes applied 
+ will be the union of each tag's dictionary, with the innermost elements'
+ attributes taking priority.
  
  As a convenience, you may provide a style with a $default key. The associated attributes will
  provide a base style for the whole string, as if you had enclosed your markup in
@@ -43,6 +44,10 @@
 /**
  Returns an NSAttributedString styled using [SLSMarkupParser defaultStyle],
  or nil if an error occured.
+ 
+ @important
+ Note that on versions of iOS prior to 6.0, [SLSMarkupParser defaultStyle] returns nil,
+ so this method will return an unformatted string.
 */
 + (NSAttributedString *)attributedStringWithMarkup:(NSString *)string
                                              error:(NSError **)error;
@@ -50,6 +55,9 @@
 /**
  Returns a dictionary defining the tags h1,h2,h3,h4,h5,h6,emp,strong in various
  sizes and styles of Helvetica Neue.
+ 
+ @important
+ On versions of iOS prior to 6.0, this method returns nil.
 */
 + (NSDictionary *)defaultStyle;
 
