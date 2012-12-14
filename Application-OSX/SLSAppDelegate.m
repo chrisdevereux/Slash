@@ -3,7 +3,7 @@
 //  Application-OSX
 //
 //  Created by Chris Devereux on 13/12/2012.
-//  Copyright (c) 2012 ChrisDevereux. All rights reserved.
+//  Copyright (c) 2012 Chris Devereux. All rights reserved.
 //
 
 #import "SLSAppDelegate.h"
@@ -24,7 +24,7 @@
 
 - (void)textDidChange:(NSNotification *)notification
 {
-    NSAttributedString *str = [SLSMarkupParser stringByParsingTaggedString:self.markupView.string error:NULL];
+    NSAttributedString *str = [SLSMarkupParser attributedStringWithMarkup:self.markupView.string error:NULL];
     
     if (str) {
         [self.displayView.textStorage setAttributedString:str];

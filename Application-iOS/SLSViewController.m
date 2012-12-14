@@ -1,9 +1,9 @@
 //
 //  SLSViewController.m
-//  Application-iOS
+//  Slash
 //
 //  Created by Chris Devereux on 14/12/2012.
-//  Copyright (c) 2012 ChrisDevereux. All rights reserved.
+//  Copyright (c) 2012 Chris Devereux. All rights reserved.
 //
 
 #import "SLSViewController.h"
@@ -36,7 +36,7 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-    NSAttributedString *attributedString = [SLSMarkupParser stringByParsingTaggedString:textView.text error:NULL];
+    NSAttributedString *attributedString = [SLSMarkupParser attributedStringWithMarkup:textView.text error:NULL];
     
     if (attributedString) {
         self.displayView.attributedText = attributedString;

@@ -1,9 +1,9 @@
 //
 //  SLSMarkupParser.m
-//  SLSMarkup
+//  Slash
 //
 //  Created by Chris Devereux on 13/12/2012.
-//  Copyright (c) 2012 Unbounded. All rights reserved.
+//  Copyright (c) 2012 Chris Devereux. All rights reserved.
 //
 
 #import "SLSMarkupParser.h"
@@ -35,7 +35,7 @@ extern int slashdebug;
     NSError *_error;
 }
 
-+ (NSDictionary *)defaultTagDefinitions
++ (NSDictionary *)defaultStyle
 {
     return @{
         @"$default" : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue" size:14]},
@@ -50,7 +50,7 @@ extern int slashdebug;
     };
 }
 
-+ (NSAttributedString *)stringByParsingTaggedString:(NSString *)string withTagDefinitions:(NSDictionary *)defs error:(NSError **)error
++ (NSAttributedString *)attributedStringWithMarkup:(NSString *)string style:(NSDictionary *)style error:(NSError **)error
 {
     if (!string) {
         return nil;
@@ -60,9 +60,9 @@ extern int slashdebug;
         return [[[NSAttributedString alloc] init] autorelease];
     }
     
-    defs = defs ?: [self defaultTagDefinitions];
+    style = style ?: [self defaultStyle];
     
-    SLSMarkupParser *parser = [[self alloc] initWithTagDictionary:defs];
+    SLSMarkupParser *parser = [[self alloc] initWithTagDictionary:style];
     [parser parseString:string];
     
     NSAttributedString *attributedString = nil;
@@ -87,9 +87,9 @@ extern int slashdebug;
     return attributedString;
 }
 
-+ (NSAttributedString *)stringByParsingTaggedString:(NSString *)string error:(NSError **)error
++ (NSAttributedString *)attributedStringWithMarkup:(NSString *)string error:(NSError **)error
 {
-    return [self stringByParsingTaggedString:string withTagDefinitions:nil error:error];
+    return [self attributedStringWithMarkup:string style:nil error:error];
 }
 
 - (id)initWithTagDictionary:(NSDictionary *)tagDict

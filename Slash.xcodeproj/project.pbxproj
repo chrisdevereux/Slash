@@ -63,6 +63,8 @@
 		61D52D49167B6E390027C915 /* libSlash-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61548438167A084500A37428 /* libSlash-iOS.a */; };
 		61D52D4F167B73610027C915 /* SLSViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61D52D4E167B73610027C915 /* SLSViewController_iPhone.xib */; };
 		61D52D50167B74840027C915 /* libSlash-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61548438167A084500A37428 /* libSlash-iOS.a */; };
+		61D52D51167B794F0027C915 /* SLSMarkupParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6154844A167A087E00A37428 /* SLSMarkupParser.h */; };
+		61D52D52167B79590027C915 /* SLSMarkupParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 6154844A167A087E00A37428 /* SLSMarkupParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -138,6 +140,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				61D52D51167B794F0027C915 /* SLSMarkupParser.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +453,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61D52D52167B79590027C915 /* SLSMarkupParser.h in Headers */,
 				615484B5167A0E3A00A37428 /* Slash-OSX-Prefix.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1055,6 +1059,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Application-iOS/Application-iOS-Prefix.pch";
 				INFOPLIST_FILE = "Application-iOS/Application-iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -1068,6 +1073,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Application-iOS/Application-iOS-Prefix.pch";
 				INFOPLIST_FILE = "Application-iOS/Application-iOS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

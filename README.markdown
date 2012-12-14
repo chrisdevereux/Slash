@@ -1,7 +1,11 @@
 Slash
 =====
 
-Slash is a **simple**, **extensible** markup language that eases the creation of NSAttributedStrings. The language is similar in appearance to HTML, *however* the meaning of each tag is user-defined.
+Slash is a **simple**, **extensible** markup language for creating NSAttributedStrings. The language is similar in appearance to HTML, however the meaning of each tag is user-defined.
+
+In iOS 6, displaying attributed strings became much easier, however programatically creating them is still horrible. In fact, adding them to your application any way other than directly with interface builder still requires messing with NSRanges and font attributes.
+
+Slash provides an easier way to style text. In the process, it also decouples the a-la HTML and CSS.
 
 
 Usage
@@ -10,7 +14,7 @@ The first paragraph of this readme, with its gratutious formatting, might be exp
 
 ````html
 <h1>Slash</h1>
-Slash is a <strong>simple</strong>, <strong>extensible</strong> markup language that simplifies the creation of NSAttributedStrings. The language is similar in appearance to HTML, <emph>however</emph> the meaning of each tag is user-defined.
+Slash is a <strong>simple</strong>, <strong>extensible</strong> markup language that simplifies the creation of NSAttributedStrings. The language is similar in appearance to HTML, however the meaning of each tag is user-defined.
 ````
 
 We can create a new NSAttributedString from this markup with the oneliner:
@@ -65,6 +69,12 @@ Installation
 * Add Slash-iOS or Slash-OSX as a project dependency
 * Link with libSlash-iOS.a or libSlash-OSX.a
 * Add to your project's header search paths
+
+
+Requirements
+------------
+
+iOS 6 or OS X 10.5 upwards.
 
 
 License
