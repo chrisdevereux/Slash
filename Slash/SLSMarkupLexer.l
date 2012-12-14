@@ -17,26 +17,54 @@
 
 
 
-nontag      [[:print:]\n]{-}[\<\>\/]
+nontag      [[:print:]\n]{-}[\<\>]
+digit 		[0-9]						
+letter		[a-zA-Z_-]
+identifier	{letter}({digit}|{letter})*
 
 %%
+
+"\\<" {
+    yylval->text = @"<";
+    return TEXT;
+}
+
+"\\>" {
+    yylval->text = @">";
+    return TEXT;
+}
+
+"\\\\" {
+    yylval->text = @"\\";
+    return TEXT;
+}
+
+"\\"{nontag} {
+    yylval->text = @"";
+    return TEXT;
+}
+
+"\\" {
+    yylval->text = @"";
+    return TEXT;
+}
 
 {nontag}+ {
     yylval->text = [NSString stringWithUTF8String:yytext];
     return TEXT;
 }
 
-"<"{nontag}+">" {
+"<"{identifier}+">" {
     yylval->text = [ [ [NSString alloc] initWithBytes:yytext+1 length:strlen(yytext)-2 encoding:NSUTF8StringEncoding] autorelease];
     return OPEN;
 }
     
-"</"{nontag}+">" {
+"</"{identifier}+">" {
     yylval->text = [ [ [NSString alloc] initWithBytes:yytext+2 length:strlen(yytext)-3 encoding:NSUTF8StringEncoding] autorelease];
     return CLOSE;
 }
 
-"<"{nontag}* {
+"<"{identifier}* {
     yylval->text = NSLocalizedString(@"Unterminated tag", nil);
     return ERR;
 }

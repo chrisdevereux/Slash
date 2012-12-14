@@ -340,7 +340,7 @@ extern int slashlex \
 #undef YY_DECL
 #endif
 
-#line 43 "SLSMarkupLexer.l"
+#line 71 "SLSMarkupLexer.l"
 
 #line 346 "SLSMarkupLexer.gen.h"
 #undef slashIN_HEADER

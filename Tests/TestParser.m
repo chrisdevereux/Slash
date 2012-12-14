@@ -53,11 +53,44 @@
     STAssertNotNil([SLSMarkupParser stringByParsingTaggedString:@"" error:NULL], @"Should accept empty string");
 }
 
-- (void)assertStringProducesSyntaxError:(NSString *)str
+- (void)testCanParseEscapedOpen
 {
-    NSError *error;
-    STAssertNil([SLSMarkupParser stringByParsingTaggedString:str error:&error], @"%@ should raise error", str);
-    STAssertEquals((SLSErrorCode)[error code], kSLSSyntaxError, @"Expected syntax error code");
+    NSAttributedString *str = [SLSMarkupParser stringByParsingTaggedString:@"\\<" error:NULL];
+    NSAttributedString *expected = [[NSAttributedString alloc] initWithString:@"<" attributes:[[SLSMarkupParser defaultTagDefinitions] objectForKey:@"$default"]];
+    
+    STAssertEqualObjects(str, expected, @"Should allow escaped open angle-parenthesis");
+}
+
+- (void)testCanParseEscapedClose
+{
+    NSAttributedString *str = [SLSMarkupParser stringByParsingTaggedString:@"\\>" error:NULL];
+    NSAttributedString *expected = [[NSAttributedString alloc] initWithString:@">" attributes:[[SLSMarkupParser defaultTagDefinitions] objectForKey:@"$default"]];
+    
+    STAssertEqualObjects(str, expected, @"Should allow escaped open angle-parenthesis");
+}
+
+- (void)testCanParseEscapedEscape
+{
+    NSAttributedString *str = [SLSMarkupParser stringByParsingTaggedString:@"\\\\" error:NULL];
+    NSAttributedString *expected = [[NSAttributedString alloc] initWithString:@"\\" attributes:[[SLSMarkupParser defaultTagDefinitions] objectForKey:@"$default"]];
+    
+    STAssertEqualObjects(str, expected, @"Should allow escaped backslash");
+}
+
+- (void)testIgnoresEscapedText
+{
+    NSAttributedString *str = [SLSMarkupParser stringByParsingTaggedString:@"\\X" error:NULL];
+    NSAttributedString *expected = [[NSAttributedString alloc] initWithString:@"" attributes:[[SLSMarkupParser defaultTagDefinitions] objectForKey:@"$default"]];
+    
+    STAssertEqualObjects(str, expected, @"ordinary characters should be ignored when escaped");
+}
+
+- (void)testIgnoresSingleEscape
+{
+    NSAttributedString *str = [SLSMarkupParser stringByParsingTaggedString:@"\\" error:NULL];
+    NSAttributedString *expected = [[NSAttributedString alloc] initWithString:@"" attributes:[[SLSMarkupParser defaultTagDefinitions] objectForKey:@"$default"]];
+    
+    STAssertEqualObjects(str, expected, @"single escape characters should be ignored");
 }
 
 - (void)testIncompleteTagsThrowError
@@ -65,6 +98,13 @@
     for (NSString *str in @[@"<", @"<x", @"<xx", @"<x>abc<", @"<x>abc</", @"<x>abc</x"]) {
         [self assertStringProducesSyntaxError:str];
     }
+}
+
+- (void)assertStringProducesSyntaxError:(NSString *)str
+{
+    NSError *error;
+    STAssertNil([SLSMarkupParser stringByParsingTaggedString:str error:&error], @"%@ should raise error", str);
+    STAssertEquals((SLSErrorCode)[error code], kSLSSyntaxError, @"Expected syntax error code");
 }
 
 - (void)testUnterminatedSectionThrowsError
