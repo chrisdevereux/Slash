@@ -24,46 +24,37 @@
 %token <text> CLOSE
 %token <text> ERR
 
-%type <attribute_range> attributed_string
-%type <attribute_range> inner_attributed_string
+%type <attribute_range> tagged_text
+%type <attribute_range> text
 %type <noval> abort_parse
 
 %start start
+%expect 2
 
 %%
 
 start
-: attributed_string
+: tagged_text
 | abort_parse
     
-attributed_string
-: inner_attributed_string
-| OPEN attributed_string CLOSE {
+tagged_text
+: text
+| OPEN tagged_text CLOSE {
+    if (![$1 isEqualToString:$3]) {
+        ctx.error = [NSError errorWithDomain:SLSErrorDomain code:kSLSSyntaxError userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Unterminated attributed", nil)}];
+    }
+    
     [ctx addAttributesForTag:$1 inRange:$2];
     $$ = $2;
 }
-| attributed_string attributed_string {
+| tagged_text tagged_text {
     $$ = NSMakeRange($1.location, $1.length + $2.length);
 }
 
 // The first recognized production for all text.
 // Text is appended to the output NSAttributedString here.
-inner_attributed_string
-: OPEN TEXT CLOSE {
-    NSRange tagRange;
-    tagRange.location = [ctx.outAttStr length];
-    tagRange.length = [$2 length];
-    
-    [[ctx.outAttStr mutableString] appendString:$2];
-    [ctx addAttributesForTag:$1 inRange:tagRange];
-    
-    if (![$1 isEqualToString:$3]) {
-        ctx.error = [NSError errorWithDomain:SLSErrorDomain code:kSLSSyntaxError userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Unterminated attributed", nil)}];
-    }
-
-    $$ = tagRange;
-}
-| TEXT {
+text
+: TEXT {
     NSRange tagRange;
     tagRange.location = [ctx.outAttStr length];
     tagRange.length = [$1 length];

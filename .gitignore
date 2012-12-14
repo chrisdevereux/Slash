@@ -18,3 +18,4 @@ DerivedData
 *.sqlite
 *.momd
 *.a
+*.output

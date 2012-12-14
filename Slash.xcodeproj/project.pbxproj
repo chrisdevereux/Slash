@@ -471,7 +471,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ${PROJECT_DIR}/Slash\nflex SLSMarkupLexer.l\nbison SLSMarkupParserImpl.y --defines=SLSMarkupParserImpl.gen.h";
+			shellScript = "cd ${PROJECT_DIR}/Slash\nflex SLSMarkupLexer.l\nbison SLSMarkupParserImpl.y --defines=SLSMarkupParserImpl.gen.h -v";
 		};
 /* End PBXShellScriptBuildPhase section */
 
