@@ -1320,28 +1320,8 @@
 										<object class="NSTextView" id="251331822">
 											<reference key="NSNextResponder" ref="561223316"/>
 											<int key="NSvFlags">2322</int>
-											<set class="NSMutableSet" key="NSDragTypes">
-												<string>Apple HTML pasteboard type</string>
-												<string>Apple PDF pasteboard type</string>
-												<string>Apple PICT pasteboard type</string>
-												<string>Apple PNG pasteboard type</string>
-												<string>Apple URL pasteboard type</string>
-												<string>CorePasteboardFlavorType 0x6D6F6F76</string>
-												<string>NSColor pasteboard type</string>
-												<string>NSFilenamesPboardType</string>
-												<string>NSStringPboardType</string>
-												<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
-												<string>NeXT RTFD pasteboard type</string>
-												<string>NeXT Rich Text Format v1.0 pasteboard type</string>
-												<string>NeXT TIFF v4.0 pasteboard type</string>
-												<string>NeXT font pasteboard type</string>
-												<string>NeXT ruler pasteboard type</string>
-												<string>WebURLsWithTitlesPboardType</string>
-												<string>public.url</string>
-											</set>
 											<string key="NSFrameSize">{478, 14}</string>
 											<reference key="NSSuperview" ref="561223316"/>
-											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="423763428"/>
 											<string key="NSReuseIdentifierKey">_NS:13</string>
 											<object class="NSTextContainer" key="NSTextContainer" id="345674099">
@@ -1363,7 +1343,7 @@
 												<int key="NSTCFlags">1</int>
 											</object>
 											<object class="NSTextViewSharedData" key="NSSharedData">
-												<int key="NSFlags">12099</int>
+												<int key="NSFlags">11587</int>
 												<int key="NSTextCheckingTypes">0</int>
 												<nil key="NSMarkedAttributes"/>
 												<object class="NSColor" key="NSBackgroundColor" id="161792209">
@@ -1414,7 +1394,6 @@
 									</array>
 									<string key="NSFrame">{{2, 2}, {478, 112}}</string>
 									<reference key="NSSuperview" ref="469665102"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="251331822"/>
 									<string key="NSReuseIdentifierKey">_NS:11</string>
 									<reference key="NSDocView" ref="251331822"/>
@@ -1579,7 +1558,6 @@ wGw</bytes>
 									<int key="NSvFlags">256</int>
 									<string key="NSFrame">{{465, 2}, {15, 112}}</string>
 									<reference key="NSSuperview" ref="469665102"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="405443142"/>
 									<string key="NSReuseIdentifierKey">_NS:83</string>
 									<reference key="NSTarget" ref="469665102"/>
@@ -1592,7 +1570,6 @@ wGw</bytes>
 									<int key="NSvFlags">-2147483392</int>
 									<string key="NSFrame">{{-100, -100}, {87, 18}}</string>
 									<reference key="NSSuperview" ref="469665102"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="561223316"/>
 									<string key="NSReuseIdentifierKey">_NS:33</string>
 									<int key="NSsFlags">1</int>
@@ -1604,7 +1581,6 @@ wGw</bytes>
 							</array>
 							<string key="NSFrame">{{32, 149}, {482, 116}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="426828983"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<int key="NSsFlags">133139</int>
@@ -1617,7 +1593,6 @@ wGw</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{17, 273}, {142, 17}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="348736014"/>
 							<string key="NSReuseIdentifierKey">_NS:1535</string>
 							<bool key="NSEnabled">YES</bool>
@@ -1651,7 +1626,6 @@ wGw</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{10, 99}, {142, 17}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="480252649"/>
 							<string key="NSReuseIdentifierKey">_NS:1535</string>
 							<bool key="NSEnabled">YES</bool>
@@ -1671,7 +1645,6 @@ wGw</bytes>
 							<int key="NSvFlags">266</int>
 							<string key="NSFrame">{{29, 124}, {488, 17}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="530173524"/>
 							<string key="NSReuseIdentifierKey">_NS:1535</string>
 							<bool key="NSEnabled">YES</bool>
@@ -1703,7 +1676,6 @@ wGw</bytes>
 											<int key="NSvFlags">2322</int>
 											<string key="NSFrameSize">{489, 47}</string>
 											<reference key="NSSuperview" ref="660021086"/>
-											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="517309064"/>
 											<string key="NSReuseIdentifierKey">_NS:13</string>
 											<object class="NSTextContainer" key="NSTextContainer" id="691036728">
@@ -1725,7 +1697,7 @@ wGw</bytes>
 												<int key="NSTCFlags">1</int>
 											</object>
 											<object class="NSTextViewSharedData" key="NSSharedData">
-												<int key="NSFlags">11781</int>
+												<int key="NSFlags">11269</int>
 												<int key="NSTextCheckingTypes">0</int>
 												<nil key="NSMarkedAttributes"/>
 												<reference key="NSBackgroundColor" ref="161792209"/>
@@ -1751,7 +1723,6 @@ wGw</bytes>
 									</array>
 									<string key="NSFrameSize">{489, 71}</string>
 									<reference key="NSSuperview" ref="480252649"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="258080163"/>
 									<string key="NSReuseIdentifierKey">_NS:11</string>
 									<reference key="NSDocView" ref="258080163"/>
@@ -1918,7 +1889,6 @@ wGw</bytes>
 									<int key="NSvFlags">256</int>
 									<string key="NSFrame">{{474, 0}, {15, 71}}</string>
 									<reference key="NSSuperview" ref="480252649"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView"/>
 									<string key="NSReuseIdentifierKey">_NS:83</string>
 									<reference key="NSTarget" ref="480252649"/>
@@ -1931,7 +1901,6 @@ wGw</bytes>
 									<int key="NSvFlags">-2147483392</int>
 									<string key="NSFrame">{{-100, -100}, {87, 18}}</string>
 									<reference key="NSSuperview" ref="480252649"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="660021086"/>
 									<string key="NSReuseIdentifierKey">_NS:33</string>
 									<int key="NSsFlags">1</int>
@@ -1943,7 +1912,6 @@ wGw</bytes>
 							</array>
 							<string key="NSFrame">{{25, 20}, {489, 71}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="1005815162"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<int key="NSsFlags">133136</int>
@@ -1964,7 +1932,6 @@ wGw</bytes>
 							</set>
 							<string key="NSFrame">{{498, 273}, {16, 16}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="469665102"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
@@ -1986,7 +1953,6 @@ wGw</bytes>
 					</array>
 					<string key="NSFrameSize">{534, 310}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="966620012"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
@@ -4048,7 +4014,7 @@ wGw</bytes>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NSCaution">{128, 128}</string>
+			<string key="NSCaution">{32, 32}</string>
 			<string key="NSMenuCheckmark">{11, 11}</string>
 			<string key="NSMenuMixedState">{10, 3}</string>
 		</dictionary>

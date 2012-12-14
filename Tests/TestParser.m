@@ -42,6 +42,12 @@
     STAssertEqualObjects(actual, expected, @"Parsed markup does not have expected attributes.");
 }
 
+- (void)testCanParseMultilineString
+{
+    NSAttributedString *str = [SLSMarkupParser stringByParsingTaggedString:@"a\nb" error:NULL];
+    STAssertEqualObjects(str, [[NSAttributedString alloc] initWithString:@"a\nb" attributes:[[SLSMarkupParser defaultTagDefinitions] objectForKey:@"$default"]], nil);
+}
+
 - (void)testCanParseEmptyString
 {
     STAssertNotNil([SLSMarkupParser stringByParsingTaggedString:@"" error:NULL], @"Should accept empty string");

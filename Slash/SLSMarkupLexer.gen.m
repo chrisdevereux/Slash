@@ -373,7 +373,7 @@ static yyconst flex_int16_t yy_accept[14] =
 
 static yyconst flex_int32_t yy_ec[256] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    2,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    2,    2,    2,    2,    2,    2,    2,    2,    2,
@@ -771,6 +771,7 @@ do_action:	/* This label is used only to access EOF actions. */
 			goto yy_find_action;
 
 case 1:
+/* rule 1 can match eol */
 YY_RULE_SETUP
 #line 24 "SLSMarkupLexer.l"
 {
@@ -779,6 +780,7 @@ YY_RULE_SETUP
 }
 	YY_BREAK
 case 2:
+/* rule 2 can match eol */
 YY_RULE_SETUP
 #line 29 "SLSMarkupLexer.l"
 {
@@ -787,6 +789,7 @@ YY_RULE_SETUP
 }
 	YY_BREAK
 case 3:
+/* rule 3 can match eol */
 YY_RULE_SETUP
 #line 34 "SLSMarkupLexer.l"
 {
@@ -795,6 +798,7 @@ YY_RULE_SETUP
 }
 	YY_BREAK
 case 4:
+/* rule 4 can match eol */
 YY_RULE_SETUP
 #line 39 "SLSMarkupLexer.l"
 {
@@ -807,7 +811,7 @@ YY_RULE_SETUP
 #line 43 "SLSMarkupLexer.l"
 ECHO;
 	YY_BREAK
-#line 811 "SLSMarkupLexer.gen.m"
+#line 815 "SLSMarkupLexer.gen.m"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
