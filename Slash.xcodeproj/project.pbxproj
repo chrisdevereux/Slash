@@ -96,20 +96,6 @@
 			remoteGlobalIDString = 61548465167A0C4200A37428;
 			remoteInfo = "Application-OSX";
 		};
-		615484AE167A0D3300A37428 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6154842F167A084500A37428 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 615484A9167A0D0800A37428;
-			remoteInfo = GenerateParser;
-		};
-		615484B0167A0D3700A37428 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6154842F167A084500A37428 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 615484A9167A0D0800A37428;
-			remoteInfo = GenerateParser;
-		};
 		615484B2167A0D4200A37428 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6154842F167A084500A37428 /* Project object */;
@@ -474,7 +460,6 @@
 				6154845A167A09E800A37428 /* PBXBuildRule */,
 			);
 			dependencies = (
-				615484AF167A0D3300A37428 /* PBXTargetDependency */,
 			);
 			name = "Slash-iOS";
 			productName = Slash;
@@ -529,7 +514,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				615484B1167A0D3700A37428 /* PBXTargetDependency */,
 			);
 			name = "Slash-OSX";
 			productName = "Slash-OSX";
@@ -754,16 +738,6 @@
 			isa = PBXTargetDependency;
 			target = 61548465167A0C4200A37428 /* Application-OSX */;
 			targetProxy = 61548489167A0C4400A37428 /* PBXContainerItemProxy */;
-		};
-		615484AF167A0D3300A37428 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 615484A9167A0D0800A37428 /* GenerateParser */;
-			targetProxy = 615484AE167A0D3300A37428 /* PBXContainerItemProxy */;
-		};
-		615484B1167A0D3700A37428 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 615484A9167A0D0800A37428 /* GenerateParser */;
-			targetProxy = 615484B0167A0D3700A37428 /* PBXContainerItemProxy */;
 		};
 		615484B3167A0D4200A37428 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1181,6 +1155,7 @@
 				61D52D35167B6A6B0027C915 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		61D52D36167B6A6B0027C915 /* Build configuration list for PBXNativeTarget "Tests-iOS" */ = {
 			isa = XCConfigurationList;
@@ -1189,6 +1164,7 @@
 				61D52D38167B6A6B0027C915 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
