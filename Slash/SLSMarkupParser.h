@@ -53,7 +53,7 @@
                                              error:(NSError **)error;
 
 /**
- Returns a dictionary defining the tags h1,h2,h3,h4,h5,h6,emp,strong in various
+ Returns a dictionary defining the tags h1,h2,h3,h4,h5,h6,em,strong in various
  sizes and styles of Helvetica Neue.
  
  @important
