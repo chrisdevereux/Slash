@@ -42,28 +42,40 @@
     STAssertEqualObjects(actual, expected, @"Parsed markup does not have expected attributes.");
 }
 
-- (void)testCanParseC1UnicodeString
+- (void)testCanParseUnicodeCharacters
 {
-    NSString *str = @"<h1>¡éé££©</h1>";
+    NSSet *ignore = [NSSet setWithObjects:@">x", @"<x", @"\\x", nil];
     
-    NSMutableAttributedString *expected = [[NSMutableAttributedString alloc] initWithString:@"¡éé££©"];
-    [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"h1"] range:NSMakeRange(0, 6)];
-    
-    NSError *error;
-    NSAttributedString *actual = [SLSMarkupParser attributedStringWithMarkup:str error:&error];
-    STAssertEqualObjects(actual, expected, @"Parsed markup does not have expected attributes.");
+    for (uint32_t chr = 0x1; chr <= 0x10FFFF; chr++) {
+        @autoreleasepool {
+            NSString *testStr = [[[NSString alloc] initWithBytes:&chr length:4 encoding:NSUTF32StringEncoding] stringByAppendingString:@"x"];
+            
+            if (!testStr || [ignore containsObject:testStr]) {
+                continue;
+            }
+            
+            NSString *markup = [NSString stringWithFormat:@"<h1>%@</h1>", testStr];
+            
+            NSAttributedString *attrStr = [SLSMarkupParser attributedStringWithMarkup:markup error:NULL];
+            
+            NSMutableAttributedString *expected = [[NSMutableAttributedString alloc] initWithString:testStr];
+            [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"h1"] range:NSMakeRange(0, [testStr length])];
+            
+            STAssertEqualObjects(expected, attrStr, @"Failed to parse codepoint +%X", chr);
+        }
+    }
 }
 
-- (void)testCanParseUnicodeHearts
+- (void)testCanParseSomeNiceHearts
 {
-    NSString *str = @"<h1>❪❤❤❤❤❫</h1>";
+    NSString *str = @"<h1>❤❤❤❤</h1>";
     
-    NSMutableAttributedString *expected = [[NSMutableAttributedString alloc] initWithString:@"❪❤❤❤❤❫"];
-    [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"h1"] range:NSMakeRange(0, 6)];
+    NSMutableAttributedString *expected = [[NSMutableAttributedString alloc] initWithString:@"❤❤❤❤"];
+    [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"h1"] range:NSMakeRange(0, 4)];
     
     NSError *error;
     NSAttributedString *actual = [SLSMarkupParser attributedStringWithMarkup:str error:&error];
-    STAssertEqualObjects(actual, expected, @"Parsed markup does not have expected attributes.");
+    STAssertEqualObjects(actual, expected, @"Parsed markup not correct.");
 }
 
 - (void)testCanParseMultilineString
