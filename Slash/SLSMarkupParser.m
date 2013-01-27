@@ -14,13 +14,15 @@
 
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
-#define FONT_CLASS UIFont
 #define SUPPORTS_STANDARD_ATTRIBUTES (dlsym(RTLD_DEFAULT, "NSFontAttributeName") != NULL)
+#define FONT_CLASS UIFont
+#define COLOR_CLASS UIColor
 
 #else
 #import <AppKit/AppKit.h>
-#define FONT_CLASS NSFont
 #define SUPPORTS_STANDARD_ATTRIBUTES YES
+#define FONT_CLASS NSFont
+#define COLOR_CLASS NSColor
 
 #endif
 
@@ -38,6 +40,22 @@ extern int slashdebug;
     NSError *_error;
 }
 
++ (NSDictionary *)defaultAttributes
+{
+    if (SUPPORTS_STANDARD_ATTRIBUTES) {
+        return @{
+            NSFontAttributeName             : [FONT_CLASS fontWithName:@"HelveticaNeue" size:14],
+            NSForegroundColorAttributeName  : [COLOR_CLASS blackColor],
+            NSKernAttributeName             : @0,
+            NSParagraphStyleAttributeName   : [NSParagraphStyle defaultParagraphStyle],
+            NSStrokeColorAttributeName      : [COLOR_CLASS blackColor],
+            NSStrokeWidthAttributeName      : @0
+        };
+    } else {
+        return @{};
+    }
+}
+
 + (NSDictionary *)defaultStyle
 {
     static NSDictionary *style;
@@ -50,7 +68,7 @@ extern int slashdebug;
         }
         
         style = [@{
-            @"$default" : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue" size:14]},
+            @"$default" : [self defaultAttributes],
             @"strong"   : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue-Bold" size:14]},
             @"emph"     : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue-Italic" size:14]},
             @"h1"       : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue-Medium" size:48]},
@@ -65,6 +83,19 @@ extern int slashdebug;
     return style;
 }
 
+
++ (NSDictionary *)styleDictionaryByApplyingDefaultAttributes:(NSDictionary *)defaultAttributes toDictionary:(NSDictionary *)userStyle
+{
+    NSMutableDictionary *defaultTagStyle = [defaultAttributes mutableCopy];
+    [defaultTagStyle setValuesForKeysWithDictionary:[userStyle objectForKey:@"$default"]];
+    
+    NSMutableDictionary *result = [userStyle mutableCopy];
+    [result setObject:defaultTagStyle forKey:@"$default"];
+    
+    return result;
+}
+
+
 + (NSAttributedString *)attributedStringWithMarkup:(NSString *)string style:(NSDictionary *)style error:(NSError **)error
 {
     if (!string) {
@@ -75,7 +106,10 @@ extern int slashdebug;
         return [[[NSAttributedString alloc] init] autorelease];
     }
     
-    SLSMarkupParser *parser = [[self alloc] initWithTagDictionary:style];
+    // Workaround for bug in UITextField. See: https://github.com/chrisdevereux/Slash/issues/4s
+    NSDictionary *styleWithDefaults = [self styleDictionaryByApplyingDefaultAttributes:[self defaultAttributes] toDictionary:style];
+    
+    SLSMarkupParser *parser = [[self alloc] initWithTagDictionary:styleWithDefaults];
     [parser parseString:string];
     
     NSAttributedString *attributedString = nil;

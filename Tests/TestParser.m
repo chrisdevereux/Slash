@@ -9,6 +9,14 @@
 #import "TestParser.h"
 #import "SLSMarkupParser.h"
 
+#if TARGET_OS_IPHONE
+#define FONT_CLASS UIFont
+
+#else
+#define FONT_CLASS NSFont
+
+#endif
+
 @implementation TestParser
 
 - (void)testCanParseSimpleString
@@ -136,5 +144,39 @@
     STAssertNotNil(error, @"Expected error");
     STAssertEquals((SLSErrorCode)[error code], kSLSUnknownTagError, @"Incorrect error code");
 }
+
+
+#define AssertHasAttributeFor(attrStr, attr) STAssertNotNil([[(attrStr) attributesAtIndex:0 effectiveRange:NULL] objectForKey:(attr)], @"Expected attribute '%s' to be defined", (#attr))
+
+- (void)testDefaultsAreProvidedForRequiredAttributes
+{
+    // Fixes: https://github.com/chrisdevereux/Slash/issues/4s
+    
+    NSAttributedString *attrStr = [SLSMarkupParser attributedStringWithMarkup:@"untagged text" error:NULL];
+    
+    AssertHasAttributeFor(attrStr, NSForegroundColorAttributeName);
+    AssertHasAttributeFor(attrStr, NSFontAttributeName);
+    AssertHasAttributeFor(attrStr, NSKernAttributeName);
+    AssertHasAttributeFor(attrStr, NSStrokeColorAttributeName);
+    AssertHasAttributeFor(attrStr, NSStrokeWidthAttributeName);
+}
+
+- (void)testUserProvidedDefaultAttributesAreMergedWithDefaultAttributes
+{
+    FONT_CLASS *expectedFont = [FONT_CLASS fontWithName:@"Helvetica" size:11];
+    NSDictionary *style = @{@"$default" : @{NSFontAttributeName : expectedFont}};
+    
+    NSAttributedString *attrStr = [SLSMarkupParser attributedStringWithMarkup:@"untagged text" style:style error:NULL];
+    FONT_CLASS *fontAttribute = [[attrStr attributesAtIndex:0 effectiveRange:NULL] objectForKey:NSFontAttributeName];
+    
+    AssertHasAttributeFor(attrStr, NSForegroundColorAttributeName);
+    AssertHasAttributeFor(attrStr, NSFontAttributeName);
+    AssertHasAttributeFor(attrStr, NSKernAttributeName);
+    AssertHasAttributeFor(attrStr, NSStrokeColorAttributeName);
+    AssertHasAttributeFor(attrStr, NSStrokeWidthAttributeName);
+    
+    STAssertEqualObjects(fontAttribute, expectedFont, @"Should override default font");
+}
+
 
 @end
