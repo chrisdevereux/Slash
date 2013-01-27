@@ -70,6 +70,7 @@ extern int slashdebug;
         style = [@{
             @"$default" : [self defaultAttributes],
             @"strong"   : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue-Bold" size:14]},
+            @"em"       : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue-Italic" size:14]},
             @"emph"     : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue-Italic" size:14]},
             @"h1"       : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue-Medium" size:48]},
             @"h2"       : @{NSFontAttributeName  : [FONT_CLASS fontWithName:@"HelveticaNeue-Medium" size:36]},
