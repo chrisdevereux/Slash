@@ -11,9 +11,11 @@
 
 #if TARGET_OS_IPHONE
 #define FONT_CLASS UIFont
+#define COLOR_CLASS UIColor
 
 #else
 #define FONT_CLASS NSFont
+#define COLOR_CLASS NSColor
 
 #endif
 
@@ -182,6 +184,42 @@
 }
 
 
+#define AssertAttributeAtIndex(attrStr, attrKey, attrVal, idx) STAssertEqualObjects([(attrStr) attribute:(attrKey) atIndex:(idx) effectiveRange:NULL], (attrVal), @"Expected attribute '%s' to equal '%s' at index %d", #attrKey, #attrVal, (int)(idx))
+
+- (void)testInnerAttributesAreCombinedWithOuterAttributes
+{
+    id innerAttr = [FONT_CLASS fontWithName:@"Helvetica" size:74];
+    id outerAttr = [COLOR_CLASS whiteColor];
+    
+    NSDictionary *style = @{
+        @"inner" : @{NSFontAttributeName : innerAttr},
+        @"outer" : @{NSForegroundColorAttributeName : outerAttr}
+    };
+    
+    NSString *markup = @"<outer>outer<inner>inner</inner></outer>";
+    NSAttributedString *parsedString = [SLSMarkupParser attributedStringWithMarkup:markup style:style error:NULL];
+    
+    AssertAttributeAtIndex(parsedString, NSFontAttributeName, innerAttr, 6);
+    AssertAttributeAtIndex(parsedString, NSForegroundColorAttributeName, outerAttr, 6);
+}
+
+- (void)testInnerAttributesTakePrescidenceOverOuterAttributes
+{
+    id innerAttr = [FONT_CLASS fontWithName:@"Helvetica" size:74];
+    id outerAttr = [FONT_CLASS fontWithName:@"Helvetica" size:12];
+    
+    NSDictionary *style = @{
+        @"inner" : @{NSFontAttributeName : innerAttr},
+        @"outer" : @{NSFontAttributeName : outerAttr}
+    };
+    
+    NSString *markup = @"<outer>outer<inner>inner</inner></outer>";
+    NSAttributedString *parsedString = [SLSMarkupParser attributedStringWithMarkup:markup style:style error:NULL];
+    
+    AssertAttributeAtIndex(parsedString, NSFontAttributeName, innerAttr, 6);
+}
+
+
 #define AssertHasAttributeFor(attrStr, attr) STAssertNotNil([[(attrStr) attributesAtIndex:0 effectiveRange:NULL] objectForKey:(attr)], @"Expected attribute '%s' to be defined", (#attr))
 
 - (void)testDefaultsAreProvidedForRequiredAttributes
@@ -213,6 +251,5 @@
     
     STAssertEqualObjects(fontAttribute, expectedFont, @"Should override default font");
 }
-
 
 @end
