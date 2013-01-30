@@ -59,13 +59,13 @@
 #define YYLSP_NEEDED 0
 
 /* Substitute the variable and function names.  */
-#define yyparse slashparse
-#define yylex   slashlex
-#define yyerror slasherror
-#define yylval  slashlval
-#define yychar  slashchar
-#define yydebug slashdebug
-#define yynerrs slashnerrs
+#define yyparse SLSTagParser_parse
+#define yylex   SLSTagParser_lex
+#define yyerror SLSTagParser_error
+#define yylval  SLSTagParser_lval
+#define yychar  SLSTagParser_char
+#define yydebug SLSTagParser_debug
+#define yynerrs SLSTagParser_nerrs
 
 
 /* Tokens.  */
@@ -93,8 +93,10 @@
 
 
     #import <Foundation/Foundation.h>
-    #import "SLSMarkupParser+BisonContext.h"
-    #import "SLSMarkupLexer.gen.h"
+    #import "SLSTaggedRange.h"
+    #import "SLSTagParser.h"
+    #import "SLSTagLexer.gen.h"
+    #import "SLSErrors.h"
 
 
 /* Enabling traces.  */
@@ -421,7 +423,7 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    37,    37,    38,    41,    42,    50,    57,    66,    75
+       0,    39,    39,    40,    43,    44,    52,    59,    68,    77
 };
 #endif
 
@@ -541,7 +543,7 @@ do								\
     }								\
   else								\
     {								\
-      yyerror (scanner, ctx, YY_("syntax error: cannot back up")); \
+      yyerror (scanner, output, YY_("syntax error: cannot back up")); \
       YYERROR;							\
     }								\
 while (YYID (0))
@@ -621,7 +623,7 @@ do {									  \
     {									  \
       YYFPRINTF (stderr, "%s ", Title);					  \
       yy_symbol_print (stderr,						  \
-		  Type, Value, scanner, ctx); \
+		  Type, Value, scanner, output); \
       YYFPRINTF (stderr, "\n");						  \
     }									  \
 } while (YYID (0))
@@ -635,21 +637,21 @@ do {									  \
 #if (defined __STDC__ || defined __C99__FUNC__ \
      || defined __cplusplus || defined _MSC_VER)
 static void
-yy_symbol_value_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep, yyscan_t scanner, SLSMarkupParser *ctx)
+yy_symbol_value_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep, yyscan_t scanner, SLSTagParser *output)
 #else
 static void
-yy_symbol_value_print (yyoutput, yytype, yyvaluep, scanner, ctx)
+yy_symbol_value_print (yyoutput, yytype, yyvaluep, scanner, output)
     FILE *yyoutput;
     int yytype;
     YYSTYPE const * const yyvaluep;
     yyscan_t scanner;
-    SLSMarkupParser *ctx;
+    SLSTagParser *output;
 #endif
 {
   if (!yyvaluep)
     return;
   YYUSE (scanner);
-  YYUSE (ctx);
+  YYUSE (output);
 # ifdef YYPRINT
   if (yytype < YYNTOKENS)
     YYPRINT (yyoutput, yytoknum[yytype], *yyvaluep);
@@ -671,15 +673,15 @@ yy_symbol_value_print (yyoutput, yytype, yyvaluep, scanner, ctx)
 #if (defined __STDC__ || defined __C99__FUNC__ \
      || defined __cplusplus || defined _MSC_VER)
 static void
-yy_symbol_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep, yyscan_t scanner, SLSMarkupParser *ctx)
+yy_symbol_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep, yyscan_t scanner, SLSTagParser *output)
 #else
 static void
-yy_symbol_print (yyoutput, yytype, yyvaluep, scanner, ctx)
+yy_symbol_print (yyoutput, yytype, yyvaluep, scanner, output)
     FILE *yyoutput;
     int yytype;
     YYSTYPE const * const yyvaluep;
     yyscan_t scanner;
-    SLSMarkupParser *ctx;
+    SLSTagParser *output;
 #endif
 {
   if (yytype < YYNTOKENS)
@@ -687,7 +689,7 @@ yy_symbol_print (yyoutput, yytype, yyvaluep, scanner, ctx)
   else
     YYFPRINTF (yyoutput, "nterm %s (", yytname[yytype]);
 
-  yy_symbol_value_print (yyoutput, yytype, yyvaluep, scanner, ctx);
+  yy_symbol_value_print (yyoutput, yytype, yyvaluep, scanner, output);
   YYFPRINTF (yyoutput, ")");
 }
 
@@ -727,14 +729,14 @@ do {								\
 #if (defined __STDC__ || defined __C99__FUNC__ \
      || defined __cplusplus || defined _MSC_VER)
 static void
-yy_reduce_print (YYSTYPE *yyvsp, int yyrule, yyscan_t scanner, SLSMarkupParser *ctx)
+yy_reduce_print (YYSTYPE *yyvsp, int yyrule, yyscan_t scanner, SLSTagParser *output)
 #else
 static void
-yy_reduce_print (yyvsp, yyrule, scanner, ctx)
+yy_reduce_print (yyvsp, yyrule, scanner, output)
     YYSTYPE *yyvsp;
     int yyrule;
     yyscan_t scanner;
-    SLSMarkupParser *ctx;
+    SLSTagParser *output;
 #endif
 {
   int yynrhs = yyr2[yyrule];
@@ -748,7 +750,7 @@ yy_reduce_print (yyvsp, yyrule, scanner, ctx)
       fprintf (stderr, "   $%d = ", yyi + 1);
       yy_symbol_print (stderr, yyrhs[yyprhs[yyrule] + yyi],
 		       &(yyvsp[(yyi + 1) - (yynrhs)])
-		       		       , scanner, ctx);
+		       		       , scanner, output);
       fprintf (stderr, "\n");
     }
 }
@@ -756,7 +758,7 @@ yy_reduce_print (yyvsp, yyrule, scanner, ctx)
 # define YY_REDUCE_PRINT(Rule)		\
 do {					\
   if (yydebug)				\
-    yy_reduce_print (yyvsp, Rule, scanner, ctx); \
+    yy_reduce_print (yyvsp, Rule, scanner, output); \
 } while (YYID (0))
 
 /* Nonzero means print parse trace.  It is left uninitialized so that
@@ -1007,20 +1009,20 @@ yysyntax_error (char *yyresult, int yystate, int yychar)
 #if (defined __STDC__ || defined __C99__FUNC__ \
      || defined __cplusplus || defined _MSC_VER)
 static void
-yydestruct (const char *yymsg, int yytype, YYSTYPE *yyvaluep, yyscan_t scanner, SLSMarkupParser *ctx)
+yydestruct (const char *yymsg, int yytype, YYSTYPE *yyvaluep, yyscan_t scanner, SLSTagParser *output)
 #else
 static void
-yydestruct (yymsg, yytype, yyvaluep, scanner, ctx)
+yydestruct (yymsg, yytype, yyvaluep, scanner, output)
     const char *yymsg;
     int yytype;
     YYSTYPE *yyvaluep;
     yyscan_t scanner;
-    SLSMarkupParser *ctx;
+    SLSTagParser *output;
 #endif
 {
   YYUSE (yyvaluep);
   YYUSE (scanner);
-  YYUSE (ctx);
+  YYUSE (output);
 
   if (!yymsg)
     yymsg = "Deleting";
@@ -1045,7 +1047,7 @@ int yyparse ();
 #endif
 #else /* ! YYPARSE_PARAM */
 #if defined __STDC__ || defined __cplusplus
-int yyparse (yyscan_t scanner, SLSMarkupParser *ctx);
+int yyparse (yyscan_t scanner, SLSTagParser *output);
 #else
 int yyparse ();
 #endif
@@ -1074,12 +1076,12 @@ yyparse (YYPARSE_PARAM)
 #if (defined __STDC__ || defined __C99__FUNC__ \
      || defined __cplusplus || defined _MSC_VER)
 int
-yyparse (yyscan_t scanner, SLSMarkupParser *ctx)
+yyparse (yyscan_t scanner, SLSTagParser *output)
 #else
 int
-yyparse (scanner, ctx)
+yyparse (scanner, output)
     yyscan_t scanner;
-    SLSMarkupParser *ctx;
+    SLSTagParser *output;
 #endif
 #endif
 {
@@ -1339,10 +1341,10 @@ yyreduce:
 
     {
     if (![(yyvsp[(1) - (3)].text) isEqualToString:(yyvsp[(3) - (3)].text)]) {
-        ctx.error = [NSError errorWithDomain:SLSErrorDomain code:kSLSSyntaxError userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Unterminated attributed", nil)}];
+        output.error = [NSError errorWithDomain:SLSErrorDomain code:kSLSSyntaxError userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Unterminated attributed", nil)}];
     }
     
-    [ctx addAttributesForTag:(yyvsp[(1) - (3)].text) inRange:(yyvsp[(2) - (3)].attribute_range)];
+    [output addTag:[SLSTaggedRange tagWithName:(yyvsp[(1) - (3)].text) range:(yyvsp[(2) - (3)].attribute_range)]];
     (yyval.attribute_range) = (yyvsp[(2) - (3)].attribute_range);
 ;}
     break;
@@ -1350,7 +1352,7 @@ yyreduce:
   case 6:
 
     {
-    (yyval.attribute_range) = NSMakeRange((yyvsp[(1) - (2)].attribute_range).location, (yyvsp[(1) - (2)].attribute_range).length + (yyvsp[(2) - (2)].attribute_range).length);
+    (yyval.attribute_range) = NSMakeRange(((yyvsp[(1) - (2)].attribute_range)).location, ((yyvsp[(1) - (2)].attribute_range)).length + ((yyvsp[(2) - (2)].attribute_range)).length);
 ;}
     break;
 
@@ -1358,11 +1360,11 @@ yyreduce:
 
     {
     NSRange tagRange;
-    tagRange.location = [ctx.outAttStr length];
-    tagRange.length = [(yyvsp[(1) - (1)].text) length];
+    tagRange.location = output.currentLength;
+    tagRange.length = ((yyvsp[(1) - (1)].text)).length;
     
-    [[ctx.outAttStr mutableString] appendString:(yyvsp[(1) - (1)].text)];
-
+    [output appendString:(yyvsp[(1) - (1)].text)];
+    
     (yyval.attribute_range) = tagRange;
 ;}
     break;
@@ -1371,7 +1373,7 @@ yyreduce:
 
     {
     NSRange tagRange;
-    tagRange.location = [ctx.outAttStr length];
+    tagRange.location = output.currentLength;
     tagRange.length = 0;
 
     (yyval.attribute_range) = tagRange;
@@ -1381,7 +1383,7 @@ yyreduce:
   case 9:
 
     {
-    ctx.error = [NSError errorWithDomain:SLSErrorDomain code:kSLSSyntaxError userInfo:@{NSLocalizedDescriptionKey: (yyvsp[(1) - (1)].text)}];
+    output.error = [NSError errorWithDomain:SLSErrorDomain code:kSLSSyntaxError userInfo:@{NSLocalizedDescriptionKey: (yyvsp[(1) - (1)].text)}];
 ;}
     break;
 
@@ -1423,7 +1425,7 @@ yyerrlab:
     {
       ++yynerrs;
 #if ! YYERROR_VERBOSE
-      yyerror (scanner, ctx, YY_("syntax error"));
+      yyerror (scanner, output, YY_("syntax error"));
 #else
       {
 	YYSIZE_T yysize = yysyntax_error (0, yystate, yychar);
@@ -1447,11 +1449,11 @@ yyerrlab:
 	if (0 < yysize && yysize <= yymsg_alloc)
 	  {
 	    (void) yysyntax_error (yymsg, yystate, yychar);
-	    yyerror (scanner, ctx, yymsg);
+	    yyerror (scanner, output, yymsg);
 	  }
 	else
 	  {
-	    yyerror (scanner, ctx, YY_("syntax error"));
+	    yyerror (scanner, output, YY_("syntax error"));
 	    if (yysize != 0)
 	      goto yyexhaustedlab;
 	  }
@@ -1475,7 +1477,7 @@ yyerrlab:
       else
 	{
 	  yydestruct ("Error: discarding",
-		      yytoken, &yylval, scanner, ctx);
+		      yytoken, &yylval, scanner, output);
 	  yychar = YYEMPTY;
 	}
     }
@@ -1531,7 +1533,7 @@ yyerrlab1:
 
 
       yydestruct ("Error: popping",
-		  yystos[yystate], yyvsp, scanner, ctx);
+		  yystos[yystate], yyvsp, scanner, output);
       YYPOPSTACK (1);
       yystate = *yyssp;
       YY_STACK_PRINT (yyss, yyssp);
@@ -1569,7 +1571,7 @@ yyabortlab:
 | yyexhaustedlab -- memory exhaustion comes here.  |
 `-------------------------------------------------*/
 yyexhaustedlab:
-  yyerror (scanner, ctx, YY_("memory exhausted"));
+  yyerror (scanner, output, YY_("memory exhausted"));
   yyresult = 2;
   /* Fall through.  */
 #endif
@@ -1577,7 +1579,7 @@ yyexhaustedlab:
 yyreturn:
   if (yychar != YYEOF && yychar != YYEMPTY)
      yydestruct ("Cleanup: discarding lookahead",
-		 yytoken, &yylval, scanner, ctx);
+		 yytoken, &yylval, scanner, output);
   /* Do not reclaim the symbols of the rule which action triggered
      this YYABORT or YYACCEPT.  */
   YYPOPSTACK (yylen);
@@ -1585,7 +1587,7 @@ yyreturn:
   while (yyssp != yyss)
     {
       yydestruct ("Cleanup: popping",
-		  yystos[*yyssp], yyvsp, scanner, ctx);
+		  yystos[*yyssp], yyvsp, scanner, output);
       YYPOPSTACK (1);
     }
 #ifndef yyoverflow

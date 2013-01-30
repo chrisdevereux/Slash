@@ -1,14 +1,14 @@
-#line 2 "SLSMarkupLexer.gen.m"
-#line 2 "SLSMarkupLexer.l"
+#line 2 "SLSTagLexer.gen.m"
+#line 2 "SLSTagLexer.l"
     #import <Foundation/Foundation.h>
-    #import "SLSMarkupParserImpl.gen.h"
+    #import "SLSTagParser.gen.h"
 
 
     #pragma clang diagnostic ignored "-Wconversion"
 
 
 
-#line 12 "SLSMarkupLexer.gen.m"
+#line 12 "SLSTagLexer.gen.m"
 
 #define  YY_INT_ALIGNED short int
 
@@ -161,7 +161,7 @@ typedef void* yyscan_t;
 #define YY_STATE_EOF(state) (YY_END_OF_BUFFER + state + 1)
 
 /* Special action meaning "start processing a new file". */
-#define YY_NEW_FILE slashrestart(yyin ,yyscanner )
+#define YY_NEW_FILE SLSTagParser_restart(yyin ,yyscanner )
 
 #define YY_END_OF_BUFFER_CHAR 0
 
@@ -263,7 +263,7 @@ struct yy_buffer_state
 	 * possible backing-up.
 	 *
 	 * When we actually see the EOF, we change the status to "new"
-	 * (via slashrestart()), so that the user can continue scanning by
+	 * (via SLSTagParser_restart()), so that the user can continue scanning by
 	 * just pointing yyin at a new input file.
 	 */
 #define YY_BUFFER_EOF_PENDING 2
@@ -286,36 +286,36 @@ struct yy_buffer_state
  */
 #define YY_CURRENT_BUFFER_LVALUE yyg->yy_buffer_stack[yyg->yy_buffer_stack_top]
 
-void slashrestart (FILE *input_file ,yyscan_t yyscanner );
-void slash_switch_to_buffer (YY_BUFFER_STATE new_buffer ,yyscan_t yyscanner );
-YY_BUFFER_STATE slash_create_buffer (FILE *file,int size ,yyscan_t yyscanner );
-void slash_delete_buffer (YY_BUFFER_STATE b ,yyscan_t yyscanner );
-void slash_flush_buffer (YY_BUFFER_STATE b ,yyscan_t yyscanner );
-void slashpush_buffer_state (YY_BUFFER_STATE new_buffer ,yyscan_t yyscanner );
-void slashpop_buffer_state (yyscan_t yyscanner );
+void SLSTagParser_restart (FILE *input_file ,yyscan_t yyscanner );
+void SLSTagParser__switch_to_buffer (YY_BUFFER_STATE new_buffer ,yyscan_t yyscanner );
+YY_BUFFER_STATE SLSTagParser__create_buffer (FILE *file,int size ,yyscan_t yyscanner );
+void SLSTagParser__delete_buffer (YY_BUFFER_STATE b ,yyscan_t yyscanner );
+void SLSTagParser__flush_buffer (YY_BUFFER_STATE b ,yyscan_t yyscanner );
+void SLSTagParser_push_buffer_state (YY_BUFFER_STATE new_buffer ,yyscan_t yyscanner );
+void SLSTagParser_pop_buffer_state (yyscan_t yyscanner );
 
-static void slashensure_buffer_stack (yyscan_t yyscanner );
-static void slash_load_buffer_state (yyscan_t yyscanner );
-static void slash_init_buffer (YY_BUFFER_STATE b,FILE *file ,yyscan_t yyscanner );
+static void SLSTagParser_ensure_buffer_stack (yyscan_t yyscanner );
+static void SLSTagParser__load_buffer_state (yyscan_t yyscanner );
+static void SLSTagParser__init_buffer (YY_BUFFER_STATE b,FILE *file ,yyscan_t yyscanner );
 
-#define YY_FLUSH_BUFFER slash_flush_buffer(YY_CURRENT_BUFFER ,yyscanner)
+#define YY_FLUSH_BUFFER SLSTagParser__flush_buffer(YY_CURRENT_BUFFER ,yyscanner)
 
-YY_BUFFER_STATE slash_scan_buffer (char *base,yy_size_t size ,yyscan_t yyscanner );
-YY_BUFFER_STATE slash_scan_string (yyconst char *yy_str ,yyscan_t yyscanner );
-YY_BUFFER_STATE slash_scan_bytes (yyconst char *bytes,yy_size_t len ,yyscan_t yyscanner );
+YY_BUFFER_STATE SLSTagParser__scan_buffer (char *base,yy_size_t size ,yyscan_t yyscanner );
+YY_BUFFER_STATE SLSTagParser__scan_string (yyconst char *yy_str ,yyscan_t yyscanner );
+YY_BUFFER_STATE SLSTagParser__scan_bytes (yyconst char *bytes,yy_size_t len ,yyscan_t yyscanner );
 
-void *slashalloc (yy_size_t ,yyscan_t yyscanner );
-void *slashrealloc (void *,yy_size_t ,yyscan_t yyscanner );
-void slashfree (void * ,yyscan_t yyscanner );
+void *SLSTagParser_alloc (yy_size_t ,yyscan_t yyscanner );
+void *SLSTagParser_realloc (void *,yy_size_t ,yyscan_t yyscanner );
+void SLSTagParser_free (void * ,yyscan_t yyscanner );
 
-#define yy_new_buffer slash_create_buffer
+#define yy_new_buffer SLSTagParser__create_buffer
 
 #define yy_set_interactive(is_interactive) \
 	{ \
 	if ( ! YY_CURRENT_BUFFER ){ \
-        slashensure_buffer_stack (yyscanner); \
+        SLSTagParser_ensure_buffer_stack (yyscanner); \
 		YY_CURRENT_BUFFER_LVALUE =    \
-            slash_create_buffer(yyin,YY_BUF_SIZE ,yyscanner); \
+            SLSTagParser__create_buffer(yyin,YY_BUF_SIZE ,yyscanner); \
 	} \
 	YY_CURRENT_BUFFER_LVALUE->yy_is_interactive = is_interactive; \
 	}
@@ -323,16 +323,16 @@ void slashfree (void * ,yyscan_t yyscanner );
 #define yy_set_bol(at_bol) \
 	{ \
 	if ( ! YY_CURRENT_BUFFER ){\
-        slashensure_buffer_stack (yyscanner); \
+        SLSTagParser_ensure_buffer_stack (yyscanner); \
 		YY_CURRENT_BUFFER_LVALUE =    \
-            slash_create_buffer(yyin,YY_BUF_SIZE ,yyscanner); \
+            SLSTagParser__create_buffer(yyin,YY_BUF_SIZE ,yyscanner); \
 	} \
 	YY_CURRENT_BUFFER_LVALUE->yy_at_bol = at_bol; \
 	}
 
 #define YY_AT_BOL() (YY_CURRENT_BUFFER_LVALUE->yy_at_bol)
 
-#define slashwrap(n) 1
+#define SLSTagParser_wrap(n) 1
 #define YY_SKIP_YYWRAP
 
 typedef unsigned char YY_CHAR;
@@ -470,7 +470,7 @@ static yyconst flex_int16_t yy_chk[97] =
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "SLSMarkupLexer.l"
+#line 1 "SLSTagLexer.l"
 
 /*
   **Unicode**
@@ -482,7 +482,7 @@ static yyconst flex_int16_t yy_chk[97] =
   {utf8_multi} matches valid multibyte UTF-8 characters. So long as any
   special characters are in the ascii range, this allows unicode support.
 */
-#line 486 "SLSMarkupLexer.gen.m"
+#line 486 "SLSTagLexer.gen.m"
 
 #define INITIAL 0
 
@@ -540,42 +540,42 @@ static int yy_init_globals (yyscan_t yyscanner );
      * from bison output in section 1.*/
     #    define yylval yyg->yylval_r
     
-int slashlex_init (yyscan_t* scanner);
+int SLSTagParser_lex_init (yyscan_t* scanner);
 
-int slashlex_init_extra (YY_EXTRA_TYPE user_defined,yyscan_t* scanner);
+int SLSTagParser_lex_init_extra (YY_EXTRA_TYPE user_defined,yyscan_t* scanner);
 
 /* Accessor methods to globals.
    These are made visible to non-reentrant scanners for convenience. */
 
-int slashlex_destroy (yyscan_t yyscanner );
+int SLSTagParser_lex_destroy (yyscan_t yyscanner );
 
-int slashget_debug (yyscan_t yyscanner );
+int SLSTagParser_get_debug (yyscan_t yyscanner );
 
-void slashset_debug (int debug_flag ,yyscan_t yyscanner );
+void SLSTagParser_set_debug (int debug_flag ,yyscan_t yyscanner );
 
-YY_EXTRA_TYPE slashget_extra (yyscan_t yyscanner );
+YY_EXTRA_TYPE SLSTagParser_get_extra (yyscan_t yyscanner );
 
-void slashset_extra (YY_EXTRA_TYPE user_defined ,yyscan_t yyscanner );
+void SLSTagParser_set_extra (YY_EXTRA_TYPE user_defined ,yyscan_t yyscanner );
 
-FILE *slashget_in (yyscan_t yyscanner );
+FILE *SLSTagParser_get_in (yyscan_t yyscanner );
 
-void slashset_in  (FILE * in_str ,yyscan_t yyscanner );
+void SLSTagParser_set_in  (FILE * in_str ,yyscan_t yyscanner );
 
-FILE *slashget_out (yyscan_t yyscanner );
+FILE *SLSTagParser_get_out (yyscan_t yyscanner );
 
-void slashset_out  (FILE * out_str ,yyscan_t yyscanner );
+void SLSTagParser_set_out  (FILE * out_str ,yyscan_t yyscanner );
 
-yy_size_t slashget_leng (yyscan_t yyscanner );
+yy_size_t SLSTagParser_get_leng (yyscan_t yyscanner );
 
-char *slashget_text (yyscan_t yyscanner );
+char *SLSTagParser_get_text (yyscan_t yyscanner );
 
-int slashget_lineno (yyscan_t yyscanner );
+int SLSTagParser_get_lineno (yyscan_t yyscanner );
 
-void slashset_lineno (int line_number ,yyscan_t yyscanner );
+void SLSTagParser_set_lineno (int line_number ,yyscan_t yyscanner );
 
-YYSTYPE * slashget_lval (yyscan_t yyscanner );
+YYSTYPE * SLSTagParser_get_lval (yyscan_t yyscanner );
 
-void slashset_lval (YYSTYPE * yylval_param ,yyscan_t yyscanner );
+void SLSTagParser_set_lval (YYSTYPE * yylval_param ,yyscan_t yyscanner );
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -583,9 +583,9 @@ void slashset_lval (YYSTYPE * yylval_param ,yyscan_t yyscanner );
 
 #ifndef YY_SKIP_YYWRAP
 #ifdef __cplusplus
-extern "C" int slashwrap (yyscan_t yyscanner );
+extern "C" int SLSTagParser_wrap (yyscan_t yyscanner );
 #else
-extern int slashwrap (yyscan_t yyscanner );
+extern int SLSTagParser_wrap (yyscan_t yyscanner );
 #endif
 #endif
 
@@ -690,10 +690,10 @@ static int input (yyscan_t yyscanner );
 #ifndef YY_DECL
 #define YY_DECL_IS_OURS 1
 
-extern int slashlex \
+extern int SLSTagParser_lex \
                (YYSTYPE * yylval_param ,yyscan_t yyscanner);
 
-#define YY_DECL int slashlex \
+#define YY_DECL int SLSTagParser_lex \
                (YYSTYPE * yylval_param , yyscan_t yyscanner)
 #endif /* !YY_DECL */
 
@@ -721,10 +721,10 @@ YY_DECL
 	register int yy_act;
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
-#line 44 "SLSMarkupLexer.l"
+#line 44 "SLSTagLexer.l"
 
 
-#line 728 "SLSMarkupLexer.gen.m"
+#line 728 "SLSTagLexer.gen.m"
 
     yylval = yylval_param;
 
@@ -746,12 +746,12 @@ YY_DECL
 			yyout = stdout;
 
 		if ( ! YY_CURRENT_BUFFER ) {
-			slashensure_buffer_stack (yyscanner);
+			SLSTagParser_ensure_buffer_stack (yyscanner);
 			YY_CURRENT_BUFFER_LVALUE =
-				slash_create_buffer(yyin,YY_BUF_SIZE ,yyscanner);
+				SLSTagParser__create_buffer(yyin,YY_BUF_SIZE ,yyscanner);
 		}
 
-		slash_load_buffer_state(yyscanner );
+		SLSTagParser__load_buffer_state(yyscanner );
 		}
 
 	while ( 1 )		/* loops until end-of-file is reached */
@@ -811,7 +811,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 46 "SLSMarkupLexer.l"
+#line 46 "SLSTagLexer.l"
 {
     yylval->text = @"<";
     return TEXT;
@@ -819,7 +819,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 51 "SLSMarkupLexer.l"
+#line 51 "SLSTagLexer.l"
 {
     yylval->text = @">";
     return TEXT;
@@ -827,7 +827,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 56 "SLSMarkupLexer.l"
+#line 56 "SLSTagLexer.l"
 {
     yylval->text = @"\\";
     return TEXT;
@@ -836,7 +836,7 @@ YY_RULE_SETUP
 case 4:
 /* rule 4 can match eol */
 YY_RULE_SETUP
-#line 61 "SLSMarkupLexer.l"
+#line 61 "SLSTagLexer.l"
 {
     yylval->text = @"";
     return TEXT;
@@ -844,7 +844,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 66 "SLSMarkupLexer.l"
+#line 66 "SLSTagLexer.l"
 {
     yylval->text = @"";
     return TEXT;
@@ -853,7 +853,7 @@ YY_RULE_SETUP
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 71 "SLSMarkupLexer.l"
+#line 71 "SLSTagLexer.l"
 {
     yylval->text = [NSString stringWithUTF8String:yytext];
     return TEXT;
@@ -861,7 +861,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 76 "SLSMarkupLexer.l"
+#line 76 "SLSTagLexer.l"
 {
     yylval->text = [ [ [NSString alloc] initWithBytes:yytext+1 length:strlen(yytext)-2 encoding:NSUTF8StringEncoding] autorelease];
     return OPEN;
@@ -869,7 +869,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 81 "SLSMarkupLexer.l"
+#line 81 "SLSTagLexer.l"
 {
     yylval->text = [ [ [NSString alloc] initWithBytes:yytext+2 length:strlen(yytext)-3 encoding:NSUTF8StringEncoding] autorelease];
     return CLOSE;
@@ -877,7 +877,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 86 "SLSMarkupLexer.l"
+#line 86 "SLSTagLexer.l"
 {
     yylval->text = NSLocalizedString(@"Unterminated tag", nil);
     return ERR;
@@ -885,10 +885,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 90 "SLSMarkupLexer.l"
+#line 90 "SLSTagLexer.l"
 ECHO;
 	YY_BREAK
-#line 892 "SLSMarkupLexer.gen.m"
+#line 892 "SLSTagLexer.gen.m"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -906,7 +906,7 @@ case YY_STATE_EOF(INITIAL):
 			/* We're scanning a new file or input source.  It's
 			 * possible that this happened because the user
 			 * just pointed yyin at a new source and called
-			 * slashlex().  If so, then we have to assure
+			 * SLSTagParser_lex().  If so, then we have to assure
 			 * consistency between YY_CURRENT_BUFFER and our
 			 * globals.  Here is the right place to do so, because
 			 * this is the first action (other than possibly a
@@ -966,7 +966,7 @@ case YY_STATE_EOF(INITIAL):
 				{
 				yyg->yy_did_buffer_switch_on_eof = 0;
 
-				if ( slashwrap(yyscanner ) )
+				if ( SLSTagParser_wrap(yyscanner ) )
 					{
 					/* Note: because we've taken care in
 					 * yy_get_next_buffer() to have set up
@@ -1019,7 +1019,7 @@ case YY_STATE_EOF(INITIAL):
 			"fatal flex scanner internal error--no action found" );
 	} /* end of action switch */
 		} /* end of scanning one token */
-} /* end of slashlex */
+} /* end of SLSTagParser_lex */
 
 /* yy_get_next_buffer - try to read in a new buffer
  *
@@ -1098,7 +1098,7 @@ static int yy_get_next_buffer (yyscan_t yyscanner)
 
 				b->yy_ch_buf = (char *)
 					/* Include room in for 2 EOB chars. */
-					slashrealloc((void *) b->yy_ch_buf,b->yy_buf_size + 2 ,yyscanner );
+					SLSTagParser_realloc((void *) b->yy_ch_buf,b->yy_buf_size + 2 ,yyscanner );
 				}
 			else
 				/* Can't grow it, we don't own it. */
@@ -1130,7 +1130,7 @@ static int yy_get_next_buffer (yyscan_t yyscanner)
 		if ( number_to_move == YY_MORE_ADJ )
 			{
 			ret_val = EOB_ACT_END_OF_FILE;
-			slashrestart(yyin  ,yyscanner);
+			SLSTagParser_restart(yyin  ,yyscanner);
 			}
 
 		else
@@ -1147,7 +1147,7 @@ static int yy_get_next_buffer (yyscan_t yyscanner)
 	if ((yy_size_t) (yyg->yy_n_chars + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
 		/* Extend the array by 50%, plus the number we really need. */
 		yy_size_t new_size = yyg->yy_n_chars + number_to_move + (yyg->yy_n_chars >> 1);
-		YY_CURRENT_BUFFER_LVALUE->yy_ch_buf = (char *) slashrealloc((void *) YY_CURRENT_BUFFER_LVALUE->yy_ch_buf,new_size ,yyscanner );
+		YY_CURRENT_BUFFER_LVALUE->yy_ch_buf = (char *) SLSTagParser_realloc((void *) YY_CURRENT_BUFFER_LVALUE->yy_ch_buf,new_size ,yyscanner );
 		if ( ! YY_CURRENT_BUFFER_LVALUE->yy_ch_buf )
 			YY_FATAL_ERROR( "out of dynamic memory in yy_get_next_buffer()" );
 	}
@@ -1300,13 +1300,13 @@ static int yy_get_next_buffer (yyscan_t yyscanner)
 					 */
 
 					/* Reset buffer status. */
-					slashrestart(yyin ,yyscanner);
+					SLSTagParser_restart(yyin ,yyscanner);
 
 					/*FALLTHROUGH*/
 
 				case EOB_ACT_END_OF_FILE:
 					{
-					if ( slashwrap(yyscanner ) )
+					if ( SLSTagParser_wrap(yyscanner ) )
 						return 0;
 
 					if ( ! yyg->yy_did_buffer_switch_on_eof )
@@ -1338,34 +1338,34 @@ static int yy_get_next_buffer (yyscan_t yyscanner)
  * @param yyscanner The scanner object.
  * @note This function does not reset the start condition to @c INITIAL .
  */
-    void slashrestart  (FILE * input_file , yyscan_t yyscanner)
+    void SLSTagParser_restart  (FILE * input_file , yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
 	if ( ! YY_CURRENT_BUFFER ){
-        slashensure_buffer_stack (yyscanner);
+        SLSTagParser_ensure_buffer_stack (yyscanner);
 		YY_CURRENT_BUFFER_LVALUE =
-            slash_create_buffer(yyin,YY_BUF_SIZE ,yyscanner);
+            SLSTagParser__create_buffer(yyin,YY_BUF_SIZE ,yyscanner);
 	}
 
-	slash_init_buffer(YY_CURRENT_BUFFER,input_file ,yyscanner);
-	slash_load_buffer_state(yyscanner );
+	SLSTagParser__init_buffer(YY_CURRENT_BUFFER,input_file ,yyscanner);
+	SLSTagParser__load_buffer_state(yyscanner );
 }
 
 /** Switch to a different input buffer.
  * @param new_buffer The new input buffer.
  * @param yyscanner The scanner object.
  */
-    void slash_switch_to_buffer  (YY_BUFFER_STATE  new_buffer , yyscan_t yyscanner)
+    void SLSTagParser__switch_to_buffer  (YY_BUFFER_STATE  new_buffer , yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
 	/* TODO. We should be able to replace this entire function body
 	 * with
-	 *		slashpop_buffer_state();
-	 *		slashpush_buffer_state(new_buffer);
+	 *		SLSTagParser_pop_buffer_state();
+	 *		SLSTagParser_push_buffer_state(new_buffer);
      */
-	slashensure_buffer_stack (yyscanner);
+	SLSTagParser_ensure_buffer_stack (yyscanner);
 	if ( YY_CURRENT_BUFFER == new_buffer )
 		return;
 
@@ -1378,17 +1378,17 @@ static int yy_get_next_buffer (yyscan_t yyscanner)
 		}
 
 	YY_CURRENT_BUFFER_LVALUE = new_buffer;
-	slash_load_buffer_state(yyscanner );
+	SLSTagParser__load_buffer_state(yyscanner );
 
 	/* We don't actually know whether we did this switch during
-	 * EOF (slashwrap()) processing, but the only time this flag
-	 * is looked at is after slashwrap() is called, so it's safe
+	 * EOF (SLSTagParser_wrap()) processing, but the only time this flag
+	 * is looked at is after SLSTagParser_wrap() is called, so it's safe
 	 * to go ahead and always set it.
 	 */
 	yyg->yy_did_buffer_switch_on_eof = 1;
 }
 
-static void slash_load_buffer_state  (yyscan_t yyscanner)
+static void SLSTagParser__load_buffer_state  (yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 	yyg->yy_n_chars = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
@@ -1403,35 +1403,35 @@ static void slash_load_buffer_state  (yyscan_t yyscanner)
  * @param yyscanner The scanner object.
  * @return the allocated buffer state.
  */
-    YY_BUFFER_STATE slash_create_buffer  (FILE * file, int  size , yyscan_t yyscanner)
+    YY_BUFFER_STATE SLSTagParser__create_buffer  (FILE * file, int  size , yyscan_t yyscanner)
 {
 	YY_BUFFER_STATE b;
     
-	b = (YY_BUFFER_STATE) slashalloc(sizeof( struct yy_buffer_state ) ,yyscanner );
+	b = (YY_BUFFER_STATE) SLSTagParser_alloc(sizeof( struct yy_buffer_state ) ,yyscanner );
 	if ( ! b )
-		YY_FATAL_ERROR( "out of dynamic memory in slash_create_buffer()" );
+		YY_FATAL_ERROR( "out of dynamic memory in SLSTagParser__create_buffer()" );
 
 	b->yy_buf_size = size;
 
 	/* yy_ch_buf has to be 2 characters longer than the size given because
 	 * we need to put in 2 end-of-buffer characters.
 	 */
-	b->yy_ch_buf = (char *) slashalloc(b->yy_buf_size + 2 ,yyscanner );
+	b->yy_ch_buf = (char *) SLSTagParser_alloc(b->yy_buf_size + 2 ,yyscanner );
 	if ( ! b->yy_ch_buf )
-		YY_FATAL_ERROR( "out of dynamic memory in slash_create_buffer()" );
+		YY_FATAL_ERROR( "out of dynamic memory in SLSTagParser__create_buffer()" );
 
 	b->yy_is_our_buffer = 1;
 
-	slash_init_buffer(b,file ,yyscanner);
+	SLSTagParser__init_buffer(b,file ,yyscanner);
 
 	return b;
 }
 
 /** Destroy the buffer.
- * @param b a buffer created with slash_create_buffer()
+ * @param b a buffer created with SLSTagParser__create_buffer()
  * @param yyscanner The scanner object.
  */
-    void slash_delete_buffer (YY_BUFFER_STATE  b , yyscan_t yyscanner)
+    void SLSTagParser__delete_buffer (YY_BUFFER_STATE  b , yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
@@ -1442,9 +1442,9 @@ static void slash_load_buffer_state  (yyscan_t yyscanner)
 		YY_CURRENT_BUFFER_LVALUE = (YY_BUFFER_STATE) 0;
 
 	if ( b->yy_is_our_buffer )
-		slashfree((void *) b->yy_ch_buf ,yyscanner );
+		SLSTagParser_free((void *) b->yy_ch_buf ,yyscanner );
 
-	slashfree((void *) b ,yyscanner );
+	SLSTagParser_free((void *) b ,yyscanner );
 }
 
 #ifndef __cplusplus
@@ -1453,21 +1453,21 @@ extern int isatty (int );
     
 /* Initializes or reinitializes a buffer.
  * This function is sometimes called more than once on the same buffer,
- * such as during a slashrestart() or at EOF.
+ * such as during a SLSTagParser_restart() or at EOF.
  */
-    static void slash_init_buffer  (YY_BUFFER_STATE  b, FILE * file , yyscan_t yyscanner)
+    static void SLSTagParser__init_buffer  (YY_BUFFER_STATE  b, FILE * file , yyscan_t yyscanner)
 
 {
 	int oerrno = errno;
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
-	slash_flush_buffer(b ,yyscanner);
+	SLSTagParser__flush_buffer(b ,yyscanner);
 
 	b->yy_input_file = file;
 	b->yy_fill_buffer = 1;
 
-    /* If b is the current buffer, then slash_init_buffer was _probably_
-     * called from slashrestart() or through yy_get_next_buffer.
+    /* If b is the current buffer, then SLSTagParser__init_buffer was _probably_
+     * called from SLSTagParser_restart() or through yy_get_next_buffer.
      * In that case, we don't want to reset the lineno or column.
      */
     if (b != YY_CURRENT_BUFFER){
@@ -1484,7 +1484,7 @@ extern int isatty (int );
  * @param b the buffer state to be flushed, usually @c YY_CURRENT_BUFFER.
  * @param yyscanner The scanner object.
  */
-    void slash_flush_buffer (YY_BUFFER_STATE  b , yyscan_t yyscanner)
+    void SLSTagParser__flush_buffer (YY_BUFFER_STATE  b , yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 	if ( ! b )
@@ -1505,7 +1505,7 @@ extern int isatty (int );
 	b->yy_buffer_status = YY_BUFFER_NEW;
 
 	if ( b == YY_CURRENT_BUFFER )
-		slash_load_buffer_state(yyscanner );
+		SLSTagParser__load_buffer_state(yyscanner );
 }
 
 /** Pushes the new state onto the stack. The new state becomes
@@ -1514,15 +1514,15 @@ extern int isatty (int );
  *  @param new_buffer The new state.
  *  @param yyscanner The scanner object.
  */
-void slashpush_buffer_state (YY_BUFFER_STATE new_buffer , yyscan_t yyscanner)
+void SLSTagParser_push_buffer_state (YY_BUFFER_STATE new_buffer , yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 	if (new_buffer == NULL)
 		return;
 
-	slashensure_buffer_stack(yyscanner);
+	SLSTagParser_ensure_buffer_stack(yyscanner);
 
-	/* This block is copied from slash_switch_to_buffer. */
+	/* This block is copied from SLSTagParser__switch_to_buffer. */
 	if ( YY_CURRENT_BUFFER )
 		{
 		/* Flush out information for old buffer. */
@@ -1536,8 +1536,8 @@ void slashpush_buffer_state (YY_BUFFER_STATE new_buffer , yyscan_t yyscanner)
 		yyg->yy_buffer_stack_top++;
 	YY_CURRENT_BUFFER_LVALUE = new_buffer;
 
-	/* copied from slash_switch_to_buffer. */
-	slash_load_buffer_state(yyscanner );
+	/* copied from SLSTagParser__switch_to_buffer. */
+	SLSTagParser__load_buffer_state(yyscanner );
 	yyg->yy_did_buffer_switch_on_eof = 1;
 }
 
@@ -1545,19 +1545,19 @@ void slashpush_buffer_state (YY_BUFFER_STATE new_buffer , yyscan_t yyscanner)
  *  The next element becomes the new top.
  *  @param yyscanner The scanner object.
  */
-void slashpop_buffer_state (yyscan_t yyscanner)
+void SLSTagParser_pop_buffer_state (yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 	if (!YY_CURRENT_BUFFER)
 		return;
 
-	slash_delete_buffer(YY_CURRENT_BUFFER ,yyscanner);
+	SLSTagParser__delete_buffer(YY_CURRENT_BUFFER ,yyscanner);
 	YY_CURRENT_BUFFER_LVALUE = NULL;
 	if (yyg->yy_buffer_stack_top > 0)
 		--yyg->yy_buffer_stack_top;
 
 	if (YY_CURRENT_BUFFER) {
-		slash_load_buffer_state(yyscanner );
+		SLSTagParser__load_buffer_state(yyscanner );
 		yyg->yy_did_buffer_switch_on_eof = 1;
 	}
 }
@@ -1565,7 +1565,7 @@ void slashpop_buffer_state (yyscan_t yyscanner)
 /* Allocates the stack if it does not exist.
  *  Guarantees space for at least one push.
  */
-static void slashensure_buffer_stack (yyscan_t yyscanner)
+static void SLSTagParser_ensure_buffer_stack (yyscan_t yyscanner)
 {
 	yy_size_t num_to_alloc;
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
@@ -1577,11 +1577,11 @@ static void slashensure_buffer_stack (yyscan_t yyscanner)
 		 * immediate realloc on the next call.
          */
 		num_to_alloc = 1;
-		yyg->yy_buffer_stack = (struct yy_buffer_state**)slashalloc
+		yyg->yy_buffer_stack = (struct yy_buffer_state**)SLSTagParser_alloc
 								(num_to_alloc * sizeof(struct yy_buffer_state*)
 								, yyscanner);
 		if ( ! yyg->yy_buffer_stack )
-			YY_FATAL_ERROR( "out of dynamic memory in slashensure_buffer_stack()" );
+			YY_FATAL_ERROR( "out of dynamic memory in SLSTagParser_ensure_buffer_stack()" );
 								  
 		memset(yyg->yy_buffer_stack, 0, num_to_alloc * sizeof(struct yy_buffer_state*));
 				
@@ -1596,12 +1596,12 @@ static void slashensure_buffer_stack (yyscan_t yyscanner)
 		int grow_size = 8 /* arbitrary grow size */;
 
 		num_to_alloc = yyg->yy_buffer_stack_max + grow_size;
-		yyg->yy_buffer_stack = (struct yy_buffer_state**)slashrealloc
+		yyg->yy_buffer_stack = (struct yy_buffer_state**)SLSTagParser_realloc
 								(yyg->yy_buffer_stack,
 								num_to_alloc * sizeof(struct yy_buffer_state*)
 								, yyscanner);
 		if ( ! yyg->yy_buffer_stack )
-			YY_FATAL_ERROR( "out of dynamic memory in slashensure_buffer_stack()" );
+			YY_FATAL_ERROR( "out of dynamic memory in SLSTagParser_ensure_buffer_stack()" );
 
 		/* zero only the new slots.*/
 		memset(yyg->yy_buffer_stack + yyg->yy_buffer_stack_max, 0, grow_size * sizeof(struct yy_buffer_state*));
@@ -1615,7 +1615,7 @@ static void slashensure_buffer_stack (yyscan_t yyscanner)
  * @param yyscanner The scanner object.
  * @return the newly allocated buffer state object. 
  */
-YY_BUFFER_STATE slash_scan_buffer  (char * base, yy_size_t  size , yyscan_t yyscanner)
+YY_BUFFER_STATE SLSTagParser__scan_buffer  (char * base, yy_size_t  size , yyscan_t yyscanner)
 {
 	YY_BUFFER_STATE b;
     
@@ -1625,9 +1625,9 @@ YY_BUFFER_STATE slash_scan_buffer  (char * base, yy_size_t  size , yyscan_t yysc
 		/* They forgot to leave room for the EOB's. */
 		return 0;
 
-	b = (YY_BUFFER_STATE) slashalloc(sizeof( struct yy_buffer_state ) ,yyscanner );
+	b = (YY_BUFFER_STATE) SLSTagParser_alloc(sizeof( struct yy_buffer_state ) ,yyscanner );
 	if ( ! b )
-		YY_FATAL_ERROR( "out of dynamic memory in slash_scan_buffer()" );
+		YY_FATAL_ERROR( "out of dynamic memory in SLSTagParser__scan_buffer()" );
 
 	b->yy_buf_size = size - 2;	/* "- 2" to take care of EOB's */
 	b->yy_buf_pos = b->yy_ch_buf = base;
@@ -1639,33 +1639,33 @@ YY_BUFFER_STATE slash_scan_buffer  (char * base, yy_size_t  size , yyscan_t yysc
 	b->yy_fill_buffer = 0;
 	b->yy_buffer_status = YY_BUFFER_NEW;
 
-	slash_switch_to_buffer(b ,yyscanner );
+	SLSTagParser__switch_to_buffer(b ,yyscanner );
 
 	return b;
 }
 
-/** Setup the input buffer state to scan a string. The next call to slashlex() will
+/** Setup the input buffer state to scan a string. The next call to SLSTagParser_lex() will
  * scan from a @e copy of @a str.
  * @param yystr a NUL-terminated string to scan
  * @param yyscanner The scanner object.
  * @return the newly allocated buffer state object.
  * @note If you want to scan bytes that may contain NUL values, then use
- *       slash_scan_bytes() instead.
+ *       SLSTagParser__scan_bytes() instead.
  */
-YY_BUFFER_STATE slash_scan_string (yyconst char * yystr , yyscan_t yyscanner)
+YY_BUFFER_STATE SLSTagParser__scan_string (yyconst char * yystr , yyscan_t yyscanner)
 {
     
-	return slash_scan_bytes(yystr,strlen(yystr) ,yyscanner);
+	return SLSTagParser__scan_bytes(yystr,strlen(yystr) ,yyscanner);
 }
 
-/** Setup the input buffer state to scan the given bytes. The next call to slashlex() will
+/** Setup the input buffer state to scan the given bytes. The next call to SLSTagParser_lex() will
  * scan from a @e copy of @a bytes.
  * @param bytes the byte buffer to scan
  * @param len the number of bytes in the buffer pointed to by @a bytes.
  * @param yyscanner The scanner object.
  * @return the newly allocated buffer state object.
  */
-YY_BUFFER_STATE slash_scan_bytes  (yyconst char * yybytes, yy_size_t  _yybytes_len , yyscan_t yyscanner)
+YY_BUFFER_STATE SLSTagParser__scan_bytes  (yyconst char * yybytes, yy_size_t  _yybytes_len , yyscan_t yyscanner)
 {
 	YY_BUFFER_STATE b;
 	char *buf;
@@ -1673,18 +1673,18 @@ YY_BUFFER_STATE slash_scan_bytes  (yyconst char * yybytes, yy_size_t  _yybytes_l
     
 	/* Get memory for full buffer, including space for trailing EOB's. */
 	n = _yybytes_len + 2;
-	buf = (char *) slashalloc(n ,yyscanner );
+	buf = (char *) SLSTagParser_alloc(n ,yyscanner );
 	if ( ! buf )
-		YY_FATAL_ERROR( "out of dynamic memory in slash_scan_bytes()" );
+		YY_FATAL_ERROR( "out of dynamic memory in SLSTagParser__scan_bytes()" );
 
 	for ( i = 0; i < _yybytes_len; ++i )
 		buf[i] = yybytes[i];
 
 	buf[_yybytes_len] = buf[_yybytes_len+1] = YY_END_OF_BUFFER_CHAR;
 
-	b = slash_scan_buffer(buf,n ,yyscanner);
+	b = SLSTagParser__scan_buffer(buf,n ,yyscanner);
 	if ( ! b )
-		YY_FATAL_ERROR( "bad buffer in slash_scan_bytes()" );
+		YY_FATAL_ERROR( "bad buffer in SLSTagParser__scan_bytes()" );
 
 	/* It's okay to grow etc. this buffer, and we should throw it
 	 * away when we're done.
@@ -1705,10 +1705,10 @@ YY_BUFFER_STATE slash_scan_bytes  (yyconst char * yybytes, yy_size_t  _yybytes_l
 		new_size = yyg->yy_start_stack_depth * sizeof( int );
 
 		if ( ! yyg->yy_start_stack )
-			yyg->yy_start_stack = (int *) slashalloc(new_size ,yyscanner );
+			yyg->yy_start_stack = (int *) SLSTagParser_alloc(new_size ,yyscanner );
 
 		else
-			yyg->yy_start_stack = (int *) slashrealloc((void *) yyg->yy_start_stack,new_size ,yyscanner );
+			yyg->yy_start_stack = (int *) SLSTagParser_realloc((void *) yyg->yy_start_stack,new_size ,yyscanner );
 
 		if ( ! yyg->yy_start_stack )
 			YY_FATAL_ERROR( "out of memory expanding start-condition stack" );
@@ -1766,7 +1766,7 @@ static void yy_fatal_error (yyconst char* msg , yyscan_t yyscanner)
 /** Get the user-defined data for this scanner.
  * @param yyscanner The scanner object.
  */
-YY_EXTRA_TYPE slashget_extra  (yyscan_t yyscanner)
+YY_EXTRA_TYPE SLSTagParser_get_extra  (yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
     return yyextra;
@@ -1775,7 +1775,7 @@ YY_EXTRA_TYPE slashget_extra  (yyscan_t yyscanner)
 /** Get the current line number.
  * @param yyscanner The scanner object.
  */
-int slashget_lineno  (yyscan_t yyscanner)
+int SLSTagParser_get_lineno  (yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
     
@@ -1788,7 +1788,7 @@ int slashget_lineno  (yyscan_t yyscanner)
 /** Get the current column number.
  * @param yyscanner The scanner object.
  */
-int slashget_column  (yyscan_t yyscanner)
+int SLSTagParser_get_column  (yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
     
@@ -1801,7 +1801,7 @@ int slashget_column  (yyscan_t yyscanner)
 /** Get the input stream.
  * @param yyscanner The scanner object.
  */
-FILE *slashget_in  (yyscan_t yyscanner)
+FILE *SLSTagParser_get_in  (yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
     return yyin;
@@ -1810,7 +1810,7 @@ FILE *slashget_in  (yyscan_t yyscanner)
 /** Get the output stream.
  * @param yyscanner The scanner object.
  */
-FILE *slashget_out  (yyscan_t yyscanner)
+FILE *SLSTagParser_get_out  (yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
     return yyout;
@@ -1819,7 +1819,7 @@ FILE *slashget_out  (yyscan_t yyscanner)
 /** Get the length of the current token.
  * @param yyscanner The scanner object.
  */
-yy_size_t slashget_leng  (yyscan_t yyscanner)
+yy_size_t SLSTagParser_get_leng  (yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
     return yyleng;
@@ -1829,7 +1829,7 @@ yy_size_t slashget_leng  (yyscan_t yyscanner)
  * @param yyscanner The scanner object.
  */
 
-char *slashget_text  (yyscan_t yyscanner)
+char *SLSTagParser_get_text  (yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
     return yytext;
@@ -1839,7 +1839,7 @@ char *slashget_text  (yyscan_t yyscanner)
  * @param user_defined The data to be associated with this scanner.
  * @param yyscanner The scanner object.
  */
-void slashset_extra (YY_EXTRA_TYPE  user_defined , yyscan_t yyscanner)
+void SLSTagParser_set_extra (YY_EXTRA_TYPE  user_defined , yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
     yyextra = user_defined ;
@@ -1849,13 +1849,13 @@ void slashset_extra (YY_EXTRA_TYPE  user_defined , yyscan_t yyscanner)
  * @param line_number
  * @param yyscanner The scanner object.
  */
-void slashset_lineno (int  line_number , yyscan_t yyscanner)
+void SLSTagParser_set_lineno (int  line_number , yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
         /* lineno is only valid if an input buffer exists. */
         if (! YY_CURRENT_BUFFER )
-           yy_fatal_error( "slashset_lineno called with no buffer" , yyscanner); 
+           yy_fatal_error( "SLSTagParser_set_lineno called with no buffer" , yyscanner); 
     
     yylineno = line_number;
 }
@@ -1864,13 +1864,13 @@ void slashset_lineno (int  line_number , yyscan_t yyscanner)
  * @param line_number
  * @param yyscanner The scanner object.
  */
-void slashset_column (int  column_no , yyscan_t yyscanner)
+void SLSTagParser_set_column (int  column_no , yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
         /* column is only valid if an input buffer exists. */
         if (! YY_CURRENT_BUFFER )
-           yy_fatal_error( "slashset_column called with no buffer" , yyscanner); 
+           yy_fatal_error( "SLSTagParser_set_column called with no buffer" , yyscanner); 
     
     yycolumn = column_no;
 }
@@ -1879,27 +1879,27 @@ void slashset_column (int  column_no , yyscan_t yyscanner)
  * input buffer.
  * @param in_str A readable stream.
  * @param yyscanner The scanner object.
- * @see slash_switch_to_buffer
+ * @see SLSTagParser__switch_to_buffer
  */
-void slashset_in (FILE *  in_str , yyscan_t yyscanner)
+void SLSTagParser_set_in (FILE *  in_str , yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
     yyin = in_str ;
 }
 
-void slashset_out (FILE *  out_str , yyscan_t yyscanner)
+void SLSTagParser_set_out (FILE *  out_str , yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
     yyout = out_str ;
 }
 
-int slashget_debug  (yyscan_t yyscanner)
+int SLSTagParser_get_debug  (yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
     return yy_flex_debug;
 }
 
-void slashset_debug (int  bdebug , yyscan_t yyscanner)
+void SLSTagParser_set_debug (int  bdebug , yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
     yy_flex_debug = bdebug ;
@@ -1907,13 +1907,13 @@ void slashset_debug (int  bdebug , yyscan_t yyscanner)
 
 /* Accessor methods for yylval and yylloc */
 
-YYSTYPE * slashget_lval  (yyscan_t yyscanner)
+YYSTYPE * SLSTagParser_get_lval  (yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
     return yylval;
 }
 
-void slashset_lval (YYSTYPE *  yylval_param , yyscan_t yyscanner)
+void SLSTagParser_set_lval (YYSTYPE *  yylval_param , yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
     yylval = yylval_param;
@@ -1921,12 +1921,12 @@ void slashset_lval (YYSTYPE *  yylval_param , yyscan_t yyscanner)
 
 /* User-visible API */
 
-/* slashlex_init is special because it creates the scanner itself, so it is
+/* SLSTagParser_lex_init is special because it creates the scanner itself, so it is
  * the ONLY reentrant function that doesn't take the scanner as the last argument.
  * That's why we explicitly handle the declaration, instead of using our macros.
  */
 
-int slashlex_init(yyscan_t* ptr_yy_globals)
+int SLSTagParser_lex_init(yyscan_t* ptr_yy_globals)
 
 {
     if (ptr_yy_globals == NULL){
@@ -1934,7 +1934,7 @@ int slashlex_init(yyscan_t* ptr_yy_globals)
         return 1;
     }
 
-    *ptr_yy_globals = (yyscan_t) slashalloc ( sizeof( struct yyguts_t ), NULL );
+    *ptr_yy_globals = (yyscan_t) SLSTagParser_alloc ( sizeof( struct yyguts_t ), NULL );
 
     if (*ptr_yy_globals == NULL){
         errno = ENOMEM;
@@ -1947,27 +1947,27 @@ int slashlex_init(yyscan_t* ptr_yy_globals)
     return yy_init_globals ( *ptr_yy_globals );
 }
 
-/* slashlex_init_extra has the same functionality as slashlex_init, but follows the
+/* SLSTagParser_lex_init_extra has the same functionality as SLSTagParser_lex_init, but follows the
  * convention of taking the scanner as the last argument. Note however, that
  * this is a *pointer* to a scanner, as it will be allocated by this call (and
  * is the reason, too, why this function also must handle its own declaration).
- * The user defined value in the first argument will be available to slashalloc in
+ * The user defined value in the first argument will be available to SLSTagParser_alloc in
  * the yyextra field.
  */
 
-int slashlex_init_extra(YY_EXTRA_TYPE yy_user_defined,yyscan_t* ptr_yy_globals )
+int SLSTagParser_lex_init_extra(YY_EXTRA_TYPE yy_user_defined,yyscan_t* ptr_yy_globals )
 
 {
     struct yyguts_t dummy_yyguts;
 
-    slashset_extra (yy_user_defined, &dummy_yyguts);
+    SLSTagParser_set_extra (yy_user_defined, &dummy_yyguts);
 
     if (ptr_yy_globals == NULL){
         errno = EINVAL;
         return 1;
     }
 	
-    *ptr_yy_globals = (yyscan_t) slashalloc ( sizeof( struct yyguts_t ), &dummy_yyguts );
+    *ptr_yy_globals = (yyscan_t) SLSTagParser_alloc ( sizeof( struct yyguts_t ), &dummy_yyguts );
 	
     if (*ptr_yy_globals == NULL){
         errno = ENOMEM;
@@ -1978,7 +1978,7 @@ int slashlex_init_extra(YY_EXTRA_TYPE yy_user_defined,yyscan_t* ptr_yy_globals )
     yy_init_globals. Leave at 0x00 for releases. */
     memset(*ptr_yy_globals,0x00,sizeof(struct yyguts_t));
     
-    slashset_extra (yy_user_defined, *ptr_yy_globals);
+    SLSTagParser_set_extra (yy_user_defined, *ptr_yy_globals);
     
     return yy_init_globals ( *ptr_yy_globals );
 }
@@ -1987,7 +1987,7 @@ static int yy_init_globals (yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
     /* Initialization is the same as for the non-reentrant scanner.
-     * This function is called from slashlex_destroy(), so don't allocate here.
+     * This function is called from SLSTagParser_lex_destroy(), so don't allocate here.
      */
 
     yyg->yy_buffer_stack = 0;
@@ -2011,37 +2011,37 @@ static int yy_init_globals (yyscan_t yyscanner)
 #endif
 
     /* For future reference: Set errno on error, since we are called by
-     * slashlex_init()
+     * SLSTagParser_lex_init()
      */
     return 0;
 }
 
-/* slashlex_destroy is for both reentrant and non-reentrant scanners. */
-int slashlex_destroy  (yyscan_t yyscanner)
+/* SLSTagParser_lex_destroy is for both reentrant and non-reentrant scanners. */
+int SLSTagParser_lex_destroy  (yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
     /* Pop the buffer stack, destroying each element. */
 	while(YY_CURRENT_BUFFER){
-		slash_delete_buffer(YY_CURRENT_BUFFER ,yyscanner );
+		SLSTagParser__delete_buffer(YY_CURRENT_BUFFER ,yyscanner );
 		YY_CURRENT_BUFFER_LVALUE = NULL;
-		slashpop_buffer_state(yyscanner);
+		SLSTagParser_pop_buffer_state(yyscanner);
 	}
 
 	/* Destroy the stack itself. */
-	slashfree(yyg->yy_buffer_stack ,yyscanner);
+	SLSTagParser_free(yyg->yy_buffer_stack ,yyscanner);
 	yyg->yy_buffer_stack = NULL;
 
     /* Destroy the start condition stack. */
-        slashfree(yyg->yy_start_stack ,yyscanner );
+        SLSTagParser_free(yyg->yy_start_stack ,yyscanner );
         yyg->yy_start_stack = NULL;
 
     /* Reset the globals. This is important in a non-reentrant scanner so the next time
-     * slashlex() is called, initialization will occur. */
+     * SLSTagParser_lex() is called, initialization will occur. */
     yy_init_globals( yyscanner);
 
     /* Destroy the main struct (reentrant only). */
-    slashfree ( yyscanner , yyscanner );
+    SLSTagParser_free ( yyscanner , yyscanner );
     yyscanner = NULL;
     return 0;
 }
@@ -2070,12 +2070,12 @@ static int yy_flex_strlen (yyconst char * s , yyscan_t yyscanner)
 }
 #endif
 
-void *slashalloc (yy_size_t  size , yyscan_t yyscanner)
+void *SLSTagParser_alloc (yy_size_t  size , yyscan_t yyscanner)
 {
 	return (void *) malloc( size );
 }
 
-void *slashrealloc  (void * ptr, yy_size_t  size , yyscan_t yyscanner)
+void *SLSTagParser_realloc  (void * ptr, yy_size_t  size , yyscan_t yyscanner)
 {
 	/* The cast to (char *) in the following accommodates both
 	 * implementations that use char* generic pointers, and those
@@ -2087,11 +2087,11 @@ void *slashrealloc  (void * ptr, yy_size_t  size , yyscan_t yyscanner)
 	return (void *) realloc( (char *) ptr, size );
 }
 
-void slashfree (void * ptr , yyscan_t yyscanner)
+void SLSTagParser_free (void * ptr , yyscan_t yyscanner)
 {
-	free( (char *) ptr );	/* see slashrealloc() for (char *) cast */
+	free( (char *) ptr );	/* see SLSTagParser_realloc() for (char *) cast */
 }
 
 #define YYTABLES_NAME "yytables"
 
-#line 90 "SLSMarkupLexer.l"
+#line 90 "SLSTagLexer.l"

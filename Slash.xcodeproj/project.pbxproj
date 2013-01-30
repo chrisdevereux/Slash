@@ -21,10 +21,20 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		61295D2C16B88E7F005DB02C /* SLSTaggedRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 61295D2A16B88E7F005DB02C /* SLSTaggedRange.h */; };
+		61295D2D16B88E7F005DB02C /* SLSTaggedRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 61295D2B16B88E7F005DB02C /* SLSTaggedRange.m */; };
+		61295D2E16B88E7F005DB02C /* SLSTaggedRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 61295D2B16B88E7F005DB02C /* SLSTaggedRange.m */; };
+		61295D3116B88E93005DB02C /* SLSTagParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 61295D2F16B88E92005DB02C /* SLSTagParser.h */; };
+		61295D3216B88E93005DB02C /* SLSTagParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 61295D3016B88E92005DB02C /* SLSTagParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		61295D3316B88E93005DB02C /* SLSTagParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 61295D3016B88E92005DB02C /* SLSTagParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		61295D4316B89F48005DB02C /* SLSTagLexer.gen.h in Headers */ = {isa = PBXBuildFile; fileRef = 61295D3F16B89F44005DB02C /* SLSTagLexer.gen.h */; };
+		61295D4416B89F48005DB02C /* SLSTagLexer.gen.m in Sources */ = {isa = PBXBuildFile; fileRef = 61295D4016B89F44005DB02C /* SLSTagLexer.gen.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		61295D4516B89F48005DB02C /* SLSTagLexer.gen.m in Sources */ = {isa = PBXBuildFile; fileRef = 61295D4016B89F44005DB02C /* SLSTagLexer.gen.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		61295D4616B89F48005DB02C /* SLSTagParser.gen.h in Headers */ = {isa = PBXBuildFile; fileRef = 61295D4116B89F45005DB02C /* SLSTagParser.gen.h */; };
+		61295D4716B89F48005DB02C /* SLSTagParser.gen.m in Sources */ = {isa = PBXBuildFile; fileRef = 61295D4216B89F46005DB02C /* SLSTagParser.gen.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		61295D4816B89F48005DB02C /* SLSTagParser.gen.m in Sources */ = {isa = PBXBuildFile; fileRef = 61295D4216B89F46005DB02C /* SLSTagParser.gen.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6154843C167A084500A37428 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6154843B167A084500A37428 /* Foundation.framework */; };
-		6154844C167A087E00A37428 /* SLSMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6154844B167A087E00A37428 /* SLSMarkupParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		61548460167A0A8100A37428 /* SLSMarkupLexer.gen.m in Sources */ = {isa = PBXBuildFile; fileRef = 6154845D167A0A8100A37428 /* SLSMarkupLexer.gen.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		61548461167A0A8100A37428 /* SLSMarkupParserImpl.gen.m in Sources */ = {isa = PBXBuildFile; fileRef = 6154845E167A0A8100A37428 /* SLSMarkupParserImpl.gen.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6154844C167A087E00A37428 /* SLSMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6154844B167A087E00A37428 /* SLSMarkupParser.m */; };
 		61548469167A0C4300A37428 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61548468167A0C4300A37428 /* Cocoa.framework */; };
 		61548473167A0C4300A37428 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 61548471167A0C4300A37428 /* InfoPlist.strings */; };
 		61548475167A0C4300A37428 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 61548474167A0C4300A37428 /* main.m */; };
@@ -36,8 +46,6 @@
 		615484B5167A0E3A00A37428 /* Slash-OSX-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 615484B4167A0E3A00A37428 /* Slash-OSX-Prefix.pch */; };
 		615484BE167A0F1D00A37428 /* TestParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 615484BD167A0F1D00A37428 /* TestParser.m */; };
 		615484C5167A132E00A37428 /* SLSMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6154844B167A087E00A37428 /* SLSMarkupParser.m */; };
-		615484C6167A133000A37428 /* SLSMarkupLexer.gen.m in Sources */ = {isa = PBXBuildFile; fileRef = 6154845D167A0A8100A37428 /* SLSMarkupLexer.gen.m */; };
-		615484C7167A133400A37428 /* SLSMarkupParserImpl.gen.m in Sources */ = {isa = PBXBuildFile; fileRef = 6154845E167A0A8100A37428 /* SLSMarkupParserImpl.gen.m */; };
 		615484C9167A136400A37428 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 615484C8167A136400A37428 /* Foundation.framework */; };
 		615484CA167A167800A37428 /* libSlash-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6154849E167A0C7400A37428 /* libSlash-OSX.a */; };
 		615484CB167A16A300A37428 /* libSlash-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6154849E167A0C7400A37428 /* libSlash-OSX.a */; };
@@ -89,6 +97,20 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
+		61295D4916B8A422005DB02C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6154842F167A084500A37428 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6154849D167A0C7400A37428;
+			remoteInfo = "Slash-OSX";
+		};
+		61295D4B16B8A427005DB02C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6154842F167A084500A37428 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61548437167A084500A37428;
+			remoteInfo = "Slash-iOS";
+		};
 		61548489167A0C4400A37428 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6154842F167A084500A37428 /* Project object */;
@@ -133,17 +155,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		61295D2A16B88E7F005DB02C /* SLSTaggedRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSTaggedRange.h; sourceTree = "<group>"; };
+		61295D2B16B88E7F005DB02C /* SLSTaggedRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSTaggedRange.m; sourceTree = "<group>"; };
+		61295D2F16B88E92005DB02C /* SLSTagParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSTagParser.h; sourceTree = "<group>"; };
+		61295D3016B88E92005DB02C /* SLSTagParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSTagParser.m; sourceTree = "<group>"; };
+		61295D3416B895EE005DB02C /* SLSErrors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLSErrors.h; sourceTree = "<group>"; };
+		61295D3F16B89F44005DB02C /* SLSTagLexer.gen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSTagLexer.gen.h; sourceTree = "<group>"; };
+		61295D4016B89F44005DB02C /* SLSTagLexer.gen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSTagLexer.gen.m; sourceTree = "<group>"; };
+		61295D4116B89F45005DB02C /* SLSTagParser.gen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSTagParser.gen.h; sourceTree = "<group>"; };
+		61295D4216B89F46005DB02C /* SLSTagParser.gen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSTagParser.gen.m; sourceTree = "<group>"; };
 		61548438167A084500A37428 /* libSlash-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSlash-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6154843B167A084500A37428 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6154844A167A087E00A37428 /* SLSMarkupParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSMarkupParser.h; sourceTree = "<group>"; };
 		6154844B167A087E00A37428 /* SLSMarkupParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSMarkupParser.m; sourceTree = "<group>"; };
-		6154844E167A088800A37428 /* SLSMarkupLexer.l */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lex; path = SLSMarkupLexer.l; sourceTree = "<group>"; };
-		6154844F167A088800A37428 /* SLSMarkupParser+BisonContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SLSMarkupParser+BisonContext.h"; sourceTree = "<group>"; };
-		61548450167A088800A37428 /* SLSMarkupParserImpl.y */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.yacc; path = SLSMarkupParserImpl.y; sourceTree = "<group>"; };
-		6154845C167A0A8100A37428 /* SLSMarkupLexer.gen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSMarkupLexer.gen.h; sourceTree = "<group>"; };
-		6154845D167A0A8100A37428 /* SLSMarkupLexer.gen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSMarkupLexer.gen.m; sourceTree = "<group>"; };
-		6154845E167A0A8100A37428 /* SLSMarkupParserImpl.gen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSMarkupParserImpl.gen.m; sourceTree = "<group>"; };
-		6154845F167A0A8100A37428 /* SLSMarkupParserImpl.gen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSMarkupParserImpl.gen.h; sourceTree = "<group>"; };
+		6154844E167A088800A37428 /* SLSTagLexer.l */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lex; path = SLSTagLexer.l; sourceTree = "<group>"; };
+		61548450167A088800A37428 /* SLSTagParser.y */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.yacc; path = SLSTagParser.y; sourceTree = "<group>"; };
 		61548466167A0C4200A37428 /* Application-OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Application-OSX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61548468167A0C4300A37428 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		6154846B167A0C4300A37428 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -249,6 +275,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		61295D2916B88A79005DB02C /* flex/bison */ = {
+			isa = PBXGroup;
+			children = (
+				61548450167A088800A37428 /* SLSTagParser.y */,
+				61295D2F16B88E92005DB02C /* SLSTagParser.h */,
+				61295D3016B88E92005DB02C /* SLSTagParser.m */,
+				61295D4116B89F45005DB02C /* SLSTagParser.gen.h */,
+				61295D4216B89F46005DB02C /* SLSTagParser.gen.m */,
+				61295D3F16B89F44005DB02C /* SLSTagLexer.gen.h */,
+				61295D4016B89F44005DB02C /* SLSTagLexer.gen.m */,
+				6154844E167A088800A37428 /* SLSTagLexer.l */,
+			);
+			name = flex/bison;
+			sourceTree = "<group>";
+		};
 		6154842D167A084500A37428 = {
 			isa = PBXGroup;
 			children = (
@@ -293,24 +334,21 @@
 			children = (
 				6154844A167A087E00A37428 /* SLSMarkupParser.h */,
 				6154844B167A087E00A37428 /* SLSMarkupParser.m */,
-				61548449167A086900A37428 /* Implementation */,
+				61295D3416B895EE005DB02C /* SLSErrors.h */,
+				61548449167A086900A37428 /* Parser Implementation */,
 				615484A1167A0C7400A37428 /* Supporting Files */,
 			);
 			path = Slash;
 			sourceTree = "<group>";
 		};
-		61548449167A086900A37428 /* Implementation */ = {
+		61548449167A086900A37428 /* Parser Implementation */ = {
 			isa = PBXGroup;
 			children = (
-				6154844F167A088800A37428 /* SLSMarkupParser+BisonContext.h */,
-				6154844E167A088800A37428 /* SLSMarkupLexer.l */,
-				61548450167A088800A37428 /* SLSMarkupParserImpl.y */,
-				6154845C167A0A8100A37428 /* SLSMarkupLexer.gen.h */,
-				6154845D167A0A8100A37428 /* SLSMarkupLexer.gen.m */,
-				6154845F167A0A8100A37428 /* SLSMarkupParserImpl.gen.h */,
-				6154845E167A0A8100A37428 /* SLSMarkupParserImpl.gen.m */,
+				61295D2A16B88E7F005DB02C /* SLSTaggedRange.h */,
+				61295D2B16B88E7F005DB02C /* SLSTaggedRange.m */,
+				61295D2916B88A79005DB02C /* flex/bison */,
 			);
-			name = Implementation;
+			name = "Parser Implementation";
 			sourceTree = "<group>";
 		};
 		6154846A167A0C4300A37428 /* Other Frameworks */ = {
@@ -441,6 +479,10 @@
 			files = (
 				61D52D52167B79590027C915 /* SLSMarkupParser.h in Headers */,
 				615484B5167A0E3A00A37428 /* Slash-OSX-Prefix.pch in Headers */,
+				61295D2C16B88E7F005DB02C /* SLSTaggedRange.h in Headers */,
+				61295D3116B88E93005DB02C /* SLSTagParser.h in Headers */,
+				61295D4316B89F48005DB02C /* SLSTagLexer.gen.h in Headers */,
+				61295D4616B89F48005DB02C /* SLSTagParser.gen.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +538,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				61295D4A16B8A422005DB02C /* PBXTargetDependency */,
 				6154848A167A0C4400A37428 /* PBXTargetDependency */,
 			);
 			name = "Tests-OSX";
@@ -550,6 +593,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				61295D4C16B8A427005DB02C /* PBXTargetDependency */,
 				61D52D29167B6A6B0027C915 /* PBXTargetDependency */,
 			);
 			name = "Tests-iOS";
@@ -658,7 +702,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ${PROJECT_DIR}/Slash\nflex SLSMarkupLexer.l\nbison SLSMarkupParserImpl.y --defines=SLSMarkupParserImpl.gen.h -v";
+			shellScript = "cd ${PROJECT_DIR}/Slash\nflex SLSTagLexer.l\nbison SLSTagParser.y --defines=SLSTagParser.gen.h -v";
 		};
 		61D52D22167B6A6B0027C915 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -681,8 +725,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6154844C167A087E00A37428 /* SLSMarkupParser.m in Sources */,
-				61548460167A0A8100A37428 /* SLSMarkupLexer.gen.m in Sources */,
-				61548461167A0A8100A37428 /* SLSMarkupParserImpl.gen.m in Sources */,
+				61295D2D16B88E7F005DB02C /* SLSTaggedRange.m in Sources */,
+				61295D3216B88E93005DB02C /* SLSTagParser.m in Sources */,
+				61295D4416B89F48005DB02C /* SLSTagLexer.gen.m in Sources */,
+				61295D4716B89F48005DB02C /* SLSTagParser.gen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,8 +754,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				615484C5167A132E00A37428 /* SLSMarkupParser.m in Sources */,
-				615484C6167A133000A37428 /* SLSMarkupLexer.gen.m in Sources */,
-				615484C7167A133400A37428 /* SLSMarkupParserImpl.gen.m in Sources */,
+				61295D2E16B88E7F005DB02C /* SLSTaggedRange.m in Sources */,
+				61295D3316B88E93005DB02C /* SLSTagParser.m in Sources */,
+				61295D4516B89F48005DB02C /* SLSTagLexer.gen.m in Sources */,
+				61295D4816B89F48005DB02C /* SLSTagParser.gen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,6 +782,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		61295D4A16B8A422005DB02C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6154849D167A0C7400A37428 /* Slash-OSX */;
+			targetProxy = 61295D4916B8A422005DB02C /* PBXContainerItemProxy */;
+		};
+		61295D4C16B8A427005DB02C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 61548437167A084500A37428 /* Slash-iOS */;
+			targetProxy = 61295D4B16B8A427005DB02C /* PBXContainerItemProxy */;
+		};
 		6154848A167A0C4400A37428 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 61548465167A0C4200A37428 /* Application-OSX */;
@@ -866,7 +924,7 @@
 		61548447167A084500A37428 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/Slash.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Slash/Slash-iOS-Prefix.pch";
@@ -880,7 +938,7 @@
 		61548448167A084500A37428 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/Slash.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Slash/Slash-iOS-Prefix.pch";
@@ -981,7 +1039,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
@@ -990,7 +1048,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Slash/Slash-OSX-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
@@ -1001,7 +1059,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1011,7 +1069,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Slash/Slash-OSX-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;

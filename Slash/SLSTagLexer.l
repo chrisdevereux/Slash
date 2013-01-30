@@ -1,6 +1,6 @@
 %top{
     #import <Foundation/Foundation.h>
-    #import "SLSMarkupParserImpl.gen.h"
+    #import "SLSTagParser.gen.h"
 
 
     #pragma clang diagnostic ignored "-Wconversion"
@@ -11,9 +11,9 @@
 %option bison-bridge
 %option stack
 
-%option prefix="slash"
-%option header-file="SLSMarkupLexer.gen.h"
-%option outfile="SLSMarkupLexer.gen.m"
+%option prefix="SLSTagParser_"
+%option header-file="SLSTagLexer.gen.h"
+%option outfile="SLSTagLexer.gen.m"
 
 /*
   **Unicode**

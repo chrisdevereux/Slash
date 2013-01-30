@@ -62,10 +62,3 @@
 + (NSDictionary *)defaultStyle;
 
 @end
-
-typedef enum {
-    kSLSSyntaxError = 1,
-    kSLSUnknownTagError
-} SLSErrorCode;
-
-OBJC_EXTERN NSString * const SLSErrorDomain;

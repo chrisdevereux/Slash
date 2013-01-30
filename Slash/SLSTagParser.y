@@ -1,17 +1,19 @@
 %{
     #import <Foundation/Foundation.h>
-    #import "SLSMarkupParser+BisonContext.h"
-    #import "SLSMarkupLexer.gen.h"
+    #import "SLSTaggedRange.h"
+    #import "SLSTagParser.h"
+    #import "SLSTagLexer.gen.h"
+    #import "SLSErrors.h"
 %}
 
 %pure-parser
 %parse-param { yyscan_t scanner }
-%parse-param { SLSMarkupParser *ctx }
+%parse-param { SLSTagParser *output }
 %lex-param { yyscan_t scanner }
 
 %no-lines
-%name-prefix="slash"
-%output="SLSMarkupParserImpl.gen.m"
+%name-prefix="SLSTagParser_"
+%output="SLSTagParser.gen.m"
 
 %union {
     NSString    *text;
@@ -41,14 +43,14 @@ tagged_text
 : text
 | OPEN tagged_text CLOSE {
     if (![$1 isEqualToString:$3]) {
-        ctx.error = [NSError errorWithDomain:SLSErrorDomain code:kSLSSyntaxError userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Unterminated attributed", nil)}];
+        output.error = [NSError errorWithDomain:SLSErrorDomain code:kSLSSyntaxError userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Unterminated attributed", nil)}];
     }
     
-    [ctx addAttributesForTag:$1 inRange:$2];
+    [output addTag:[SLSTaggedRange tagWithName:$1 range:$2]];
     $$ = $2;
 }
 | tagged_text tagged_text {
-    $$ = NSMakeRange($1.location, $1.length + $2.length);
+    $$ = NSMakeRange(($1).location, ($1).length + ($2).length);
 }
 
 // The first recognized production for all text.
@@ -56,16 +58,16 @@ tagged_text
 text
 : TEXT {
     NSRange tagRange;
-    tagRange.location = [ctx.outAttStr length];
-    tagRange.length = [$1 length];
+    tagRange.location = output.currentLength;
+    tagRange.length = ($1).length;
     
-    [[ctx.outAttStr mutableString] appendString:$1];
-
+    [output appendString:$1];
+    
     $$ = tagRange;
 }
 | OPEN CLOSE {
     NSRange tagRange;
-    tagRange.location = [ctx.outAttStr length];
+    tagRange.location = output.currentLength;
     tagRange.length = 0;
 
     $$ = tagRange;
@@ -73,5 +75,5 @@ text
 
 abort_parse
 : ERR {
-    ctx.error = [NSError errorWithDomain:SLSErrorDomain code:kSLSSyntaxError userInfo:@{NSLocalizedDescriptionKey: $1}];
+    output.error = [NSError errorWithDomain:SLSErrorDomain code:kSLSSyntaxError userInfo:@{NSLocalizedDescriptionKey: $1}];
 }

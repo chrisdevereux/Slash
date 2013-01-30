@@ -8,6 +8,7 @@
 
 #import "TestParser.h"
 #import "SLSMarkupParser.h"
+#import "SLSErrors.h"
 
 #if TARGET_OS_IPHONE
 #define FONT_CLASS UIFont
@@ -41,11 +42,10 @@
     
     [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"$default"] range:NSMakeRange(0, 163)];
     [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"h1"] range:NSMakeRange(0, 53)];
-    [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"strong"] range:NSMakeRange(9, 5)];
-    [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"strong"] range:NSMakeRange(14, 0)];
-    [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"strong"] range:NSMakeRange(41, 4)];
     [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"h2"] range:NSMakeRange(107, 10)];
     [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"h2"] range:NSMakeRange(117, 26)];
+    [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"strong"] range:NSMakeRange(9, 5)];
+    [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"strong"] range:NSMakeRange(41, 4)];
     
     NSError *error;
     NSAttributedString *actual = [SLSMarkupParser attributedStringWithMarkup:str error:&error];

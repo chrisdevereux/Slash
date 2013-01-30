@@ -1,18 +1,18 @@
-#ifndef slashHEADER_H
-#define slashHEADER_H 1
-#define slashIN_HEADER 1
+#ifndef SLSTagParser_HEADER_H
+#define SLSTagParser_HEADER_H 1
+#define SLSTagParser_IN_HEADER 1
 
-#line 6 "SLSMarkupLexer.gen.h"
-#line 2 "SLSMarkupLexer.l"
+#line 6 "SLSTagLexer.gen.h"
+#line 2 "SLSTagLexer.l"
     #import <Foundation/Foundation.h>
-    #import "SLSMarkupParserImpl.gen.h"
+    #import "SLSTagParser.gen.h"
 
 
     #pragma clang diagnostic ignored "-Wconversion"
 
 
 
-#line 16 "SLSMarkupLexer.gen.h"
+#line 16 "SLSTagLexer.gen.h"
 
 #define  YY_INT_ALIGNED short int
 
@@ -204,23 +204,23 @@ struct yy_buffer_state
 	};
 #endif /* !YY_STRUCT_YY_BUFFER_STATE */
 
-void slashrestart (FILE *input_file ,yyscan_t yyscanner );
-void slash_switch_to_buffer (YY_BUFFER_STATE new_buffer ,yyscan_t yyscanner );
-YY_BUFFER_STATE slash_create_buffer (FILE *file,int size ,yyscan_t yyscanner );
-void slash_delete_buffer (YY_BUFFER_STATE b ,yyscan_t yyscanner );
-void slash_flush_buffer (YY_BUFFER_STATE b ,yyscan_t yyscanner );
-void slashpush_buffer_state (YY_BUFFER_STATE new_buffer ,yyscan_t yyscanner );
-void slashpop_buffer_state (yyscan_t yyscanner );
+void SLSTagParser_restart (FILE *input_file ,yyscan_t yyscanner );
+void SLSTagParser__switch_to_buffer (YY_BUFFER_STATE new_buffer ,yyscan_t yyscanner );
+YY_BUFFER_STATE SLSTagParser__create_buffer (FILE *file,int size ,yyscan_t yyscanner );
+void SLSTagParser__delete_buffer (YY_BUFFER_STATE b ,yyscan_t yyscanner );
+void SLSTagParser__flush_buffer (YY_BUFFER_STATE b ,yyscan_t yyscanner );
+void SLSTagParser_push_buffer_state (YY_BUFFER_STATE new_buffer ,yyscan_t yyscanner );
+void SLSTagParser_pop_buffer_state (yyscan_t yyscanner );
 
-YY_BUFFER_STATE slash_scan_buffer (char *base,yy_size_t size ,yyscan_t yyscanner );
-YY_BUFFER_STATE slash_scan_string (yyconst char *yy_str ,yyscan_t yyscanner );
-YY_BUFFER_STATE slash_scan_bytes (yyconst char *bytes,yy_size_t len ,yyscan_t yyscanner );
+YY_BUFFER_STATE SLSTagParser__scan_buffer (char *base,yy_size_t size ,yyscan_t yyscanner );
+YY_BUFFER_STATE SLSTagParser__scan_string (yyconst char *yy_str ,yyscan_t yyscanner );
+YY_BUFFER_STATE SLSTagParser__scan_bytes (yyconst char *bytes,yy_size_t len ,yyscan_t yyscanner );
 
-void *slashalloc (yy_size_t ,yyscan_t yyscanner );
-void *slashrealloc (void *,yy_size_t ,yyscan_t yyscanner );
-void slashfree (void * ,yyscan_t yyscanner );
+void *SLSTagParser_alloc (yy_size_t ,yyscan_t yyscanner );
+void *SLSTagParser_realloc (void *,yy_size_t ,yyscan_t yyscanner );
+void SLSTagParser_free (void * ,yyscan_t yyscanner );
 
-#define slashwrap(n) 1
+#define SLSTagParser_wrap(n) 1
 #define YY_SKIP_YYWRAP
 
 #define yytext_ptr yytext_r
@@ -242,42 +242,42 @@ void slashfree (void * ,yyscan_t yyscanner );
 #define YY_EXTRA_TYPE void *
 #endif
 
-int slashlex_init (yyscan_t* scanner);
+int SLSTagParser_lex_init (yyscan_t* scanner);
 
-int slashlex_init_extra (YY_EXTRA_TYPE user_defined,yyscan_t* scanner);
+int SLSTagParser_lex_init_extra (YY_EXTRA_TYPE user_defined,yyscan_t* scanner);
 
 /* Accessor methods to globals.
    These are made visible to non-reentrant scanners for convenience. */
 
-int slashlex_destroy (yyscan_t yyscanner );
+int SLSTagParser_lex_destroy (yyscan_t yyscanner );
 
-int slashget_debug (yyscan_t yyscanner );
+int SLSTagParser_get_debug (yyscan_t yyscanner );
 
-void slashset_debug (int debug_flag ,yyscan_t yyscanner );
+void SLSTagParser_set_debug (int debug_flag ,yyscan_t yyscanner );
 
-YY_EXTRA_TYPE slashget_extra (yyscan_t yyscanner );
+YY_EXTRA_TYPE SLSTagParser_get_extra (yyscan_t yyscanner );
 
-void slashset_extra (YY_EXTRA_TYPE user_defined ,yyscan_t yyscanner );
+void SLSTagParser_set_extra (YY_EXTRA_TYPE user_defined ,yyscan_t yyscanner );
 
-FILE *slashget_in (yyscan_t yyscanner );
+FILE *SLSTagParser_get_in (yyscan_t yyscanner );
 
-void slashset_in  (FILE * in_str ,yyscan_t yyscanner );
+void SLSTagParser_set_in  (FILE * in_str ,yyscan_t yyscanner );
 
-FILE *slashget_out (yyscan_t yyscanner );
+FILE *SLSTagParser_get_out (yyscan_t yyscanner );
 
-void slashset_out  (FILE * out_str ,yyscan_t yyscanner );
+void SLSTagParser_set_out  (FILE * out_str ,yyscan_t yyscanner );
 
-yy_size_t slashget_leng (yyscan_t yyscanner );
+yy_size_t SLSTagParser_get_leng (yyscan_t yyscanner );
 
-char *slashget_text (yyscan_t yyscanner );
+char *SLSTagParser_get_text (yyscan_t yyscanner );
 
-int slashget_lineno (yyscan_t yyscanner );
+int SLSTagParser_get_lineno (yyscan_t yyscanner );
 
-void slashset_lineno (int line_number ,yyscan_t yyscanner );
+void SLSTagParser_set_lineno (int line_number ,yyscan_t yyscanner );
 
-YYSTYPE * slashget_lval (yyscan_t yyscanner );
+YYSTYPE * SLSTagParser_get_lval (yyscan_t yyscanner );
 
-void slashset_lval (YYSTYPE * yylval_param ,yyscan_t yyscanner );
+void SLSTagParser_set_lval (YYSTYPE * yylval_param ,yyscan_t yyscanner );
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -285,9 +285,9 @@ void slashset_lval (YYSTYPE * yylval_param ,yyscan_t yyscanner );
 
 #ifndef YY_SKIP_YYWRAP
 #ifdef __cplusplus
-extern "C" int slashwrap (yyscan_t yyscanner );
+extern "C" int SLSTagParser_wrap (yyscan_t yyscanner );
 #else
-extern int slashwrap (yyscan_t yyscanner );
+extern int SLSTagParser_wrap (yyscan_t yyscanner );
 #endif
 #endif
 
@@ -319,10 +319,10 @@ static int yy_flex_strlen (yyconst char * ,yyscan_t yyscanner);
 #ifndef YY_DECL
 #define YY_DECL_IS_OURS 1
 
-extern int slashlex \
+extern int SLSTagParser_lex \
                (YYSTYPE * yylval_param ,yyscan_t yyscanner);
 
-#define YY_DECL int slashlex \
+#define YY_DECL int SLSTagParser_lex \
                (YYSTYPE * yylval_param , yyscan_t yyscanner)
 #endif /* !YY_DECL */
 
@@ -340,8 +340,8 @@ extern int slashlex \
 #undef YY_DECL
 #endif
 
-#line 90 "SLSMarkupLexer.l"
+#line 90 "SLSTagLexer.l"
 
-#line 346 "SLSMarkupLexer.gen.h"
-#undef slashIN_HEADER
-#endif /* slashHEADER_H */
+#line 346 "SLSTagLexer.gen.h"
+#undef SLSTagParser_IN_HEADER
+#endif /* SLSTagParser_HEADER_H */
