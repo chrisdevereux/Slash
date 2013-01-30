@@ -7,7 +7,6 @@
 //
 
 #import "SLSAppDelegate.h"
-
 #import "SLSViewController.h"
 
 @implementation SLSAppDelegate

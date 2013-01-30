@@ -70,12 +70,14 @@ Installation
 * Add Slash.xcodeproj as a child project
 * Add Slash-iOS or Slash-OSX as a project dependency
 * Link with libSlash-iOS.a or libSlash-OSX.a
+* Add `$(BUILT_PRODUCTS_DIR)/usr/local/include` to your project's header search paths (if it isn't already there)
+* `#import <Slash/Slash.h>`
 
 
 Requirements
 ------------
 
-iOS 4.3 or OS X 10.5 (64 bit) upwards.
+iOS 4.3 or OS X 10.6 (64 bit) upwards.
 
 Attributed string handling is limited prior to iOS 6, and certain features of Slash require iOS 6. Be sure to check the header documentation if you are targeting earlier. You will also need to use a custom view (such as [NIAttributedLabel][3]) to display the strings, and the format required of the attribute dictionaries in your style will be defined by that view.
 

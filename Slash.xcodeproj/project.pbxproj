@@ -33,6 +33,11 @@
 		61295D4616B89F48005DB02C /* SLSTagParser.gen.h in Headers */ = {isa = PBXBuildFile; fileRef = 61295D4116B89F45005DB02C /* SLSTagParser.gen.h */; };
 		61295D4716B89F48005DB02C /* SLSTagParser.gen.m in Sources */ = {isa = PBXBuildFile; fileRef = 61295D4216B89F46005DB02C /* SLSTagParser.gen.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		61295D4816B89F48005DB02C /* SLSTagParser.gen.m in Sources */ = {isa = PBXBuildFile; fileRef = 61295D4216B89F46005DB02C /* SLSTagParser.gen.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		61295D4E16B8B140005DB02C /* Slash.h in Headers */ = {isa = PBXBuildFile; fileRef = 61295D4D16B8B140005DB02C /* Slash.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		61295D5016B8B2B7005DB02C /* Slash.h in Headers */ = {isa = PBXBuildFile; fileRef = 61295D4D16B8B140005DB02C /* Slash.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		61295D5116B8B2B7005DB02C /* SLSMarkupParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 6154844A167A087E00A37428 /* SLSMarkupParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		61295D5216B8B2B7005DB02C /* SLSErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = 61295D3416B895EE005DB02C /* SLSErrors.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		61295D5316B8B2C9005DB02C /* SLSErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = 61295D3416B895EE005DB02C /* SLSErrors.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6154843C167A084500A37428 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6154843B167A084500A37428 /* Foundation.framework */; };
 		6154844C167A087E00A37428 /* SLSMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6154844B167A087E00A37428 /* SLSMarkupParser.m */; };
 		61548469167A0C4300A37428 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61548468167A0C4300A37428 /* Cocoa.framework */; };
@@ -164,6 +169,7 @@
 		61295D4016B89F44005DB02C /* SLSTagLexer.gen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSTagLexer.gen.m; sourceTree = "<group>"; };
 		61295D4116B89F45005DB02C /* SLSTagParser.gen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSTagParser.gen.h; sourceTree = "<group>"; };
 		61295D4216B89F46005DB02C /* SLSTagParser.gen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLSTagParser.gen.m; sourceTree = "<group>"; };
+		61295D4D16B8B140005DB02C /* Slash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Slash.h; sourceTree = "<group>"; };
 		61548438167A084500A37428 /* libSlash-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSlash-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6154843B167A084500A37428 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6154844A167A087E00A37428 /* SLSMarkupParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLSMarkupParser.h; sourceTree = "<group>"; };
@@ -332,6 +338,7 @@
 		6154843D167A084500A37428 /* Slash */ = {
 			isa = PBXGroup;
 			children = (
+				61295D4D16B8B140005DB02C /* Slash.h */,
 				6154844A167A087E00A37428 /* SLSMarkupParser.h */,
 				6154844B167A087E00A37428 /* SLSMarkupParser.m */,
 				61295D3416B895EE005DB02C /* SLSErrors.h */,
@@ -473,11 +480,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		61295D4F16B8B2AE005DB02C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61295D5016B8B2B7005DB02C /* Slash.h in Headers */,
+				61295D5116B8B2B7005DB02C /* SLSMarkupParser.h in Headers */,
+				61295D5216B8B2B7005DB02C /* SLSErrors.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6154849C167A0C7400A37428 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61295D4E16B8B140005DB02C /* Slash.h in Headers */,
 				61D52D52167B79590027C915 /* SLSMarkupParser.h in Headers */,
+				61295D5316B8B2C9005DB02C /* SLSErrors.h in Headers */,
 				615484B5167A0E3A00A37428 /* Slash-OSX-Prefix.pch in Headers */,
 				61295D2C16B88E7F005DB02C /* SLSTaggedRange.h in Headers */,
 				61295D3116B88E93005DB02C /* SLSTagParser.h in Headers */,
@@ -496,6 +515,7 @@
 				61548434167A084500A37428 /* Sources */,
 				61548435167A084500A37428 /* Frameworks */,
 				61548436167A084500A37428 /* CopyFiles */,
+				61295D4F16B8B2AE005DB02C /* Headers */,
 			);
 			buildRules = (
 				6154845B167A09F000A37428 /* PBXBuildRule */,
@@ -931,6 +951,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/Slash;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -945,6 +966,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/Slash;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -962,6 +984,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Application-OSX/Application-OSX-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include";
 				INFOPLIST_FILE = "Application-OSX/Application-OSX-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -985,6 +1008,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Application-OSX/Application-OSX-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include";
 				INFOPLIST_FILE = "Application-OSX/Application-OSX-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1050,6 +1074,7 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/Slash;
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
 			};
@@ -1071,6 +1096,7 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/Slash;
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
 			};
@@ -1096,6 +1122,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Application-iOS/Application-iOS-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include";
 				INFOPLIST_FILE = "Application-iOS/Application-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1110,6 +1137,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Application-iOS/Application-iOS-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include";
 				INFOPLIST_FILE = "Application-iOS/Application-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";

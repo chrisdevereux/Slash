@@ -7,7 +7,7 @@
 //
 
 #import "SLSViewController.h"
-#import "SLSMarkupParser.h"
+#import <Slash/Slash.h>
 
 @interface SLSViewController () <UITextViewDelegate>
 @property (strong, nonatomic) IBOutlet UITextView *markupView;
