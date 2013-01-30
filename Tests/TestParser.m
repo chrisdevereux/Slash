@@ -20,6 +20,19 @@
 
 #endif
 
+
+#define AssertAttributeAtIndex(attrStr, attrKey, attrVal, idx) STAssertEqualObjects([(attrStr) attribute:(attrKey) atIndex:(idx) effectiveRange:NULL], (attrVal), @"Expected attribute '%s' to equal '%s' at index %d", #attrKey, #attrVal, (int)(idx))
+
+#define AssertHasAttributeFor(attrStr, attr) STAssertNotNil([[(attrStr) attributesAtIndex:0 effectiveRange:NULL] objectForKey:(attr)], @"Expected attribute '%s' to be defined", (#attr))
+
+static NSDictionary * AttributesWithDefaults(NSDictionary *style, NSString *key)
+{
+    NSMutableDictionary *result = [[[SLSMarkupParser defaultStyle] valueForKey:@"$default"] mutableCopy];
+    [result setValuesForKeysWithDictionary:[style valueForKey:key]];
+    return result;
+}
+
+
 @implementation TestParser
 
 - (void)testCanParseSimpleString
@@ -27,8 +40,8 @@
     NSString *str = @"this is <strong>awesome</strong>";
     
     NSMutableAttributedString *expected = [[NSMutableAttributedString alloc] initWithString:@"this is awesome"];
-    [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"$default"] range:NSMakeRange(0, 15)];
-    [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"strong"] range:NSMakeRange(8, 7)];
+    [expected setAttributes:AttributesWithDefaults([SLSMarkupParser defaultStyle], @"$default") range:NSMakeRange(0, 15)];
+    [expected setAttributes:AttributesWithDefaults([SLSMarkupParser defaultStyle], @"strong") range:NSMakeRange(8, 7)];
     
     NSAttributedString *actual = [SLSMarkupParser attributedStringWithMarkup:str error:NULL];
     STAssertEqualObjects(actual, expected, @"Parsed markup does not have expected attributes.");
@@ -40,12 +53,12 @@
     
     NSMutableAttributedString *expected = [[NSMutableAttributedString alloc] initWithString:@"No blind spots in the leopard's eyes can only help to jeopardize the lives of lambs, the shepherd cries. An afterlife for a silverfish. Eternal dust less ticklish."];
     
-    [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"$default"] range:NSMakeRange(0, 163)];
-    [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"h1"] range:NSMakeRange(0, 53)];
-    [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"h2"] range:NSMakeRange(107, 10)];
-    [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"h2"] range:NSMakeRange(117, 26)];
-    [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"strong"] range:NSMakeRange(9, 5)];
-    [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"strong"] range:NSMakeRange(41, 4)];
+    [expected setAttributes:AttributesWithDefaults([SLSMarkupParser defaultStyle], @"$default") range:NSMakeRange(0, 163)];
+    [expected setAttributes:AttributesWithDefaults([SLSMarkupParser defaultStyle], @"h1") range:NSMakeRange(0, 53)];
+    [expected setAttributes:AttributesWithDefaults([SLSMarkupParser defaultStyle], @"h2") range:NSMakeRange(107, 10)];
+    [expected setAttributes:AttributesWithDefaults([SLSMarkupParser defaultStyle], @"h2") range:NSMakeRange(117, 26)];
+    [expected setAttributes:AttributesWithDefaults([SLSMarkupParser defaultStyle], @"strong") range:NSMakeRange(9, 5)];
+    [expected setAttributes:AttributesWithDefaults([SLSMarkupParser defaultStyle], @"strong") range:NSMakeRange(41, 4)];
     
     NSError *error;
     NSAttributedString *actual = [SLSMarkupParser attributedStringWithMarkup:str error:&error];
@@ -69,7 +82,7 @@
             NSAttributedString *attrStr = [SLSMarkupParser attributedStringWithMarkup:markup error:NULL];
             
             NSMutableAttributedString *expected = [[NSMutableAttributedString alloc] initWithString:testStr];
-            [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"h1"] range:NSMakeRange(0, [testStr length])];
+            [expected setAttributes:AttributesWithDefaults([SLSMarkupParser defaultStyle], @"h1") range:NSMakeRange(0, [testStr length])];
             
             STAssertEqualObjects(expected, attrStr, @"Failed to parse codepoint +%X", chr);
         }
@@ -81,7 +94,7 @@
     NSString *str = @"<h1>❤❤❤❤</h1>";
     
     NSMutableAttributedString *expected = [[NSMutableAttributedString alloc] initWithString:@"❤❤❤❤"];
-    [expected setAttributes:[[SLSMarkupParser defaultStyle] valueForKey:@"h1"] range:NSMakeRange(0, 4)];
+    [expected setAttributes:AttributesWithDefaults([SLSMarkupParser defaultStyle], @"h1") range:NSMakeRange(0, 4)];
     
     NSError *error;
     NSAttributedString *actual = [SLSMarkupParser attributedStringWithMarkup:str error:&error];
@@ -184,7 +197,6 @@
 }
 
 
-#define AssertAttributeAtIndex(attrStr, attrKey, attrVal, idx) STAssertEqualObjects([(attrStr) attribute:(attrKey) atIndex:(idx) effectiveRange:NULL], (attrVal), @"Expected attribute '%s' to equal '%s' at index %d", #attrKey, #attrVal, (int)(idx))
 
 - (void)testInnerAttributesAreCombinedWithOuterAttributes
 {
@@ -220,7 +232,6 @@
 }
 
 
-#define AssertHasAttributeFor(attrStr, attr) STAssertNotNil([[(attrStr) attributesAtIndex:0 effectiveRange:NULL] objectForKey:(attr)], @"Expected attribute '%s' to be defined", (#attr))
 
 - (void)testDefaultsAreProvidedForRequiredAttributes
 {

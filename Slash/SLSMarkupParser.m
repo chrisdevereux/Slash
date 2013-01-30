@@ -157,21 +157,25 @@
     NSParameterAssert(styledText);
     NSAssert(_styleDictionary, @"Slash internal error: style dictionary should be defined");
     
-    // Apply the default style to the whole string, then work inwards, applying the attributes defined for each tag.
+    // Apply the default style to the whole string, then work inwards, applying the attributes defined for each tag
+    // combined with the existing attributes.
     
     [styledText setAttributes:[_styleDictionary objectForKey:@"$default"] range:NSMakeRange(0, [styledText length])];
     
     for (SLSTaggedRange *tag in tags) {
-        NSDictionary *attributes = [_styleDictionary objectForKey:tag.tagName];
+        NSDictionary *tagAttributes = [_styleDictionary objectForKey:tag.tagName];
         
-        if (!attributes) {
+        if (!tagAttributes) {
             NSError *error = [NSError errorWithDomain:SLSErrorDomain code:kSLSUnknownTagError userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Unknown tag" , nil), tag.tagName]}];
             
             SetError(errorOut, error);
             return NO;
         }
         
-        [styledText setAttributes:attributes range:tag.range];
+        // Inner ranges are fully contained by by outer ranges, so assume attributes at
+        // the beginning of the range apply to the entire range.
+        
+        [styledText addAttributes:tagAttributes range:tag.range];
     }
     
     return YES;
