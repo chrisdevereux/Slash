@@ -39,6 +39,7 @@ int SLSTagParser_parse(yyscan_t scanner, SLSTagParser *ctx);
 {
     [_attributedString release];
     [_taggedRanges release];
+    [_error release];
     
     if (_scanner) {
         SLSTagParser_lex_destroy(_scanner);
