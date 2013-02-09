@@ -79,9 +79,16 @@ Requirements
 
 iOS 4.3 or OS X 10.6 (64 bit) upwards.
 
-Attributed string handling is limited prior to iOS 6, and certain features of Slash require iOS 6. Be sure to check the header documentation if you are targeting earlier. You will also need to use a custom view (such as [NIAttributedLabel][3]) to display the strings, and the format required of the attribute dictionaries in your style will be defined by that view.
+Attributed string handling is limited prior to iOS 6, and certain features of Slash require iOS 6. Be sure to check the header documentation if you are targeting earlier. You will also need to use a custom view (such as [NIAttributedLabel][3] or [TTTAttributedLabel][4]) to display the strings, and the format required of the attribute dictionaries in your style will be defined by that view.
 
 [3]: http://docs.nimbuskit.info/NimbusAttributedLabel.html
+[4]: https://github.com/mattt/TTTAttributedLabel
+
+
+Performance
+------------
+
+Constructing a 200 character attributed string with 5 tagged sections takes approximately 0.5ms on an iPad 3rd gen when built in release mode. If you are parsing large strings, consider doing so on a background queue.
 
 
 License
