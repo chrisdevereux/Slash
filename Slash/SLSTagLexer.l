@@ -34,7 +34,7 @@ utf8_5b         [\xF8-\xFB]({utf8_extra}{4})
 utf8_6b         [\xFC-\xFD]({utf8_extra}{5})
 utf8_multi      {utf8_2b}|{utf8_3b}|{utf8_4b}|{utf8_5b}|{utf8_6b}
 
-ascii_nontag    [\x01-\x7F]{-}[\<\>]
+ascii_nontag    [\x01-\x7F]{-}[\<\>\\]
 nontag          {ascii_nontag}|{utf8_multi}
 
 digit           [0-9]

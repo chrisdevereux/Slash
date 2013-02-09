@@ -35,6 +35,16 @@ static NSDictionary * AttributesWithDefaults(NSDictionary *style, NSString *key)
 
 @implementation TestParser
 
+- (NSUInteger)numberOfTestIterationsForTestWithSelector:(SEL)testMethod
+{
+    if (testMethod == @selector(testCanParseUnicodeCharacters)) {
+        return 1;
+    }
+    
+    NSString *iterationsEnvVar = [[[NSProcessInfo processInfo] environment] objectForKey:@"SLSTestIterations"];
+    return iterationsEnvVar ? (NSUInteger)[iterationsEnvVar intValue] : 1;
+}
+
 - (void)testCanParseSimpleString
 {
     NSString *str = @"this is <strong>awesome</strong>";
@@ -114,24 +124,32 @@ static NSDictionary * AttributesWithDefaults(NSDictionary *style, NSString *key)
 
 - (void)testCanParseEscapedOpen
 {
-    NSAttributedString *str = [SLSMarkupParser attributedStringWithMarkup:@"\\<" error:NULL];
-    NSAttributedString *expected = [[NSAttributedString alloc] initWithString:@"<" attributes:[[SLSMarkupParser defaultStyle] objectForKey:@"$default"]];
+    NSAttributedString *str = [SLSMarkupParser attributedStringWithMarkup:@"foo\\<bar" error:NULL];
+    NSAttributedString *expected = [[NSAttributedString alloc] initWithString:@"foo<bar" attributes:[[SLSMarkupParser defaultStyle] objectForKey:@"$default"]];
     
     STAssertEqualObjects(str, expected, @"Should allow escaped open angle-parenthesis");
 }
 
 - (void)testCanParseEscapedClose
 {
-    NSAttributedString *str = [SLSMarkupParser attributedStringWithMarkup:@"\\>" error:NULL];
-    NSAttributedString *expected = [[NSAttributedString alloc] initWithString:@">" attributes:[[SLSMarkupParser defaultStyle] objectForKey:@"$default"]];
+    NSAttributedString *str = [SLSMarkupParser attributedStringWithMarkup:@"foo\\>bar" error:NULL];
+    NSAttributedString *expected = [[NSAttributedString alloc] initWithString:@"foo>bar" attributes:[[SLSMarkupParser defaultStyle] objectForKey:@"$default"]];
     
     STAssertEqualObjects(str, expected, @"Should allow escaped open angle-parenthesis");
 }
 
+- (void)testCanParseEscapedOpenClose
+{
+    NSAttributedString *str = [SLSMarkupParser attributedStringWithMarkup:@"f\\<oo\\>bar" error:NULL];
+    NSAttributedString *expected = [[NSAttributedString alloc] initWithString:@"f<oo>bar" attributes:[[SLSMarkupParser defaultStyle] objectForKey:@"$default"]];
+    
+    STAssertEqualObjects(str, expected, @"Should allow escaped open and close angle-parenthesis");
+}
+
 - (void)testCanParseEscapedEscape
 {
-    NSAttributedString *str = [SLSMarkupParser attributedStringWithMarkup:@"\\\\" error:NULL];
-    NSAttributedString *expected = [[NSAttributedString alloc] initWithString:@"\\" attributes:[[SLSMarkupParser defaultStyle] objectForKey:@"$default"]];
+    NSAttributedString *str = [SLSMarkupParser attributedStringWithMarkup:@"foo\\\\bar" error:NULL];
+    NSAttributedString *expected = [[NSAttributedString alloc] initWithString:@"foo\\bar" attributes:[[SLSMarkupParser defaultStyle] objectForKey:@"$default"]];
     
     STAssertEqualObjects(str, expected, @"Should allow escaped backslash");
 }
