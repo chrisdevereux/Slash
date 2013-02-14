@@ -16,12 +16,12 @@ Pod::Spec.new do |s|
   s.public_header_files = 'Slash/Slash.h', 'Slash/SLSMarkupParser.h', 'Slash/SLSErrors.h'
 
   s.subspec 'arc' do |ss|
-    ss.source_files = 'Slash/SLSMarkupParser.m', 'SLSTaggedRange.m'
+    ss.source_files = 'Slash/SLSMarkupParser.m', 'Slash/SLSTaggedRange.m', 'Slash/*.h'
     s.requires_arc = true
   end
 
   s.subspec 'no-arc' do |ss|
-    ss.source_files = 'Slash/SLSTagParser.m', 'Slash/SLSTagLexer.gen.m', 'Slash/SLSTagParser.gen.m'
+    ss.source_files = 'Slash/SLSTagParser.m', 'Slash/SLSTagLexer.gen.m', 'Slash/SLSTagParser.gen.m', 'Slash/*.h'
     ss.requires_arc = false
   end
 end
