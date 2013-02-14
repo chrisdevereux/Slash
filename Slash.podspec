@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.public_header_files = 'Slash/Slash.h', 'Slash/SLSMarkupParser.h', 'Slash/SLSErrors.h'
 
   s.subspec 'no-arc' do |sp|
-    sp.source_files = 'Slash/SLSTagParser*.m'
+    sp.source_files = 'Slash/SLSTagParser.m', 'Slash/SLSTagLexer.gen.m', 'Slash/SLSTagParser.gen.m'
     sp.requires_arc = false
   end
 end
