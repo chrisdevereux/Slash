@@ -18,6 +18,17 @@
 			name = GenerateParser;
 			productName = GenerateParser;
 		};
+		808D315217420F6200AE0CCE /* Slash-iOS-CombinedStaticLib */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 808D315517420F6200AE0CCE /* Build configuration list for PBXAggregateTarget "Slash-iOS-CombinedStaticLib" */;
+			buildPhases = (
+				808D31561742108200AE0CCE /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Slash-iOS-CombinedStaticLib";
+			productName = "Slash-iOS-CombinedStaticLib";
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -722,6 +733,7 @@
 				61548484167A0C4400A37428 /* Tests-OSX */,
 				61D52D23167B6A6B0027C915 /* Tests-iOS */,
 				615484A9167A0D0800A37428 /* GenerateParser */,
+				808D315217420F6200AE0CCE /* Slash-iOS-CombinedStaticLib */,
 			);
 		};
 /* End PBXProject section */
@@ -809,6 +821,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		808D31561742108200AE0CCE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "XCODEBUILD_PATH=/Applications/Xcode.app/Contents/Developer/usr/bin\nXCODEBUILD=$XCODEBUILD_PATH/xcodebuild\n\n$XCODEBUILD -project Slash.xcodeproj -target \"Slash-iOS\" -sdk \"iphonesimulator\" -configuration \"Release\" clean build\n$XCODEBUILD -project Slash.xcodeproj -target \"Slash-iOS\" -sdk \"iphoneos\" -configuration \"Release\" clean build\n\nlipo -create -output \"build/libSlash-iOSCombined.a\" \"build/Release-iphoneos/libSlash-iOS.a\" \"build/Release-iphonesimulator/libSlash-iOS.a\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1320,6 +1345,20 @@
 			};
 			name = Release;
 		};
+		808D315317420F6200AE0CCE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		808D315417420F6200AE0CCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1384,6 +1423,7 @@
 				616B330E16C6B2AF0009AD78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		61D52D33167B6A6B0027C915 /* Build configuration list for PBXNativeTarget "Application-iOS" */ = {
 			isa = XCConfigurationList;
@@ -1402,6 +1442,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		808D315517420F6200AE0CCE /* Build configuration list for PBXAggregateTarget "Slash-iOS-CombinedStaticLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				808D315317420F6200AE0CCE /* Debug */,
+				808D315417420F6200AE0CCE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
