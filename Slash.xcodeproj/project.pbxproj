@@ -726,6 +726,7 @@
 			projectRoot = "";
 			targets = (
 				61548437167A084500A37428 /* Slash-iOS */,
+				808D315217420F6200AE0CCE /* Slash-iOS-CombinedStaticLib */,
 				6154849D167A0C7400A37428 /* Slash-OSX */,
 				61548465167A0C4200A37428 /* Application-OSX */,
 				61D52CFC167B6A690027C915 /* Application-iOS */,
@@ -733,7 +734,6 @@
 				61548484167A0C4400A37428 /* Tests-OSX */,
 				61D52D23167B6A6B0027C915 /* Tests-iOS */,
 				615484A9167A0D0800A37428 /* GenerateParser */,
-				808D315217420F6200AE0CCE /* Slash-iOS-CombinedStaticLib */,
 			);
 		};
 /* End PBXProject section */
@@ -1450,6 +1450,7 @@
 				808D315417420F6200AE0CCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
