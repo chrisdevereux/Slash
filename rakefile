@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+def test(config, scheme, build_sdk, test_sdk)
+    fail unless system("xctool", "-workspace", "Slash.xcworkspace", '-scheme', scheme, '-sdk', build_sdk, '-configuration', config, 'test', '-test-sdk', test_sdk)
+end
+
+task :test_ios => [] do
+    sdks = ['iphonesimulator6.1', 'iphonesimulator7.0']
+
+    sdks.each do |sdk|
+        test('Release', 'Slash-iOS', 'iphonesimulator7.0', sdk)
+    end
+end
+
+task :test_mac => [] do
+    sdks = ['macosx10.8', 'macosx10.9']
+
+    sdks.each do |sdk|
+        test('Release', 'Slash-OSX', 'macosx10.9', sdk)
+    end
+end
+
+task :default => [:test_mac, :test_ios]
