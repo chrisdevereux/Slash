@@ -92,6 +92,7 @@
 		61D52D50167B74840027C915 /* libSlash-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61548438167A084500A37428 /* libSlash-iOS.a */; };
 		61D52D51167B794F0027C915 /* SLSMarkupParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6154844A167A087E00A37428 /* SLSMarkupParser.h */; };
 		61D52D52167B79590027C915 /* SLSMarkupParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 6154844A167A087E00A37428 /* SLSMarkupParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		85704ACA1830419C00C670AA /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85704AC91830419C00C670AA /* CoreText.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -246,6 +247,7 @@
 		61D52D42167B6B2E0027C915 /* Tests-iOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Tests-iOS-Info.plist"; path = "Tests/iOS/Tests-iOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		61D52D45167B6B2E0027C915 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		61D52D4E167B73610027C915 /* SLSViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SLSViewController_iPhone.xib; sourceTree = "<group>"; };
+		85704AC91830419C00C670AA /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +299,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85704ACA1830419C00C670AA /* CoreText.framework in Frameworks */,
 				61D52D50167B74840027C915 /* libSlash-iOS.a in Frameworks */,
 				61D52D00167B6A6A0027C915 /* UIKit.framework in Frameworks */,
 				61D52D01167B6A6A0027C915 /* Foundation.framework in Frameworks */,
@@ -362,6 +365,7 @@
 		6154843A167A084500A37428 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				85704AC91830419C00C670AA /* CoreText.framework */,
 				615484C8167A136400A37428 /* Foundation.framework */,
 				6154843B167A084500A37428 /* Foundation.framework */,
 				61548468167A0C4300A37428 /* Cocoa.framework */,
