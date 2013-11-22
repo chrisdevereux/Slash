@@ -90,7 +90,6 @@
 		61D52D48167B6D800027C915 /* TestParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 615484BD167A0F1D00A37428 /* TestParser.m */; };
 		61D52D4F167B73610027C915 /* SLSViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61D52D4E167B73610027C915 /* SLSViewController_iPhone.xib */; };
 		61D52D50167B74840027C915 /* libSlash-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61548438167A084500A37428 /* libSlash-iOS.a */; };
-		61D52D51167B794F0027C915 /* SLSMarkupParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6154844A167A087E00A37428 /* SLSMarkupParser.h */; };
 		61D52D52167B79590027C915 /* SLSMarkupParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 6154844A167A087E00A37428 /* SLSMarkupParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		85704ACA1830419C00C670AA /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85704AC91830419C00C670AA /* CoreText.framework */; };
 /* End PBXBuildFile section */
@@ -162,16 +161,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		61548436167A084500A37428 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/${PRODUCT_NAME}";
-			dstSubfolderSpec = 16;
-			files = (
-				61D52D51167B794F0027C915 /* SLSMarkupParser.h in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		616B330216C6B2AE0009AD78 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -574,7 +563,6 @@
 			buildPhases = (
 				61548434167A084500A37428 /* Sources */,
 				61548435167A084500A37428 /* Frameworks */,
-				61548436167A084500A37428 /* CopyFiles */,
 				61295D4F16B8B2AE005DB02C /* Headers */,
 			);
 			buildRules = (
@@ -704,7 +692,7 @@
 		6154842F167A084500A37428 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = ChrisDevereux;
 			};
 			buildConfigurationList = 61548432167A084500A37428 /* Build configuration list for PBXProject "Slash" */;
@@ -1053,10 +1041,10 @@
 					"$(inherited)",
 					"YYDEBUG=1",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/Slash;
+				PUBLIC_HEADERS_FOLDER_PATH = include/Slash;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1068,10 +1056,10 @@
 				DSTROOT = /tmp/Slash.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Slash/Slash-iOS-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/Slash;
+				PUBLIC_HEADERS_FOLDER_PATH = include/Slash;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -1079,7 +1067,6 @@
 		61548495167A0C4400A37428 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1102,7 +1089,6 @@
 		61548496167A0C4400A37428 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1126,7 +1112,6 @@
 		61548498167A0C4400A37428 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1144,7 +1129,6 @@
 		61548499167A0C4400A37428 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
@@ -1163,7 +1147,6 @@
 		615484A7167A0C7400A37428 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1189,7 +1172,6 @@
 		615484A8167A0C7400A37428 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1225,7 +1207,6 @@
 		616B330D16C6B2AF0009AD78 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
@@ -1246,7 +1227,6 @@
 		616B330E16C6B2AF0009AD78 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
@@ -1273,7 +1253,7 @@
 				GCC_PREFIX_HEADER = "Application-iOS/Application-iOS-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include";
 				INFOPLIST_FILE = "Application-iOS/Application-iOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -1288,7 +1268,7 @@
 				GCC_PREFIX_HEADER = "Application-iOS/Application-iOS-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include";
 				INFOPLIST_FILE = "Application-iOS/Application-iOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
