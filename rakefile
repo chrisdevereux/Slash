@@ -1,14 +1,13 @@
 #!/usr/bin/env ruby
 
-def test(config, scheme, build_sdk, test_sdk)
-    fail unless system("xctool", "-workspace", "Slash.xcworkspace", '-scheme', scheme, '-sdk', build_sdk, '-configuration', config, 'test', '-test-sdk', test_sdk)
-end
-
 task :test_ios => [] do
+    systems = ['6.1', '7.0']
     sdks = ['iphonesimulator6.1', 'iphonesimulator7.0']
 
     sdks.each do |sdk|
-        test('Release', 'Slash-iOS', 'iphonesimulator7.0', sdk)
+        systems.each do |sys|
+            fail unless system("xcodebuild", "-workspace", "Slash.xcworkspace", '-scheme', 'Slash-iOS', '-sdk', sdk, '-configuration', 'Release', 'test', '-destination', "platform=iOS Simulator,OS=#{sys},name=iPhone Retina (4-inch)")
+        end
     end
 end
 
@@ -16,7 +15,7 @@ task :test_mac => [] do
     sdks = ['macosx10.8', 'macosx10.9']
 
     sdks.each do |sdk|
-        test('Release', 'Slash-OSX', 'macosx10.9', sdk)
+        fail unless system("xcodebuild", "-workspace", "Slash.xcworkspace", '-scheme', 'Slash-OSX', '-sdk', sdk, '-configuration', 'Release', 'test', '-destination', "platform=OS X")
     end
 end
 
