@@ -11,7 +11,7 @@
 
 @interface SLSViewController () <UITextViewDelegate>
 @property (strong, nonatomic) IBOutlet UITextView *markupView;
-@property (strong, nonatomic) IBOutlet UITextView *displayView;
+@property (strong, nonatomic) IBOutlet UILabel *displayView;
 @property (strong, nonatomic) IBOutlet UIView *errorMarker;
 @end
 
