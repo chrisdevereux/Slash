@@ -1163,7 +1163,7 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/Slash;
+				PUBLIC_HEADERS_FOLDER_PATH = include/Slash;
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
 			};
@@ -1184,7 +1184,7 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/Slash;
+				PUBLIC_HEADERS_FOLDER_PATH = include/Slash;
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
 			};
