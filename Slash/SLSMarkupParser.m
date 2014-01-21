@@ -64,18 +64,25 @@ LookupFont(CGFloat pointSize, NSString *fontName, NSString *familyName, CTFontSy
 
 + (NSDictionary *)defaultAttributes
 {
-    if (SUPPORTS_STANDARD_ATTRIBUTES) {
-        return @{
-            NSFontAttributeName             : LookupFont(14, @"HelveticaNeue", @"Helvetica Neue", 0),
-            NSForegroundColorAttributeName  : [COLOR_CLASS blackColor],
-            NSKernAttributeName             : @0,
-            NSParagraphStyleAttributeName   : [NSParagraphStyle defaultParagraphStyle],
-            NSStrokeColorAttributeName      : [COLOR_CLASS blackColor],
-            NSStrokeWidthAttributeName      : @0
-        };
-    } else {
-        return @{};
-    }
+    static NSDictionary *attributes;
+
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (SUPPORTS_STANDARD_ATTRIBUTES) {
+            attributes = @{
+                NSFontAttributeName             : LookupFont(14, @"HelveticaNeue", @"Helvetica Neue", 0),
+                NSForegroundColorAttributeName  : [COLOR_CLASS blackColor],
+                NSKernAttributeName             : @0,
+                NSParagraphStyleAttributeName   : [NSParagraphStyle defaultParagraphStyle],
+                NSStrokeColorAttributeName      : [COLOR_CLASS blackColor],
+                NSStrokeWidthAttributeName      : @0
+            };
+        } else {
+            attributes = @{};
+        }
+    });
+
+    return attributes;
 }
 
 
