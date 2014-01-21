@@ -1,9 +1,8 @@
 Slash
-=====
+===== 
+[![Build Status](https://travis-ci.org/chrisdevereux/Slash.png?branch=master)](https://travis-ci.org/chrisdevereux/Slash)
 
 Slash is a **simple**, **extensible** markup language for styling NSAttributedStrings. The language is similar in appearance to HTML, however the meaning of each tag is user-defined.
-
-In iOS 6, displaying attributed strings became much easier, however programatically creating them is still horrible. In fact, adding them to your application any way other than interface builder still requires messing with NSRanges and font attributes.
 
 
 Usage
@@ -65,12 +64,23 @@ Note that the linked attributes are only supported on iOS from 6.0 onwards.
 Installation
 ------------
 
+### Using CocoaPods
+
+* Add `pod 'slash'` to your podfile
+* `#import <Slash/Slash.h>`
+
+### As an Xcode Subproject
+
+    
+ 
+
+
     git clone https://github.com/chrisdevereux/Slash.git
 
 * Add Slash.xcodeproj as a child project
 * Add Slash-iOS or Slash-OSX as a project dependency
 * Link with libSlash-iOS.a or libSlash-OSX.a
-* Add `$(BUILT_PRODUCTS_DIR)/usr/local/include` to your project's header search paths (if it isn't already there)
+* Add `$(BUILT_PRODUCTS_DIR)/include` to your project's header search paths (if it isn't already there)
 * `#import <Slash/Slash.h>`
 
 
