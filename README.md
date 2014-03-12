@@ -66,7 +66,7 @@ Installation
 
 ### Using CocoaPods
 
-* Add `pod 'slash'` to your podfile
+* Add `pod 'Slash'` to your podfile
 * `#import <Slash/Slash.h>`
 
 ### As an Xcode Subproject
