@@ -55,6 +55,8 @@ NSAttributedString *myAttributedString = [SLSMarkupParser attributedStringWithMa
 
 When a piece of text belongs to multiple elements, the attributes applied will be the union of each tag's dictionary, with the innermost elements' attributes taking priority. For a list of attributes supported by the Cocoa/Cocoa Touch text rendering system, see the documentation for [iOS][1] or [OSX][2].
 
+If you want to use either the ">" or "<" characters, you'll need to escape them using a backslash (eg: `\>`).
+
 Note that the linked attributes are only supported on iOS from 6.0 onwards.
 
 [1]: http://developer.apple.com/library/ios/#Documentation/UIKit/Reference/NSAttributedString_UIKit_Additions/Reference/Reference.html
