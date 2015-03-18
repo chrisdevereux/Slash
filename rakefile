@@ -1,18 +1,18 @@
 #!/usr/bin/env ruby
 
 task :test_ios => [] do
-    systems = ['6.1', '7.0']
-    sdks = ['iphonesimulator6.1', 'iphonesimulator7.0']
+    systems = ['6.1', '7.1', '8.1']
+    sdks = ['iphonesimulator']
 
     sdks.each do |sdk|
         systems.each do |sys|
-            fail unless system("xcodebuild", "-workspace", "Slash.xcworkspace", '-scheme', 'Slash-iOS', '-sdk', sdk, '-configuration', 'Release', 'test', '-destination', "platform=iOS Simulator,OS=#{sys},name=iPhone Retina (4-inch)")
+            fail unless system("xcodebuild", "-workspace", "Slash.xcworkspace", '-scheme', 'Slash-iOS', '-sdk', sdk, '-configuration', 'Release', 'test', '-destination', "platform=iOS Simulator,OS=#{sys}")
         end
     end
 end
 
 task :test_mac => [] do
-    sdks = ['macosx10.8', 'macosx10.9']
+    sdks = ['macosx']
 
     sdks.each do |sdk|
         fail unless system("xcodebuild", "-workspace", "Slash.xcworkspace", '-scheme', 'Slash-OSX', '-sdk', sdk, '-configuration', 'Release', 'test', '-destination', "platform=OS X")
