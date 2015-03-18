@@ -6,7 +6,7 @@ task :test_ios => [] do
 
     sdks.each do |sdk|
         systems.each do |sys|
-            fail unless system("xcodebuild", "-workspace", "Slash.xcworkspace", '-scheme', 'Slash-iOS', '-sdk', sdk, '-configuration', 'Release', 'test', '-destination', "platform=iOS Simulator,OS=#{sys},name='iPhone 5'")
+            fail unless system("xcodebuild", "-workspace", "Slash.xcworkspace", '-scheme', 'Slash-iOS', '-sdk', sdk, '-configuration', 'Release', 'test', '-destination', "platform=iOS Simulator,OS=#{sys},name=iPhone 5")
         end
     end
 end
