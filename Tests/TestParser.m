@@ -21,9 +21,9 @@
 #endif
 
 
-#define AssertAttributeAtIndex(attrStr, attrKey, attrVal, idx) STAssertEqualObjects([(attrStr) attribute:(attrKey) atIndex:(idx) effectiveRange:NULL], (attrVal), @"Expected attribute '%s' to equal '%s' at index %d", #attrKey, #attrVal, (int)(idx))
+#define AssertAttributeAtIndex(attrStr, attrKey, attrVal, idx) XCTAssertEqualObjects([(attrStr) attribute:(attrKey) atIndex:(idx) effectiveRange:NULL], (attrVal), @"Expected attribute '%s' to equal '%s' at index %d", #attrKey, #attrVal, (int)(idx))
 
-#define AssertHasAttributeFor(attrStr, attr) STAssertNotNil([[(attrStr) attributesAtIndex:0 effectiveRange:NULL] objectForKey:(attr)], @"Expected attribute '%s' to be defined", (#attr))
+#define AssertHasAttributeFor(attrStr, attr) XCTAssertNotNil([[(attrStr) attributesAtIndex:0 effectiveRange:NULL] objectForKey:(attr)], @"Expected attribute '%s' to be defined", (#attr))
 
 static NSDictionary * AttributesWithDefaults(NSDictionary *style, NSString *key)
 {
@@ -54,7 +54,7 @@ static NSDictionary * AttributesWithDefaults(NSDictionary *style, NSString *key)
     [expected setAttributes:AttributesWithDefaults([SLSMarkupParser defaultStyle], @"strong") range:NSMakeRange(8, 7)];
     
     NSAttributedString *actual = [SLSMarkupParser attributedStringWithMarkup:str error:NULL];
-    STAssertEqualObjects(actual, expected, @"Parsed markup does not have expected attributes.");
+    XCTAssertEqualObjects(actual, expected, @"Parsed markup does not have expected attributes.");
 }
 
 - (void)testCanParseComplexString
@@ -72,7 +72,7 @@ static NSDictionary * AttributesWithDefaults(NSDictionary *style, NSString *key)
     
     NSError *error;
     NSAttributedString *actual = [SLSMarkupParser attributedStringWithMarkup:str error:&error];
-    STAssertEqualObjects(actual, expected, @"Parsed markup does not have expected attributes.");
+    XCTAssertEqualObjects(actual, expected, @"Parsed markup does not have expected attributes.");
 }
 
 - (void)testCanParseUnicodeCharacters
@@ -94,7 +94,7 @@ static NSDictionary * AttributesWithDefaults(NSDictionary *style, NSString *key)
             NSMutableAttributedString *expected = [[NSMutableAttributedString alloc] initWithString:testStr];
             [expected setAttributes:AttributesWithDefaults([SLSMarkupParser defaultStyle], @"h1") range:NSMakeRange(0, [testStr length])];
             
-            STAssertEqualObjects(expected, attrStr, @"Failed to parse codepoint +%X", chr);
+            XCTAssertEqualObjects(expected, attrStr, @"Failed to parse codepoint +%X", chr);
         }
     }
 }
@@ -108,18 +108,18 @@ static NSDictionary * AttributesWithDefaults(NSDictionary *style, NSString *key)
     
     NSError *error;
     NSAttributedString *actual = [SLSMarkupParser attributedStringWithMarkup:str error:&error];
-    STAssertEqualObjects(actual, expected, @"Parsed markup not correct.");
+    XCTAssertEqualObjects(actual, expected, @"Parsed markup not correct.");
 }
 
 - (void)testCanParseMultilineString
 {
     NSAttributedString *str = [SLSMarkupParser attributedStringWithMarkup:@"a\nb" error:NULL];
-    STAssertEqualObjects(str, [[NSAttributedString alloc] initWithString:@"a\nb" attributes:[[SLSMarkupParser defaultStyle] objectForKey:@"$default"]], nil);
+    XCTAssertEqualObjects(str, [[NSAttributedString alloc] initWithString:@"a\nb" attributes:[[SLSMarkupParser defaultStyle] objectForKey:@"$default"]]);
 }
 
 - (void)testCanParseEmptyString
 {
-    STAssertNotNil([SLSMarkupParser attributedStringWithMarkup:@"" error:NULL], @"Should accept empty string");
+    XCTAssertNotNil([SLSMarkupParser attributedStringWithMarkup:@"" error:NULL], @"Should accept empty string");
 }
 
 - (void)testCanParseEscapedOpen
@@ -127,7 +127,7 @@ static NSDictionary * AttributesWithDefaults(NSDictionary *style, NSString *key)
     NSAttributedString *str = [SLSMarkupParser attributedStringWithMarkup:@"foo\\<bar" error:NULL];
     NSAttributedString *expected = [[NSAttributedString alloc] initWithString:@"foo<bar" attributes:[[SLSMarkupParser defaultStyle] objectForKey:@"$default"]];
     
-    STAssertEqualObjects(str, expected, @"Should allow escaped open angle-parenthesis");
+    XCTAssertEqualObjects(str, expected, @"Should allow escaped open angle-parenthesis");
 }
 
 - (void)testCanParseEscapedClose
@@ -135,7 +135,7 @@ static NSDictionary * AttributesWithDefaults(NSDictionary *style, NSString *key)
     NSAttributedString *str = [SLSMarkupParser attributedStringWithMarkup:@"foo\\>bar" error:NULL];
     NSAttributedString *expected = [[NSAttributedString alloc] initWithString:@"foo>bar" attributes:[[SLSMarkupParser defaultStyle] objectForKey:@"$default"]];
     
-    STAssertEqualObjects(str, expected, @"Should allow escaped open angle-parenthesis");
+    XCTAssertEqualObjects(str, expected, @"Should allow escaped open angle-parenthesis");
 }
 
 - (void)testCanParseEscapedOpenClose
@@ -143,7 +143,7 @@ static NSDictionary * AttributesWithDefaults(NSDictionary *style, NSString *key)
     NSAttributedString *str = [SLSMarkupParser attributedStringWithMarkup:@"f\\<oo\\>bar" error:NULL];
     NSAttributedString *expected = [[NSAttributedString alloc] initWithString:@"f<oo>bar" attributes:[[SLSMarkupParser defaultStyle] objectForKey:@"$default"]];
     
-    STAssertEqualObjects(str, expected, @"Should allow escaped open and close angle-parenthesis");
+    XCTAssertEqualObjects(str, expected, @"Should allow escaped open and close angle-parenthesis");
 }
 
 - (void)testCanParseEscapedEscape
@@ -151,7 +151,7 @@ static NSDictionary * AttributesWithDefaults(NSDictionary *style, NSString *key)
     NSAttributedString *str = [SLSMarkupParser attributedStringWithMarkup:@"foo\\\\bar" error:NULL];
     NSAttributedString *expected = [[NSAttributedString alloc] initWithString:@"foo\\bar" attributes:[[SLSMarkupParser defaultStyle] objectForKey:@"$default"]];
     
-    STAssertEqualObjects(str, expected, @"Should allow escaped backslash");
+    XCTAssertEqualObjects(str, expected, @"Should allow escaped backslash");
 }
 
 - (void)testIgnoresEscapedText
@@ -159,7 +159,7 @@ static NSDictionary * AttributesWithDefaults(NSDictionary *style, NSString *key)
     NSAttributedString *str = [SLSMarkupParser attributedStringWithMarkup:@"\\X" error:NULL];
     NSAttributedString *expected = [[NSAttributedString alloc] initWithString:@"" attributes:[[SLSMarkupParser defaultStyle] objectForKey:@"$default"]];
     
-    STAssertEqualObjects(str, expected, @"ordinary characters should be ignored when escaped");
+    XCTAssertEqualObjects(str, expected, @"ordinary characters should be ignored when escaped");
 }
 
 - (void)testIgnoresSingleEscape
@@ -167,7 +167,7 @@ static NSDictionary * AttributesWithDefaults(NSDictionary *style, NSString *key)
     NSAttributedString *str = [SLSMarkupParser attributedStringWithMarkup:@"\\" error:NULL];
     NSAttributedString *expected = [[NSAttributedString alloc] initWithString:@"" attributes:[[SLSMarkupParser defaultStyle] objectForKey:@"$default"]];
     
-    STAssertEqualObjects(str, expected, @"single escape characters should be ignored");
+    XCTAssertEqualObjects(str, expected, @"single escape characters should be ignored");
 }
 
 - (void)testIncompleteTagsThrowError
@@ -180,8 +180,8 @@ static NSDictionary * AttributesWithDefaults(NSDictionary *style, NSString *key)
 - (void)assertStringProducesSyntaxError:(NSString *)str
 {
     NSError *error;
-    STAssertNil([SLSMarkupParser attributedStringWithMarkup:str error:&error], @"%@ should raise error", str);
-    STAssertEquals((SLSErrorCode)[error code], kSLSSyntaxError, @"Expected syntax error code");
+    XCTAssertNil([SLSMarkupParser attributedStringWithMarkup:str error:&error], @"%@ should raise error", str);
+    XCTAssertEqual((SLSErrorCode)[error code], kSLSSyntaxError, @"Expected syntax error code");
 }
 
 - (void)testUnterminatedSectionProducesError
@@ -209,9 +209,9 @@ static NSDictionary * AttributesWithDefaults(NSDictionary *style, NSString *key)
     }
     
     NSError *error;
-    STAssertNil([SLSMarkupParser attributedStringWithMarkup:@"<undefined>xyz</undefined>" error:&error], @"Expected error");
-    STAssertNotNil(error, @"Expected error");
-    STAssertEquals((SLSErrorCode)[error code], kSLSUnknownTagError, @"Incorrect error code");
+    XCTAssertNil([SLSMarkupParser attributedStringWithMarkup:@"<undefined>xyz</undefined>" error:&error], @"Expected error");
+    XCTAssertNotNil(error, @"Expected error");
+    XCTAssertEqual((SLSErrorCode)[error code], kSLSUnknownTagError, @"Incorrect error code");
 }
 
 
@@ -278,7 +278,7 @@ static NSDictionary * AttributesWithDefaults(NSDictionary *style, NSString *key)
     AssertHasAttributeFor(attrStr, NSStrokeColorAttributeName);
     AssertHasAttributeFor(attrStr, NSStrokeWidthAttributeName);
     
-    STAssertEqualObjects(fontAttribute, expectedFont, @"Should override default font");
+    XCTAssertEqualObjects(fontAttribute, expectedFont, @"Should override default font");
 }
 
 @end

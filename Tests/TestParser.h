@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Chris Devereux. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface TestParser : SenTestCase
+@interface TestParser : XCTestCase
 
 @end
