@@ -92,11 +92,16 @@
 /* Copy the first part of user declarations.  */
 
 
-    #import <Foundation/Foundation.h>
-    #import "SLSTaggedRange.h"
-    #import "SLSTagParser.h"
-    #import "SLSTagLexer.gen.h"
-    #import "SLSErrors.h"
+#import <Foundation/Foundation.h>
+#import "SLSTaggedRange.h"
+#import "SLSTagParser.h"
+#import "SLSTagLexer.gen.h"
+#import "SLSErrors.h"
+
+#pragma clang diagnostic ignored "-Wconversion"
+#pragma clang diagnostic ignored "-Wunreachable-code"
+#pragma clang diagnostic ignored "-Wunused-function"
+#pragma clang diagnostic ignored "-Wunneeded-internal-declaration"
 
 
 /* Enabling traces.  */
@@ -423,7 +428,7 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    39,    39,    40,    43,    44,    52,    59,    68,    77
+       0,    44,    44,    45,    48,    49,    57,    64,    73,    82
 };
 #endif
 

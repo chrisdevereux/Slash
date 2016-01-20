@@ -1,9 +1,11 @@
 %top{
-    #import <Foundation/Foundation.h>
-    #import "SLSTagParser.gen.h"
+#import <Foundation/Foundation.h>
+#import "SLSTagParser.gen.h"
 
-
-    #pragma clang diagnostic ignored "-Wconversion"
+#pragma clang diagnostic ignored "-Wconversion"
+#pragma clang diagnostic ignored "-Wunreachable-code"
+#pragma clang diagnostic ignored "-Wunused-function"
+#pragma clang diagnostic ignored "-Wunneeded-internal-declaration"
 }
 
 %option reentrant

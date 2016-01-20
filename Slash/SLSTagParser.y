@@ -1,9 +1,14 @@
 %{
-    #import <Foundation/Foundation.h>
-    #import "SLSTaggedRange.h"
-    #import "SLSTagParser.h"
-    #import "SLSTagLexer.gen.h"
-    #import "SLSErrors.h"
+#import <Foundation/Foundation.h>
+#import "SLSTaggedRange.h"
+#import "SLSTagParser.h"
+#import "SLSTagLexer.gen.h"
+#import "SLSErrors.h"
+
+#pragma clang diagnostic ignored "-Wconversion"
+#pragma clang diagnostic ignored "-Wunreachable-code"
+#pragma clang diagnostic ignored "-Wunused-function"
+#pragma clang diagnostic ignored "-Wunneeded-internal-declaration"
 %}
 
 %pure-parser
@@ -77,3 +82,4 @@ abort_parse
 : ERR {
     output.error = [NSError errorWithDomain:SLSErrorDomain code:kSLSSyntaxError userInfo:@{NSLocalizedDescriptionKey: $1}];
 }
+

@@ -1,14 +1,16 @@
 #line 2 "SLSTagLexer.gen.m"
 #line 2 "SLSTagLexer.l"
-    #import <Foundation/Foundation.h>
-    #import "SLSTagParser.gen.h"
+#import <Foundation/Foundation.h>
+#import "SLSTagParser.gen.h"
+
+#pragma clang diagnostic ignored "-Wconversion"
+#pragma clang diagnostic ignored "-Wunreachable-code"
+#pragma clang diagnostic ignored "-Wunused-function"
+#pragma clang diagnostic ignored "-Wunneeded-internal-declaration"
 
 
-    #pragma clang diagnostic ignored "-Wconversion"
 
-
-
-#line 12 "SLSTagLexer.gen.m"
+#line 14 "SLSTagLexer.gen.m"
 
 #define  YY_INT_ALIGNED short int
 
@@ -482,7 +484,7 @@ static yyconst flex_int16_t yy_chk[96] =
   {utf8_multi} matches valid multibyte UTF-8 characters. So long as any
   special characters are in the ascii range, this allows unicode support.
 */
-#line 486 "SLSTagLexer.gen.m"
+#line 488 "SLSTagLexer.gen.m"
 
 #define INITIAL 0
 
@@ -721,10 +723,10 @@ YY_DECL
 	register int yy_act;
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
-#line 44 "SLSTagLexer.l"
+#line 46 "SLSTagLexer.l"
 
 
-#line 728 "SLSTagLexer.gen.m"
+#line 730 "SLSTagLexer.gen.m"
 
     yylval = yylval_param;
 
@@ -811,7 +813,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 46 "SLSTagLexer.l"
+#line 48 "SLSTagLexer.l"
 {
     yylval->text = @"<";
     return TEXT;
@@ -819,7 +821,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 51 "SLSTagLexer.l"
+#line 53 "SLSTagLexer.l"
 {
     yylval->text = @">";
     return TEXT;
@@ -827,7 +829,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 56 "SLSTagLexer.l"
+#line 58 "SLSTagLexer.l"
 {
     yylval->text = @"\\";
     return TEXT;
@@ -836,7 +838,7 @@ YY_RULE_SETUP
 case 4:
 /* rule 4 can match eol */
 YY_RULE_SETUP
-#line 61 "SLSTagLexer.l"
+#line 63 "SLSTagLexer.l"
 {
     yylval->text = @"";
     return TEXT;
@@ -844,7 +846,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 66 "SLSTagLexer.l"
+#line 68 "SLSTagLexer.l"
 {
     yylval->text = @"";
     return TEXT;
@@ -853,7 +855,7 @@ YY_RULE_SETUP
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 71 "SLSTagLexer.l"
+#line 73 "SLSTagLexer.l"
 {
     yylval->text = [NSString stringWithUTF8String:yytext];
     return TEXT;
@@ -861,7 +863,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 76 "SLSTagLexer.l"
+#line 78 "SLSTagLexer.l"
 {
     yylval->text = [ [ [NSString alloc] initWithBytes:yytext+1 length:strlen(yytext)-2 encoding:NSUTF8StringEncoding] autorelease];
     return OPEN;
@@ -869,7 +871,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 81 "SLSTagLexer.l"
+#line 83 "SLSTagLexer.l"
 {
     yylval->text = [ [ [NSString alloc] initWithBytes:yytext+2 length:strlen(yytext)-3 encoding:NSUTF8StringEncoding] autorelease];
     return CLOSE;
@@ -877,7 +879,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 86 "SLSTagLexer.l"
+#line 88 "SLSTagLexer.l"
 {
     yylval->text = NSLocalizedString(@"Unterminated tag", nil);
     return ERR;
@@ -885,10 +887,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 90 "SLSTagLexer.l"
+#line 92 "SLSTagLexer.l"
 ECHO;
 	YY_BREAK
-#line 892 "SLSTagLexer.gen.m"
+#line 894 "SLSTagLexer.gen.m"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2094,4 +2096,4 @@ void SLSTagParser_free (void * ptr , yyscan_t yyscanner)
 
 #define YYTABLES_NAME "yytables"
 
-#line 90 "SLSTagLexer.l"
+#line 92 "SLSTagLexer.l"

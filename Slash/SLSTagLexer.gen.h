@@ -4,15 +4,17 @@
 
 #line 6 "SLSTagLexer.gen.h"
 #line 2 "SLSTagLexer.l"
-    #import <Foundation/Foundation.h>
-    #import "SLSTagParser.gen.h"
+#import <Foundation/Foundation.h>
+#import "SLSTagParser.gen.h"
+
+#pragma clang diagnostic ignored "-Wconversion"
+#pragma clang diagnostic ignored "-Wunreachable-code"
+#pragma clang diagnostic ignored "-Wunused-function"
+#pragma clang diagnostic ignored "-Wunneeded-internal-declaration"
 
 
-    #pragma clang diagnostic ignored "-Wconversion"
 
-
-
-#line 16 "SLSTagLexer.gen.h"
+#line 18 "SLSTagLexer.gen.h"
 
 #define  YY_INT_ALIGNED short int
 
@@ -340,8 +342,8 @@ extern int SLSTagParser_lex \
 #undef YY_DECL
 #endif
 
-#line 90 "SLSTagLexer.l"
+#line 92 "SLSTagLexer.l"
 
-#line 346 "SLSTagLexer.gen.h"
+#line 348 "SLSTagLexer.gen.h"
 #undef SLSTagParser_IN_HEADER
 #endif /* SLSTagParser_HEADER_H */

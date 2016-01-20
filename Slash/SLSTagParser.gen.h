@@ -58,7 +58,7 @@
 typedef union YYSTYPE
 
 {
-    __unsafe_unretained NSString    *text;
+    NSString    *text;
     NSRange     attribute_range;
     struct{}    noval;
 }
