@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/chrisdevereux/Slash"
   s.license      = { :type => 'MIT', :file => 'LICENCE' }
   s.author       = { "Chris Devereux" => "devereux.chris@gmail.com" }
-  s.source       = { :git => "https://github.com/chrisdevereux/Slash.git", :tag => "0.1.3" }
+  s.source       = { :git => "https://github.com/chrisdevereux/Slash.git", :tag => "0.1.4" }
   s.frameworks   = 'CoreText'
 
   s.ios.deployment_target = '4.3'
