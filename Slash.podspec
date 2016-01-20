@@ -15,14 +15,6 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.6'
 
   s.public_header_files = 'Slash/Slash.h', 'Slash/SLSMarkupParser.h', 'Slash/SLSErrors.h'
-
-  s.subspec 'arc' do |ss|
-    ss.source_files = 'Slash/SLSMarkupParser.m', 'Slash/SLSTaggedRange.m', 'Slash/*.h'
-    ss.requires_arc = true
-  end
-
-  s.subspec 'no-arc' do |ss|
-    ss.source_files = 'Slash/SLSTagParser.m', 'Slash/SLSTagLexer.gen.m', 'Slash/SLSTagParser.gen.m', 'Slash/*.h'
-    ss.requires_arc = false
-  end
+  s.source_files = 'Slash/*.m', 'Slash/*.h'
+  s.requires_arc = 'Slash/SLSMarkupParser.m', 'SLSTaggedRange.m'
 end
